@@ -1,4 +1,4 @@
-package com.example.projetofinalpw3;
+package com.example.projetofinalpw3.fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.projetofinalpw3.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link AVDFragmentHistoriaSocial#newInstance} factory method to
+ * Use the {@link AtividadeDeVidaDiariaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class AVDFragmentHistoriaSocial extends Fragment {
+public class AtividadeDeVidaDiariaFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class AVDFragmentHistoriaSocial extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public AVDFragmentHistoriaSocial() {
+    public AtividadeDeVidaDiariaFragment() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class AVDFragmentHistoriaSocial extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment AVDFragmentHistoriaSocial.
+     * @return A new instance of fragment AtividadeDeVidaDiariaFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static AVDFragmentHistoriaSocial newInstance(String param1, String param2) {
-        AVDFragmentHistoriaSocial fragment = new AVDFragmentHistoriaSocial();
+    public static AtividadeDeVidaDiariaFragment newInstance(String param1, String param2) {
+        AtividadeDeVidaDiariaFragment fragment = new AtividadeDeVidaDiariaFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

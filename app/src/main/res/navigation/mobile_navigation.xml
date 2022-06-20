@@ -22,4 +22,10 @@
         android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_fragment_historia_social"
+        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialFragment"
+        android:label="EditarFragment"
+        tools:layout="@layout/fragment_historia_social">
+    </fragment>
 </navigation>

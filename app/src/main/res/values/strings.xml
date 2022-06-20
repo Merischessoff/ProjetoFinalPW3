@@ -22,4 +22,8 @@
     <string name="cadUser_btnCanc">CANCELAR</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="CadHistSoc">Cadastro História Social</string>
+    <string name="btnCadastrar">Cadastrar</string>
+    <string name="textoHistoria">Texto da história social</string>
+    <string name="btnBuscaImagem">Imagem</string>
 </resources>

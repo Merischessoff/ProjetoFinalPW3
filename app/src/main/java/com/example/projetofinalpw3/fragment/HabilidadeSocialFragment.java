@@ -1,4 +1,4 @@
-package com.example.projetofinalpw3;
+package com.example.projetofinalpw3.fragment;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.projetofinalpw3.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HSFragmentHistoriaSocial#newInstance} factory method to
+ * Use the {@link HabilidadeSocialFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HSFragmentHistoriaSocial extends Fragment {
+public class HabilidadeSocialFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -23,7 +25,7 @@ public class HSFragmentHistoriaSocial extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public HSFragmentHistoriaSocial() {
+    public HabilidadeSocialFragment() {
         // Required empty public constructor
     }
 
@@ -33,11 +35,11 @@ public class HSFragmentHistoriaSocial extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HSFragmentHistoriaSocial.
+     * @return A new instance of fragment HabilidadeSocialFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HSFragmentHistoriaSocial newInstance(String param1, String param2) {
-        HSFragmentHistoriaSocial fragment = new HSFragmentHistoriaSocial();
+    public static HabilidadeSocialFragment newInstance(String param1, String param2) {
+        HabilidadeSocialFragment fragment = new HabilidadeSocialFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
