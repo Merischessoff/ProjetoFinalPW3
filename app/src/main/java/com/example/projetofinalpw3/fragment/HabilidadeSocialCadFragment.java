@@ -12,10 +12,10 @@ import com.example.projetofinalpw3.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link HabilidadeSocialFragment#newInstance} factory method to
+ * Use the {@link HabilidadeSocialCadFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HabilidadeSocialFragment extends Fragment {
+public class HabilidadeSocialCadFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +25,7 @@ public class HabilidadeSocialFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public HabilidadeSocialFragment() {
+    public HabilidadeSocialCadFragment() {
         // Required empty public constructor
     }
 
@@ -35,11 +35,11 @@ public class HabilidadeSocialFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment HabilidadeSocialFragment.
+     * @return A new instance of fragment HabilidadeSocialCadFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static HabilidadeSocialFragment newInstance(String param1, String param2) {
-        HabilidadeSocialFragment fragment = new HabilidadeSocialFragment();
+    public static HabilidadeSocialCadFragment newInstance(String param1, String param2) {
+        HabilidadeSocialCadFragment fragment = new HabilidadeSocialCadFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

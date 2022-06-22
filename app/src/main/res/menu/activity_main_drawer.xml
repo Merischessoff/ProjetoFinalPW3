@@ -17,8 +17,13 @@
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/menu_slideshow" />
         <item
-            android:id="@+id/nav_fragment_historia_social"
+            android:id="@+id/nav_fragment_historia_social_cad"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/CadHistSoc" />
+            android:title="@string/cadHistSoc" />
+        <item
+            android:id="@+id/nav_fragment_historia_social_List"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="@string/listHistSoc" />
+
     </group>
 </menu>

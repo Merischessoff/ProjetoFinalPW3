@@ -32,7 +32,7 @@ public class GalleryFragment extends Fragment {
 
         ImageView imageView = binding.imageView;
         Picasso.with(getActivity().getBaseContext())
-                .load("https://media.geeksforgeeks.org/wp-content/uploads/20210101144014/gfglogo-300x300.png") // Equivalent of what ends up in onBitmapLoaded
+                .load("https://i.postimg.cc/HsdCJjjf/HS-Contato-visual-exercicio-1.png") // Equivalent of what ends up in onBitmapLoaded
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.drawable.ic_baseline_error_24)
                 .centerCrop()

@@ -4,28 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
     app:startDestination="@+id/nav_home">
-
     <fragment
         android:id="@+id/nav_home"
         android:name="com.example.projetofinalpw3.ui.home.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
-
     <fragment
         android:id="@+id/nav_gallery"
         android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
         android:label="@string/menu_gallery"
         tools:layout="@layout/fragment_gallery" />
-
     <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
     <fragment
-        android:id="@+id/nav_fragment_historia_social"
-        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialFragment"
-        android:label="EditarFragment"
-        tools:layout="@layout/fragment_historia_social">
+        android:id="@+id/nav_fragment_historia_social_cad"
+        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialCadFragment"
+        android:label="@string/cadHistSoc"
+        tools:layout="@layout/fragment_historia_social_cad">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_fragment_historia_social_List"
+        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialListFragment"
+        android:label="@string/listHistSoc"
+        tools:layout="@layout/fragment_historia_social_list">
+    </fragment>
+    <fragment
+        android:id="@+id/nav_fragment_historia_social_Visualizar"
+        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialVisualFragment"
+        android:label="@string/visualHistSoc"
+        tools:layout="@layout/fragment_historia_social_visual">
     </fragment>
 </navigation>
