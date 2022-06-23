@@ -77,7 +77,7 @@ public class HistoriaSocialCadFragment extends Fragment {
                 historiaSocial.setTitulo(titulo);
                 historiaSocial.setTexto(texto);
 
-                DatabaseReference historias = FirebaseDatabase.getInstance().getReference().child("historiasocial");
+                DatabaseReference historias = FirebaseDatabase.getInstance().getReference().child("HistoriaSocial");
 
                 historias.push().setValue(historiaSocial).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override

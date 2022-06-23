@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
@@ -27,9 +28,6 @@ import java.util.List;
 
 
 public class HistoriaSocialListFragment extends Fragment {
-
-    List<HistoriaSocial> listaHistorias= new ArrayList<>();
-    MyAdapterListHistSocial myAdapter;
     RecyclerView recyclerView;
     View root;
 
@@ -54,25 +52,20 @@ public class HistoriaSocialListFragment extends Fragment {
         return root;
     }
     private void carregaHistoriasSociais(){
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("historiasocial");
-        listaHistorias = new ArrayList<>();
-
-        Log.e("ERRO", reference.toString());
-
-        //associar os eventos ao nó pessoas para poder buscar os dados
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("HistoriaSocial");
+        ArrayList<HistoriaSocial> lista = new ArrayList<>();
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            //é chamado sempre que consegue recuperar algum dado
-            //DataSnapshot é o retorno do Firebase => resultado da consulta
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    //para buscar todos os nós filhos de pessoa
-                    HistoriaSocial historiaSocial = ds.getValue(HistoriaSocial.class);
-                    historiaSocial.setId(ds.getKey());
-                    listaHistorias.add(historiaSocial);
+                    //para buscar todos os nós filhos de produtos
+                    HistoriaSocial historia = ds.getValue(HistoriaSocial.class);
+                    historia.setId(ds.getKey());
+                    lista.add(historia);
                 }
+
                 //configurar o adapter - que formata que o layout de cada item do recycler
-                myAdapter = new MyAdapterListHistSocial (root.getContext(), listaHistorias);
+                MyAdapterListHistSocial myAdapter = new MyAdapterListHistSocial(root.getContext(), lista);
                 recyclerView.setAdapter(myAdapter);
                 recyclerView.setHasFixedSize(true);
                 reference.removeEventListener(this);
