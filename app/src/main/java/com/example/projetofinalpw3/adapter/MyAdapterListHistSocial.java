@@ -25,7 +25,7 @@ import java.util.List;
 import com.example.projetofinalpw3.R;
 
 
-public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListHistSocial.MyViewHolder> {
+public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListHistSocial.MyViewHolderListHistSocial> {
     List<HistoriaSocial> listaHistoria = new ArrayList<>();
     Context context;
     public MyAdapterListHistSocial(Context context, List<HistoriaSocial> historias) {
@@ -35,71 +35,60 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        //chamado para criar as visualizações - somente as primeiras que aparecem para o usuário
-        //convertendo o XML em uma visualização
-        //cria um objeto do tipo view
-        View itemList = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.adapter_card_icones_hist_soc, viewGroup, false);
-        //se usar adapter_card -> ajustar o ViewHolder para usar Button
-        //retorna o itemList que é passado para o construtor da MyViewHolder
-        return new MyViewHolder(itemList);
+    public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_hist_soc, viewGroup, false);
+        return new MyViewHolderListHistSocial(itemList);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, @SuppressLint("RecyclerView") int position) {
-        //exibe os itens no Recycler
+    public void onBindViewHolder(@NonNull MyViewHolderListHistSocial myViewHolderListHistSocial, @SuppressLint("RecyclerView") int position) {
         HistoriaSocial h = listaHistoria.get(position);
-        myViewHolder.titulo.setText(h.getTitulo());
-        myViewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
+        myViewHolderListHistSocial.titulo.setText(h.getTitulo());
+        myViewHolderListHistSocial.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //removerItem(position);
+                removerItem(position);
             }
         });
+
         Bundle bundle = new Bundle();
         bundle.putString("ID", listaHistoria.get(position).getId());
         bundle.putString("SEQ", listaHistoria.get(position).getSeq());
         bundle.putString("URL", listaHistoria.get(position).getUrl());
         bundle.putString("TITULO", listaHistoria.get(position).getTitulo());
         bundle.putString("TEXTO", listaHistoria.get(position).getTexto());
-        myViewHolder.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle));
+        myViewHolderListHistSocial.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle));
+        myViewHolderListHistSocial.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Edit,  bundle));
     }
 
     @Override
     public int getItemCount() {
-        //retorna a quantidade de itens que será exibida
         return listaHistoria.size();
     }
 
- /*   public void removerItem(final int position) {
+    public void removerItem(final int position) {
         new AlertDialog.Builder(context)
-                .setTitle("Deletando pessoa")
-                .setMessage("Tem certeza que deseja deletar essa pessoa?")
+                .setTitle("Deletando história")
+                .setMessage("Tem certeza que deseja deletar essa história?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("pessoas");
-                        //pega a pessoa que tem essa chave e remove do FB
-                        reference.child(listaPessoas.get(position).getId()).removeValue();
-                        listaPessoas.remove(position);
+                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("HistoriaSocial");
+                        reference.child(listaHistoria.get(position).getId()).removeValue();
+                        listaHistoria.remove(position);
                         notifyItemRemoved(position);
                     }}).setNegativeButton("Não", null).show();
-    }*/
+    }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
-        //dados da pessoa que serão exibidos no recycler
+    public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
         ImageButton btnDelete;
         ImageButton btnEdit;
         ImageButton btnVisual;
-        //se usar adapter_card -> ajustar o ViewHolder para usar Button
-        //Button btnDelete;
-        //Button btnEdit;
-        public MyViewHolder(View itemView){
+
+        public MyViewHolderListHistSocial(View itemView){
             super(itemView);
-            //passa uma referência para os componentes que estão na interface
-            titulo = itemView.findViewById(R.id.txtTituloHistoriaSocial);
+            titulo = itemView.findViewById(R.id.textViewTitulo);
             btnDelete = itemView.findViewById(R.id.btnExcluir);
             btnEdit= itemView.findViewById(R.id.btnEditar);
             btnVisual = itemView.findViewById(R.id.btnVisualizar);

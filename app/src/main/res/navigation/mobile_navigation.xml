@@ -37,4 +37,10 @@
         android:label="@string/visualHistSoc"
         tools:layout="@layout/fragment_historia_social_visual">
     </fragment>
+    <fragment
+        android:id="@+id/nav_fragment_historia_social_Edit"
+        android:name="com.example.projetofinalpw3.fragment.HistoriaSocialEditFragment"
+        android:label="@string/editHistSoc"
+        tools:layout="@layout/fragment_historia_social_edit">
+    </fragment>
 </navigation>

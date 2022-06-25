@@ -28,10 +28,12 @@
     <string name="btnCadastrar">Cadastrar</string>
     <string name="textoHistoria">Texto da história social</string>
     <string name="btnBuscaImagem">Imagem</string>
-    <string name="tituloHistoria">Título História</string>
+    <string name="tituloHistoria">Título da história, caso história contenha mais de uma imagem cadastre com o mesmo título.</string>
     <string name="btnExcluir">Excluir</string>
     <string name="btnEditar">Editar</string>
-    <string name="seqHistoria">Sequencia História</string>
+    <string name="seqHistoria">Sequência em que imagem aparecerá na história</string>
     <string name="btnVisualizar">Visualizar História</string>
     <string name="btnVisualizar2">Visualizar</string>
+    <string name="url">Url</string>
+    <string name="editHistSoc">Editar História Social</string>
 </resources>

@@ -27,7 +27,7 @@ public class GalleryFragment extends Fragment {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textGallery;
+        /*final TextView textView = binding.textGallery;
         galleryViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
 
         ImageView imageView = binding.imageView;
@@ -37,7 +37,7 @@ public class GalleryFragment extends Fragment {
                 .error(R.drawable.ic_baseline_error_24)
                 .centerCrop()
                 .fit()
-                .into(imageView);
+                .into(imageView);*/
 
         return root;
     }

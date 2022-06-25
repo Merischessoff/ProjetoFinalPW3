@@ -35,19 +35,12 @@ public class HistoriaSocialListFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         root = inflater.inflate(R.layout.fragment_historia_social_list, container, false);
-        recyclerView = root.findViewById(R.id.recyclerView);
+        recyclerView = root.findViewById(R.id.recyclerViewHistSocList);
         carregaHistoriasSociais();
 
-        //configurar o gerenciador de layout
-        // RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
-        //GridLayoutManager layoutManager3 = new GridLayoutManager(getContext(), 2);
         StaggeredGridLayoutManager layoutManager2 =
                 new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
 
-        //adiciona um separador entre os elementos da lista
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getContext(),LinearLayout.VERTICAL));
-
-        //definindo o layout do recycler
         recyclerView.setLayoutManager(layoutManager2);
         return root;
     }
@@ -71,7 +64,6 @@ public class HistoriaSocialListFragment extends Fragment {
                 reference.removeEventListener(this);
             }
             @Override
-            //chamado quando a requisição é cancelada
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
