@@ -69,8 +69,13 @@ public class HistoriaSocialCadFragment extends Fragment {
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String seq = ((EditText)root.findViewById(R.id.txtSeqHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
-                String url = uri.toString();
-
+                String textoURL = ((EditText)root.findViewById(R.id.txtSeqHistoriaSocialURL)).getText().toString();
+                String url = "";
+                if(uri != null){
+                    url = uri.toString();
+                }else{
+                    url = textoURL;
+                }
 
                 HistoriaSocial historiaSocial = new HistoriaSocial();
                 historiaSocial.setSeq(seq);

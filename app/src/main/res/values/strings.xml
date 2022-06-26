@@ -36,4 +36,15 @@
     <string name="btnVisualizar2">Visualizar</string>
     <string name="url">Url</string>
     <string name="editHistSoc">Editar História Social</string>
+    <string name="urlHistoria">cole aqui a url da imagem ao invés de buscar no dispositivo</string>
+    <string name="action_sobre">Sobre</string>
+    <string name="ok">Ok</string>
+    <string name="sobre">Este trabalho tem como objetivo construir um aplicativo para auxílio de crianças autistas com o desenvolvimento de atividades de vida diárias e habilidades sociais. Esse aplicativo apresentara lista de exercícios de modulação relacionados com atividades diárias e habilidades sociais apresentados por meio de uma história social contextualizando-os e uma segunda parte que deve ser realizada com o auxílio de um responsável pela criança. Um exemplo de exercício seria iniciado com uma história social que fala sobre contato visual e a segunda parte seria o exercício que deve ser realizado com a criança com o auxílio do responsável.</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="nav_header_subtitle2">gonkaschessoff@gmail.com</string>
+    <string name="nav_header_title2"><![CDATA[A&D]]></string>
+    <string name="sitesreferencias">Este projeto tem como objetivo servir como suporte no desenvolvimento de crianças com autismo.</string>
+    <string name="site1">neuroconecta.com.br</string>
+    <string name="site2">www.inspiradospeloautismo.com.br</string>
+    <string name="listExercicios">Exercícios</string>
 </resources>

@@ -44,9 +44,9 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btnLogin);
         btnCad = findViewById(R.id.btnCadastro);
 
-        if(usuarioLogado()){
+        /*if(usuarioLogado()){
             openMainWindow();
-        }else {
+        }else {*/
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
             mAuth = FirebaseAuth.getInstance();
-        }
+        //}
     }
 
     private Boolean usuarioLogado(){

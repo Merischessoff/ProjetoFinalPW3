@@ -6,6 +6,12 @@ public class HabilidadeSocial {
     private String descricao;
     private HistoriaSocial historiaSocial;
 
+    public HabilidadeSocial(String nome, String descricao, HistoriaSocial historiaSocial) {
+        this.nome = nome;
+        this.descricao = descricao;
+        this.historiaSocial = historiaSocial;
+    }
+
     public HabilidadeSocial() {
     }
 

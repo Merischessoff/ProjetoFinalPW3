@@ -11,6 +11,7 @@ public class HistoriaSocial {
     private String url;
     //private List<String> imagem = new ArrayList<String>();
 
+
     public HistoriaSocial() {
     }
 

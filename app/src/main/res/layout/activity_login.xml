@@ -12,22 +12,16 @@
         android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:paddingRight="16dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageView2"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_margin="16dp"
-            app:srcCompat="@android:drawable/ic_lock_idle_lock" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="@string/login_titulo"
-            android:textAlignment="center"
-            android:textSize="25sp" />
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_margin="@dimen/margin"
+            app:srcCompat="@mipmap/logo_foreground" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -58,24 +52,19 @@
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnLogin"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
+            android:layout_margin="@dimen/margin"
             android:layout_height="wrap_content"
-            android:hint="@string/login_btn"
-            android:textColor="@color/white" />
+            android:text="@string/login_btn" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnCadastro"
-            style="?android:attr/borderlessButtonStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="@string/login_cadastro"
-            android:textColor="@color/white" />
-
-
+            android:layout_margin="@dimen/margin"
+            android:text="@string/login_cadastro" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
