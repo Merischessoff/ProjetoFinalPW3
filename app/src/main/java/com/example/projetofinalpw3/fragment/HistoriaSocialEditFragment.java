@@ -1,7 +1,6 @@
 package com.example.projetofinalpw3.fragment;
 
 import android.content.DialogInterface;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,16 +21,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.model.HabilidadeSocial;
-import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.net.URI;
 
 public class HistoriaSocialEditFragment extends Fragment {
     private TextInputEditText txtSeq;

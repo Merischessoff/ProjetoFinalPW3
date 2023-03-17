@@ -15,7 +15,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 

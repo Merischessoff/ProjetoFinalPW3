@@ -1,46 +1,33 @@
 package com.example.projetofinalpw3.fragment;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.ActivityResultRegistry;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.view.LayoutInflater;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.model.HistoriaSocial;
-import com.example.projetofinalpw3.model.Imagem;
 import com.example.projetofinalpw3.ui.gallery.GalleryViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
-
-import java.io.IOException;
 
 public class HistoriaSocialCadFragment extends Fragment {
     private ImageView foto;

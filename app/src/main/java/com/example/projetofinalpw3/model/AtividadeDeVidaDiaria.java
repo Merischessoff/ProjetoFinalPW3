@@ -1,19 +1,18 @@
 package com.example.projetofinalpw3.model;
 
-
 import java.util.List;
 
-public class HabilidadeSocial {
+
+public class AtividadeDeVidaDiaria{
     private Long id;
     private String nome;
     private String descricao;
-
     private List<HistoriaSocial> historiasSociais;
 
-    public HabilidadeSocial() {
+    public AtividadeDeVidaDiaria() {
     }
 
-    public HabilidadeSocial(Long id, String nome, String descricao, List<HistoriaSocial> historiasSociais) {
+    public AtividadeDeVidaDiaria(Long id, String nome, String descricao, List<HistoriaSocial> historiasSociais) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -54,7 +53,7 @@ public class HabilidadeSocial {
 
     @Override
     public String toString() {
-        return "HabilidadeSocial{" +
+        return "AtividadeDeVidaDiaria{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +

@@ -20,6 +20,8 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.projetofinalpw3.model.Usuario;
+import com.example.projetofinalpw3.retrofit.RetrofitConfig;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
@@ -27,6 +29,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
@@ -90,6 +96,46 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void postData(String login, String senha) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://reqres.in/api/")
+
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        RetrofitConfig retrofitAPI = retrofit.create(RetrofitConfig.class);
+
+        Usuario usuario = new Usuario(login, senha);
+
+        Call<Usuario> call = retrofitAPI.createPost(usuario);
+
+        // on below line we are executing our method.
+        call.enqueue(new Callback<DataModal>() {
+            @Override
+            public void onResponse(Call<DataModal> call, Response<DataModal> response) {
+                // this method is called when we get response from our api.
+                Toast.makeText(MainActivity.this, "Data added to API", Toast.LENGTH_SHORT).show();
+
+                // below line is for hiding our progress bar.
+                loadingPB.setVisibility(View.GONE);
+
+                // on below line we are setting empty text
+                // to our both edit text.
+                jobEdt.setText("");
+                nameEdt.setText("");
+
+                // we are getting response from our body
+                // and passing it to our modal class.
+                DataModal responseFromAPI = response.body();
+
+                // on below line we are getting our data from modal class and adding it to our string.
+                String responseString = "Response Code : " + response.code() + "\nName : " + responseFromAPI.getName() + "\n" + "Job : " + responseFromAPI.getJob();
+
+                // below line we are setting our
+                // string to our text view.
+                responseTV.setText(responseString);
+            }
 
     private void openMainWindow(){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
