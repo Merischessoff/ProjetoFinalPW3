@@ -13,13 +13,13 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 
-interface APIInterface {
+public interface APIInterface {
 
     //@GET("/api/unknown")
     //Call<MultipleResource> doGetListResources();
 
-    @POST("/api/users")
-    Call<Usuario> login(@Body UsuarioDTO usu);
+    @POST("/login")
+    Call<String> login(@Body UsuarioDTO usu);
 
     //@GET("/api/users?")
     //Call<UserList> doGetUserList(@Query("page") String page);

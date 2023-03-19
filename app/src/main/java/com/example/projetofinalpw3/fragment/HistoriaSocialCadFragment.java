@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.projetofinalpw3.R;
+import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.ui.gallery.GalleryViewModel;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,8 +66,8 @@ public class HistoriaSocialCadFragment extends Fragment {
                 }
 
                 HistoriaSocial historiaSocial = new HistoriaSocial();
-                historiaSocial.setSeq(seq);
-                historiaSocial.setUrl(url);
+               // historiaSocial.setSeq(seq);
+                //historiaSocial.setUrl(url);
                 historiaSocial.setTitulo(titulo);
                 historiaSocial.setTexto(texto);
 

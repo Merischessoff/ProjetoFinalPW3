@@ -15,8 +15,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.example.projetofinalpw3.model.HistoriaSocial;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,11 +52,11 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
         });
 
         Bundle bundle = new Bundle();
-        bundle.putString("ID", listaHistoria.get(position).getId());
-        bundle.putString("SEQ", listaHistoria.get(position).getSeq());
-        bundle.putString("URL", listaHistoria.get(position).getUrl());
-        bundle.putString("TITULO", listaHistoria.get(position).getTitulo());
-        bundle.putString("TEXTO", listaHistoria.get(position).getTexto());
+        //bundle.putString("ID", listaHistoria.get(position).getId());
+        //bundle.putString("SEQ", listaHistoria.get(position).getSeq());
+        //bundle.putString("URL", listaHistoria.get(position).getUrl());
+        //bundle.putString("TITULO", listaHistoria.get(position).getTitulo());
+        //bundle.putString("TEXTO", listaHistoria.get(position).getTexto());
         myViewHolderListHistSocial.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle));
         myViewHolderListHistSocial.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Edit,  bundle));
     }
@@ -72,8 +73,8 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("HistoriaSocial");
-                        reference.child(listaHistoria.get(position).getId()).removeValue();
+                        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("HistoriaSocial");
+                       // reference.child(listaHistoria.get(position).getId()).removeValue();
                         listaHistoria.remove(position);
                         notifyItemRemoved(position);
                     }}).setNegativeButton("Não", null).show();

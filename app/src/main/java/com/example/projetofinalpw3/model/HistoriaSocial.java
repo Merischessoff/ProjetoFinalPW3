@@ -25,6 +25,12 @@ public class HistoriaSocial {
         this.imagens = imagens;
     }
 
+    public HistoriaSocial(String titulo, String texto) {
+        this.id = id;
+        this.titulo = titulo;
+        this.texto = texto;
+    }
+
     public Long getId() {
         return id;
     }

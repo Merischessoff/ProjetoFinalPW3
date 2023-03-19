@@ -21,6 +21,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.projetofinalpw3.R;
+import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
@@ -100,9 +101,7 @@ public class HistoriaSocialEditFragment extends Fragment {
                             url = txtTextoURL.getText().toString();
                         }
                         HistoriaSocial h = new HistoriaSocial(txtSeq.getText().toString(),
-                                txtTitulo.getText().toString(),
-                                txtTexto.getText().toString(),
-                                url);
+                                txtTitulo.getText().toString());
 
                         reference.setValue(h);
                         Snackbar.make(getView(), "item editado!!!", Snackbar.LENGTH_LONG).show();

@@ -14,11 +14,12 @@ import android.view.ViewGroup;
 
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
+import com.example.projetofinalpw3.model.HistoriaSocial;
+//import com.google.firebase.database.DataSnapshot;
+//import com.google.firebase.database.DatabaseError;
+//import com.google.firebase.database.DatabaseReference;
+//import com.google.firebase.database.FirebaseDatabase;
+//import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -41,9 +42,9 @@ public class HistoriaSocialListFragment extends Fragment {
         return root;
     }
     private void carregaHistoriasSociais(){
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("HistoriaSocial");
+        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("HistoriaSocial");
         ArrayList<HistoriaSocial> lista = new ArrayList<>();
-        reference.addValueEventListener(new ValueEventListener() {
+       /* reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot ds : dataSnapshot.getChildren()) {
@@ -62,6 +63,6 @@ public class HistoriaSocialListFragment extends Fragment {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
-        });
+        });*/
     }
 }

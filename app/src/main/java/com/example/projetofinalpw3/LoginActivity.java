@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.projetofinalpw3.dto.UsuarioDTO;
+import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -18,13 +21,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.http.Body;
 
 public class LoginActivity extends AppCompatActivity {
-    private FirebaseAuth mAuth;
     private TextInputEditText edtEmail;
     private TextInputEditText edtSenha;
     private Button btnLogin;
     private Button btnCad;
+    private String token = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     if (!edtEmail.getText().toString().equals("") && !edtSenha.getText().toString().equals("")) {
-                        //validateLogin(edtEmail.getText().toString(), edtSenha.getText().toString());
+                        validateLogin(edtEmail.getText().toString(), edtSenha.getText().toString());
                     } else
                         Toast.makeText(LoginActivity.this, "Informe email e senha!", Toast.LENGTH_SHORT).show();
                 }
@@ -54,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
-            mAuth = FirebaseAuth.getInstance();
+            //mAuth = FirebaseAuth.getInstance();
         //}
     }
 
@@ -68,18 +74,35 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void validateLogin(String email, String senha){
-        mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        //mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            //@Override
+        UsuarioDTO usu = new UsuarioDTO(email,senha);
+
+        APIClient client = new APIClient("http://192.168.3.18:8080");
+        client.getServices().login(usu).enqueue(new Callback<String>() {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()) {
+            public void onResponse(Call<String> call, Response<String> response) {
+                token = call.toString();
+                Log.e("post api", "entrou no onResponse");
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                call.cancel();
+                Log.e("post api", "entrou no onFailure" + t.getMessage());
+            }
+        });
+
+            //public void onComplete(@NonNull Task<AuthResult> task) {
+                if(!token.equals("")) {
                     openMainWindow();
                     Toast.makeText(LoginActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(LoginActivity.this, "Dados de login inválidos!", Toast.LENGTH_SHORT).show();
                     Log.d("LOGIN", "dados inválidos!");
                 }
-            }
-        });
+            //}
+        //});
     }
 
 
