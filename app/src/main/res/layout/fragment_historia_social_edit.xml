@@ -10,7 +10,7 @@
         android:id="@+id/layoutHistoriaSocialEdit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin"
+        android:layout_margin="@dimen/margin8"
         android:orientation="vertical">
 
         <ImageView
@@ -86,7 +86,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/btnEditar"
-            android:layout_margin="@dimen/margin"/>
+            android:layout_margin="@dimen/margin8"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>

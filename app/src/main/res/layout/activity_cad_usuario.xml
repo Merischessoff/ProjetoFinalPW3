@@ -20,7 +20,35 @@
             android:layout_marginBottom="32dp"
             android:text="@string/cadUser_titulo"
             android:textAlignment="center"
-            android:textSize="25sp" />
+            android:textSize="15dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:boxBackgroundColor="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_nome"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            app:boxBackgroundColor="@null">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtCpf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/login_cpf"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -74,14 +102,14 @@
             android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
+            android:layout_margin="@dimen/margin8"
             android:text="@string/cadUser_btnCad" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin"
+            android:layout_margin="@dimen/margin4"
             android:text="@string/cadUser_btnCanc" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

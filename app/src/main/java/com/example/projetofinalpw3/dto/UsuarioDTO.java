@@ -1,35 +1,74 @@
 package com.example.projetofinalpw3.dto;
 
-public class UsuarioDTO {
-    String login;
-    String senha;
+import com.example.projetofinalpw3.model.TipoUsuario;
 
-    public UsuarioDTO(String login, String senha) {
-        this.login = login;
-        this.senha = senha;
+public class UsuarioDTO {
+    private String nome;
+    private String email;
+    private String cpf;
+    private String senha;
+
+    private TipoUsuario tipo;
+
+    public UsuarioDTO() {
     }
 
-    public String getLogin() {
-        return login;
+    public UsuarioDTO(String nome, String email, String cpf, String senha, TipoUsuario tipo) {
+        this.nome = nome;
+        this.email = email;
+        this.cpf = cpf;
+        this.senha = senha;
+        this.tipo = tipo;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public TipoUsuario getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoUsuario tipo) {
+        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
         return "UsuarioDTO{" +
-                "login='" + login + '\'' +
+                "nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", cpf='" + cpf + '\'' +
                 ", senha='" + senha + '\'' +
+                ", tipo=" + tipo +
                 '}';
     }
 }

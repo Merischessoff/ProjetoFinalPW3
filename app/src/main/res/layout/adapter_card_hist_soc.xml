@@ -37,22 +37,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnExcluir"
-            android:layout_marginRight="@dimen/margin"
+            android:layout_marginRight="@dimen/margin8"
          />
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnEditar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnEditar"
-            android:layout_marginLeft="@dimen/margin"
+            android:layout_marginLeft="@dimen/margin8"
           />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnVisualizar2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/btnVisualizar2"
-                android:layout_marginLeft="@dimen/margin"
-                android:layout_marginRight="@dimen/margin"
+                android:layout_marginLeft="@dimen/margin8"
+                android:layout_marginRight="@dimen/margin8"
                 />
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>

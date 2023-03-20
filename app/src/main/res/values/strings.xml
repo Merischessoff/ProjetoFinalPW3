@@ -16,7 +16,7 @@
     <string name="login_pwd">Senha</string>
     <string name="login_btn">LOGIN</string>
     <string name="login_cadastro">CADASTRE-SE</string>
-    <string name="cadUser_titulo">CADASTRAR USUÁRIO</string>
+    <string name="cadUser_titulo">USUÁRIO RESPONSÁVEL</string>
     <string name="login_cpwd">Confirme sua Senha</string>
     <string name="cadUser_btnCad">CADASTRAR</string>
     <string name="cadUser_btnCanc">CANCELAR</string>
@@ -47,4 +47,6 @@
     <string name="site1">neuroconecta.com.br</string>
     <string name="site2">www.inspiradospeloautismo.com.br</string>
     <string name="listExercicios">Exercícios</string>
+    <string name="login_cpf">CPF</string>
+    <string name="login_nome">Nome</string>
 </resources>
