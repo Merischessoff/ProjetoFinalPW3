@@ -15,6 +15,7 @@ import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.util.SenhaUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -78,7 +79,7 @@ public class CadUsuarioActivity extends AppCompatActivity {
                         UsuarioDTO usu = new UsuarioDTO(edtNome.getText().toString(),
                                 edtEmail.getText().toString(),
                                 edtCpf.getText().toString(),
-                                edtSenha.getText().toString(), tipo);
+                                SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo);
 
                         APIClient client = new APIClient("http://192.168.3.18:8080");
                         client.getServices().cadastroUsuario(usu).enqueue(new Callback<Usuario>() {
