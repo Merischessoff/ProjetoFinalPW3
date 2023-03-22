@@ -15,6 +15,7 @@ import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.util.SenhaUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,13 +40,14 @@ public class CadUsuarioActivity extends AppCompatActivity {
     private TextInputEditText edtConfSenha;
     private Button btnCancelar;
     private Button btnCadastrar;
-
     private  Usuario usuarioCadastrado;
+
+    APIInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cad_usuario);
-
+        apiInterface = APIClient.getClient().create(APIInterface.class);
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         edtNome = findViewById(R.id.edtNome);
@@ -81,8 +83,8 @@ public class CadUsuarioActivity extends AppCompatActivity {
                                 edtCpf.getText().toString(),
                                 SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo);
 
-                        APIClient client = new APIClient("http://192.168.3.18:8080");
-                        client.getServices().cadastroUsuario(usu).enqueue(new Callback<Usuario>() {
+                        Call<Usuario> call = apiInterface.cadastroUsuario(usu);
+                        call.enqueue(new Callback<Usuario>() {
                             @Override
                             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                                 usuarioCadastrado = response.body();

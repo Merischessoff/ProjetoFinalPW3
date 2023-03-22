@@ -11,7 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetofinalpw3.dto.TokenDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
+import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,10 +29,14 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnCad;
     private TokenDTO token;
 
+    private APIClient client = new APIClient();
+
+    APIInterface apiInterface;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         btnLogin = findViewById(R.id.btnLogin);
@@ -72,32 +78,31 @@ public class LoginActivity extends AppCompatActivity {
         //mAuth.signInWithEmailAndPassword(email, senha).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             //@Override
         UsuarioLoginDTO usu = new UsuarioLoginDTO(email,senha);
-
-        APIClient client = new APIClient("http://192.168.3.18:8080");
-        client.getServices().login(usu).enqueue(new Callback<TokenDTO>() {
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+        Call<TokenDTO> call = apiInterface.login(usu);
+        call.enqueue(new Callback<TokenDTO>() {
             @Override
             public void onResponse(Call<TokenDTO> call, Response<TokenDTO> response) {
-                token = response.body();
-                Log.e("post api", "entrou no onResponse");
+                // Verificar se a chamada foi bem-sucedida e se a resposta não é nula
+                if (response.isSuccessful() && response.body() != null) {
+                    // A resposta foi bem-sucedida e contém um objeto TokenDTO
+                    TokenDTO token = response.body();
+                    openMainWindow();
+                    Toast.makeText(LoginActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(LoginActivity.this, "Dados de login inválidos!", Toast.LENGTH_SHORT).show();
+                    Log.d("LOGIN", "dados inválidos!");
+                }
             }
 
             @Override
             public void onFailure(Call<TokenDTO> call, Throwable t) {
                 call.cancel();
-                Log.e("post api", "entrou no onFailure" + t.getMessage());
+                Log.e("post api", "entrou no onFailure " + t.getMessage());
             }
         });
 
-            //public void onComplete(@NonNull Task<AuthResult> task) {
-                if(!token.getToken().equals("")) {
-                    openMainWindow();
-                    Toast.makeText(LoginActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(LoginActivity.this, "Dados de login inválidos!", Toast.LENGTH_SHORT).show();
-                    Log.d("LOGIN", "dados inválidos!");
-                }
-            //}
-        //});
+
     }
 
 

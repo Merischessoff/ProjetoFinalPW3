@@ -1,24 +1,24 @@
 package com.example.projetofinalpw3.dto;
 
 public class UsuarioLoginDTO {
-    String login;
+    String email;
     String senha;
 
-    public UsuarioLoginDTO(String login, String senha) {
-        this.login = login;
+    public UsuarioLoginDTO(String email, String senha) {
+        this.email = email;
         this.senha = senha;
     }
 
-    public String getLogin() {
-        return login;
+    public String getEmail() {
+        return email;
     }
 
     public String getSenha() {
         return senha;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setSenha(String senha) {
@@ -28,7 +28,7 @@ public class UsuarioLoginDTO {
     @Override
     public String toString() {
         return "UsuarioDTO{" +
-                "login='" + login + '\'' +
+                "email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 '}';
     }

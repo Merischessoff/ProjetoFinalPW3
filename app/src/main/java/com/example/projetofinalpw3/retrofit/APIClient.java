@@ -1,26 +1,32 @@
 package com.example.projetofinalpw3.retrofit;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
 
 public class APIClient {
-    private static APIInterface apiService;
 
-      public APIClient(String baseUrl) {
+    private static Retrofit retrofit = null;
 
-            Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(baseUrl)
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build();
+    public static Retrofit getClient() {
 
-            apiService = retrofit.create(APIInterface.class);
-      }
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        public APIInterface getServices(){
-            return apiService;
-        }
+
+        retrofit = new Retrofit.Builder()
+                .baseUrl("http://192.168.3.18:8080")
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
+
+        return retrofit;
+    }
+
 }
 
 
