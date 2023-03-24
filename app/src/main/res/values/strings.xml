@@ -49,4 +49,6 @@
     <string name="listExercicios">Exercícios</string>
     <string name="login_cpf">CPF</string>
     <string name="login_nome">Nome</string>
+    <string name="cadUsuarioLeitor">Cadastro de Leitores</string>
+    <string name="cad_user_leitor_titulo">Usuario Leitor</string>
 </resources>

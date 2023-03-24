@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Verificar se a chamada foi bem-sucedida e se a resposta não é nula
                 if (response.isSuccessful() && response.body() != null) {
                     // A resposta foi bem-sucedida e contém um objeto TokenDTO
-                    TokenDTO token = response.body();
+                    token = response.body();
                     openMainWindow();
                     Toast.makeText(LoginActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
                 } else {
@@ -109,6 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void openMainWindow(){
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+        intent.putExtra("token", token.getToken());
         startActivity(intent);
     }
 }
