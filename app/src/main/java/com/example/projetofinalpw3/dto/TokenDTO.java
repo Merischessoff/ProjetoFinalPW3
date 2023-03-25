@@ -1,7 +1,7 @@
 package com.example.projetofinalpw3.dto;
 
 public class TokenDTO {
-    private String token = "";
+    private String token;
 
     public TokenDTO(String token){
         this.token = token;

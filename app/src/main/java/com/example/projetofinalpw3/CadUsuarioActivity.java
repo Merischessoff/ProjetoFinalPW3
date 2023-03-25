@@ -1,8 +1,6 @@
 package com.example.projetofinalpw3;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,16 +15,10 @@ import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.util.SenhaUtil;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-//import com.google.firebase.auth.AuthResult;
-//import com.google.firebase.auth.FirebaseAuth;
-//import com.google.firebase.auth.FirebaseUser;
 
 public class CadUsuarioActivity extends AppCompatActivity {
 
@@ -64,19 +56,6 @@ public class CadUsuarioActivity extends AppCompatActivity {
                         && !edtNome.getText().toString().equals("")
                         && !edtCpf.getText().toString().equals("")) {
                     if (edtSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
-                        //mAuth.createUserWithEmailAndPassword(edtEmail.getText().toString(), edtSenha.getText().toString()).
-                                /*addOnCompleteListener(CadUsuarioActivity.this, new OnCompleteListener<AuthResult>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<AuthResult> task) {
-                                        if(task.isSuccessful()) {
-                                            Intent intent = new Intent(CadUsuarioActivity.this, LoginActivity.class);
-                                            startActivity(intent);
-                                            Toast.makeText(CadUsuarioActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
-                                        }
-                                        else
-                                            Toast.makeText(CadUsuarioActivity.this, "Erro ao cadastrar usuário!", Toast.LENGTH_SHORT).show();
-                                    }
-                         });*/
                         TipoUsuario tipo = TipoUsuario.RESPONSAVEL;
                         UsuarioDTO usu = new UsuarioDTO(edtNome.getText().toString(),
                                 edtEmail.getText().toString(),
@@ -88,7 +67,9 @@ public class CadUsuarioActivity extends AppCompatActivity {
                             @Override
                             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                                 usuarioCadastrado = response.body();
-                                Toast.makeText(CadUsuarioActivity.this, "Usuario " + usuarioCadastrado.getNome() + "cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CadUsuarioActivity.this, "Usuario " + usuarioCadastrado.getNome() + " cadastrado com sucesso!", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(CadUsuarioActivity.this, LoginActivity.class);
+                                startActivity(intent);
                             }
 
                             @Override
@@ -108,12 +89,10 @@ public class CadUsuarioActivity extends AppCompatActivity {
         btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //mAuth.signOut();
                 Intent intent = new Intent(CadUsuarioActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
-        //mAuth = FirebaseAuth.getInstance();
 
     }
 }

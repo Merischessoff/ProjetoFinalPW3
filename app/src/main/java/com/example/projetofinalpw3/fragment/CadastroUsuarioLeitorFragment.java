@@ -23,9 +23,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.projetofinalpw3.CadUsuarioActivity;
+import com.example.projetofinalpw3.LoginActivity;
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.databinding.FragmentCadastroUsuarioLeitorBinding;
 import com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadBinding;
+import com.example.projetofinalpw3.dto.TokenDTO;
 import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.TipoUsuario;
@@ -96,9 +98,10 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
                                 @Override
                                 public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                                     usuarioCadastrado = response.body();
-                                    Snackbar.make(v, "Usuario " + usuarioCadastrado.getNome() + "cadastrado com sucesso!", Snackbar.LENGTH_LONG)
+                                    Snackbar.make(v, "Usuario " + usuarioCadastrado.getNome() + " cadastrado com sucesso!", Snackbar.LENGTH_LONG)
                                             .setTextColor(Color.GREEN).show();
                                     Navigation.findNavController(v).navigate(R.id.nav_fragment_cadastro_usuario_leitor);
+
                                 }
 
                                 @Override

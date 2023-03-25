@@ -3,6 +3,7 @@ package com.example.projetofinalpw3;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,6 +20,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.projetofinalpw3.databinding.ActivityMainBinding;
+import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
+import com.example.projetofinalpw3.dto.TokenDTO;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -29,12 +32,20 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private View view;
 
+    private TokenDTO token = new TokenDTO("");
+
+    private TipoUsuarioDTO tipoUsuario = new TipoUsuarioDTO("");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.appBarMain.toolbar);
+
+        Intent intent = getIntent();
+        token.setToken(intent.getStringExtra("token"));
+        tipoUsuario.setTipo(intent.getStringExtra("tipoUsuario"));
+
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,12 +58,19 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home,
-                R.id.nav_fragment_historia_social_cad,
-                R.id.nav_fragment_historia_social_List,
-                R.id.nav_fragment_cadastro_usuario_leitor)
-                .setOpenableLayout(drawer).build();
+        if (tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL") ){
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home,
+                    R.id.nav_fragment_historia_social_cad,
+                    R.id.nav_fragment_historia_social_List,
+                    R.id.nav_fragment_cadastro_usuario_leitor)
+                    .setOpenableLayout(drawer).build();
+        }else if(tipoUsuario.getTipo().equalsIgnoreCase("LEITOR")){
+            mAppBarConfiguration = new AppBarConfiguration.Builder(
+                    R.id.nav_home,
+                    R.id.nav_fragment_historia_social_List)
+                    .setOpenableLayout(drawer).build();
+        }
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);

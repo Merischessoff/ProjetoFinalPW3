@@ -44,9 +44,38 @@
         tools:layout="@layout/fragment_historia_social_edit">
     </fragment>
     <fragment
+        android:id="@+id/btnCadastrar"
+        android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
+        android:label="@string/cadUsuarioLeitor"
+        tools:layout="@layout/fragment_cadastro_usuario_leitor">
+        <action
+            android:id="@+id/action_btnCadastrar_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/btnCancelar"
+        android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
+        android:label="@string/cadUsuarioLeitor"
+        tools:layout="@layout/fragment_cadastro_usuario_leitor">
+        <action
+            android:id="@+id/action_btnCadastrar_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.example.projetofinalpw3.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <activity
+        android:id="@+id/cadUsuarioActivity"
+        android:name="com.example.projetofinalpw3.CadUsuarioActivity"
+        android:label="activity_cad_usuario"
+        tools:layout="@layout/activity_cad_usuario" />
+    <fragment
         android:id="@+id/nav_fragment_cadastro_usuario_leitor"
         android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
         android:label="@string/cadUsuarioLeitor"
         tools:layout="@layout/fragment_cadastro_usuario_leitor">
     </fragment>
+
 </navigation>
