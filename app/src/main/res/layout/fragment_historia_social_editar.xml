@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.HistoriaSocialCadFragment">
+    tools:context=".fragment.EditarHistoriaSocialFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutHistoriaSocialCad"
+        android:id="@+id/layoutHistoriaSocialEdit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin8"
         android:orientation="vertical">
 
         <ImageView
-            android:id="@+id/upload"
+            android:id="@+id/uploadEdit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:src="@drawable/ic_baseline_cloud_upload_24" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutSeqHistoriaSocial"
+            android:id="@+id/layoutSeqHistoriaSocialEdit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtSeqHistoriaSocial"
+                android:id="@+id/txtSeqHistoriaSocialEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -36,14 +36,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutSeqHistoriaSocialURL"
+            android:id="@+id/layoutSeqHistoriaSocialURLEdit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtSeqHistoriaSocialURL"
+                android:id="@+id/txtSeqHistoriaSocialURLEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -52,14 +52,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutTituloHistoriaSocial"
+            android:id="@+id/layoutTituloHistoriaSocialEdit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTituloHistoriaSocial"
+                android:id="@+id/txtTituloHistoriaSocialEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/tituloHistoria"
@@ -67,14 +67,14 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutTextoHistoriaSocial"
+            android:id="@+id/layoutTextoHistoriaSocialEdit"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTextoHistoriaSocial"
+                android:id="@+id/txtTextoHistoriaSocialEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/textoHistoria"
@@ -82,10 +82,10 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnCadastrar"
+            android:id="@+id/btnEditar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btnCadastrar"
+            android:text="@string/btnEditar"
             android:layout_margin="@dimen/margin8"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>

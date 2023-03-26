@@ -36,7 +36,7 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
     @NonNull
     @Override
     public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_hist_soc, viewGroup, false);
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_historia_social, viewGroup, false);
         return new MyViewHolderListHistSocial(itemList);
     }
 

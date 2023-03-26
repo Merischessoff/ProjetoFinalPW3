@@ -1,24 +1,33 @@
 package com.example.projetofinalpw3.dto;
 
+
 import com.example.projetofinalpw3.model.TipoUsuario;
 
 public class UsuarioDTO {
+    private String cpf;
     private String nome;
     private String email;
-    private String cpf;
     private String senha;
-
     private TipoUsuario tipo;
 
-    public UsuarioDTO() {
-    }
+    private String emailUsuarioVinculado;
 
-    public UsuarioDTO(String nome, String email, String cpf, String senha, TipoUsuario tipo) {
+    public UsuarioDTO(String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
+        this.cpf = cpf;
         this.nome = nome;
         this.email = email;
-        this.cpf = cpf;
         this.senha = senha;
         this.tipo = tipo;
+        this.emailUsuarioVinculado = emailUsuarioVinculado;
+    }
+
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -37,14 +46,6 @@ public class UsuarioDTO {
         this.email = email;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getSenha() {
         return senha;
     }
@@ -61,14 +62,23 @@ public class UsuarioDTO {
         this.tipo = tipo;
     }
 
+    public String getEmailUsuarioVinculado() {
+        return emailUsuarioVinculado;
+    }
+
+    public void setEmailUsuarioVinculado(String emailUsuarioVinculado) {
+        this.emailUsuarioVinculado = emailUsuarioVinculado;
+    }
+
     @Override
     public String toString() {
         return "UsuarioDTO{" +
-                "nome='" + nome + '\'' +
+                "cpf='" + cpf + '\'' +
+                ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
-                ", cpf='" + cpf + '\'' +
                 ", senha='" + senha + '\'' +
                 ", tipo=" + tipo +
+                ", emailUsuarioVinculado='" + emailUsuarioVinculado + '\'' +
                 '}';
     }
 }

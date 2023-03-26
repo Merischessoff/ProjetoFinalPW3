@@ -2,13 +2,8 @@ package com.example.projetofinalpw3.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -18,26 +13,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.example.projetofinalpw3.CadUsuarioActivity;
-import com.example.projetofinalpw3.LoginActivity;
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.databinding.FragmentCadastroUsuarioLeitorBinding;
-import com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadBinding;
-import com.example.projetofinalpw3.dto.TokenDTO;
-import com.example.projetofinalpw3.dto.UsuarioDTO;
-import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.ui.gallery.GalleryViewModel;
 import com.example.projetofinalpw3.util.SenhaUtil;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -58,12 +42,15 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
         private Button btnCancelar;
         private Button btnCadastrar;
         private  Usuario usuarioCadastrado;
+
+        private String email;
         APIInterface apiInterface;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
             Intent intent = getActivity().getIntent();
+            email = intent.getStringExtra("email");
             binding = com.example.projetofinalpw3.databinding.FragmentCadastroUsuarioLeitorBinding.inflate(inflater, container, false);
             View root = binding.getRoot();
 
@@ -77,6 +64,7 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
             edtConfSenha = root.findViewById(R.id.edtConfSenha);
             btnCancelar = root.findViewById(R.id.btnCancelar);
 
+
             btnCadastrar.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -88,10 +76,9 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
                         if (edtSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
 
                             TipoUsuario tipo = TipoUsuario.LEITOR;
-                            UsuarioDTO usu = new UsuarioDTO(edtNome.getText().toString(),
+                            Usuario usu = new Usuario(0l, edtCpf.getText().toString(), edtNome.getText().toString(),
                                     edtEmail.getText().toString(),
-                                    edtCpf.getText().toString(),
-                                    SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo);
+                                    SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo, email);
 
                             Call<Usuario> call = apiInterface.cadastroUsuario(usu);
                             call.enqueue(new Callback<Usuario>() {

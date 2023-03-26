@@ -28,7 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-public class HistoriaSocialEditFragment extends Fragment {
+public class EditarHistoriaSocialFragment extends Fragment {
     private TextInputEditText txtSeq;
     private TextInputEditText txtTitulo;
     private TextInputEditText txtTexto;
@@ -42,7 +42,7 @@ public class HistoriaSocialEditFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_historia_social_edit, container, false);
+        View root = inflater.inflate(R.layout.fragment_historia_social_editar, container, false);
         Bundle bundle = getArguments();
         txtSeq = root.findViewById(R.id.txtSeqHistoriaSocialEdit);
         txtSeq.setText(bundle.getString("SEQ"));

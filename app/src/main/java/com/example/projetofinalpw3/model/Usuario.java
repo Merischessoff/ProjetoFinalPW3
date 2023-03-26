@@ -9,16 +9,16 @@ public class Usuario {
     private String senha;
     private TipoUsuario tipo;
 
-    public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo) {
+    private String emailUsuarioVinculado;
+
+    public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
         this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
         this.tipo = tipo;
-    }
-
-    public Usuario() {
+        this.emailUsuarioVinculado = emailUsuarioVinculado;
     }
 
     public Long getId() {
@@ -69,6 +69,14 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public String getEmailUsuarioVinculado() {
+        return emailUsuarioVinculado;
+    }
+
+    public void setEmailUsuarioVinculado(String emailUsuarioVinculado) {
+        this.emailUsuarioVinculado = emailUsuarioVinculado;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -78,6 +86,7 @@ public class Usuario {
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 ", tipo=" + tipo +
+                ", emailUsuarioVinculado='" + emailUsuarioVinculado + '\'' +
                 '}';
     }
 }

@@ -61,4 +61,6 @@ public class HabilidadeSocial {
                 ", historiasSociais=" + historiasSociais +
                 '}';
     }
+
+
 }

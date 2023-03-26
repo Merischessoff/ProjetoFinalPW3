@@ -2,7 +2,6 @@ package com.example.projetofinalpw3;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -12,10 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
 import com.example.projetofinalpw3.dto.TokenDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
+import com.example.projetofinalpw3.model.HabilidadeSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.gson.Gson;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -118,6 +117,7 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.putExtra("tipoUsuario", tipoUsuario.getTipo());
         intent.putExtra("token", token.getToken());
+        intent.putExtra("email", edtEmail.getText().toString());
         startActivity(intent);
     }
 

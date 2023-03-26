@@ -1,46 +1,33 @@
 package com.example.projetofinalpw3.fragment;
 
 import android.Manifest;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.os.ParcelFileDescriptor;
 import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.databinding.FragmentHistoriaSocialVisualBinding;
+import com.example.projetofinalpw3.databinding.FragmentHistoriaSocialVisualizarBinding;
 import com.example.projetofinalpw3.ui.gallery.GalleryViewModel;
 import com.squareup.picasso.Picasso;
 
-import java.io.FileDescriptor;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.lang.ref.WeakReference;
 
 
-public class HistoriaSocialVisualFragment extends Fragment {
+public class VisualizarHistoriaSocialFragment extends Fragment {
     private ImageView foto;
     private Uri uri;
 
@@ -51,7 +38,7 @@ public class HistoriaSocialVisualFragment extends Fragment {
                 new ViewModelProvider(this).get(GalleryViewModel.class);
         String[] permissions = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.MANAGE_DOCUMENTS};
 
-        View root = inflater.inflate(R.layout.fragment_historia_social_visual, container, false);
+        View root = inflater.inflate(R.layout.fragment_historia_social_visualizar, container, false);
         Bundle bundle = getArguments();
 
         TextView txtNomeHistorialSocial = root.findViewById(R.id.txtTextoHistoriaSocialVis);

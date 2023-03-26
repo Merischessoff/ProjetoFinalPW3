@@ -24,14 +24,14 @@ import com.example.projetofinalpw3.model.HistoriaSocial;
 import java.util.ArrayList;
 
 
-public class HistoriaSocialListFragment extends Fragment {
+public class ListaHistoriaSocialFragment extends Fragment {
     RecyclerView recyclerView;
     View root;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        root = inflater.inflate(R.layout.fragment_historia_social_list, container, false);
+        root = inflater.inflate(R.layout.fragment_historia_social_lista, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewHistSocList);
         carregaHistoriasSociais();
 
@@ -42,27 +42,11 @@ public class HistoriaSocialListFragment extends Fragment {
         return root;
     }
     private void carregaHistoriasSociais(){
-        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("HistoriaSocial");
         ArrayList<HistoriaSocial> lista = new ArrayList<>();
-       /* reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    //para buscar todos os nós filhos de produtos
-                    HistoriaSocial historia = ds.getValue(HistoriaSocial.class);
-                    historia.setId(ds.getKey());
-                    lista.add(historia);
-                }
+        MyAdapterListHistSocial myAdapter = new MyAdapterListHistSocial(root.getContext(), lista);
+        recyclerView.setAdapter(myAdapter);
+        recyclerView.setHasFixedSize(true);
 
-                //configurar o adapter - que formata que o layout de cada item do recycler
-                MyAdapterListHistSocial myAdapter = new MyAdapterListHistSocial(root.getContext(), lista);
-                recyclerView.setAdapter(myAdapter);
-                recyclerView.setHasFixedSize(true);
-                reference.removeEventListener(this);
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-            }
-        });*/
+
     }
 }

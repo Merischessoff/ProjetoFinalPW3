@@ -30,17 +30,17 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
-public class HistoriaSocialCadFragment extends Fragment {
+public class CadastroHistoriaSocialFragment extends Fragment {
     private ImageView foto;
     private Button btnCadastrar;
-    private com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadBinding binding;
+    private com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadastrarBinding binding;
     private Uri uri;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         Intent intent = getActivity().getIntent();
-        binding = com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadBinding.inflate(inflater, container, false);
+        binding = com.example.projetofinalpw3.databinding.FragmentHistoriaSocialCadastrarBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         foto = root.findViewById(R.id.upload);
         foto.setOnClickListener(new View.OnClickListener(){
