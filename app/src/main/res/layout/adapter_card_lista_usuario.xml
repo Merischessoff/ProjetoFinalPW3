@@ -14,18 +14,12 @@
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewNomeUsuario"
+            android:id="@+id/textViewNomeUsuarioVinculado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Usuarios Vinculados"
             android:textSize="18dp"
             android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTituloUsuario"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Título" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -33,14 +27,14 @@
             android:orientation="horizontal"
             android:gravity="right">
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnExcluir2"
+            android:id="@+id/btnExcluirUsuarioVinculado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnExcluir"
             android:layout_marginRight="@dimen/margin8"
          />
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnEditar2"
+            android:id="@+id/btnEditarUsuarioVinculado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/btnEditar"

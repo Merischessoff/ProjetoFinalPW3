@@ -44,7 +44,7 @@
         tools:layout="@layout/fragment_historia_social_editar">
     </fragment>
     <fragment
-        android:id="@+id/btnCadastrar"
+        android:id="@+id/nav_btn_cadastrar"
         android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
         android:label="@string/cadUsuarioLeitor"
         tools:layout="@layout/fragment_cadastro_usuario_leitor">
@@ -53,7 +53,7 @@
             app:destination="@id/nav_home" />
     </fragment>
     <fragment
-        android:id="@+id/btnCancelar"
+        android:id="@+id/nav_btn_cancelar"
         android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
         android:label="@string/cadUsuarioLeitor"
         tools:layout="@layout/fragment_cadastro_usuario_leitor">
@@ -62,12 +62,12 @@
             app:destination="@id/nav_home" />
     </fragment>
     <activity
-        android:id="@+id/loginActivity"
+        android:id="@+id/nav_login_activity"
         android:name="com.example.projetofinalpw3.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" />
     <activity
-        android:id="@+id/cadUsuarioActivity"
+        android:id="@+id/nav_cad_usuario_activity"
         android:name="com.example.projetofinalpw3.CadUsuarioActivity"
         android:label="activity_cad_usuario"
         tools:layout="@layout/activity_cad_usuario" />
@@ -82,5 +82,20 @@
         android:name="com.example.projetofinalpw3.fragment.ListaUsuarioLeitorFragment"
         android:label="fragment_lista_usuario_leitor_list"
         tools:layout="@layout/fragment_lista_usuario_leitor_list" />
+    <fragment
+        android:id="@+id/nav_editar_usuario_leitor_fragment"
+        android:name="com.example.projetofinalpw3.fragment.EditarUsuarioLeitorFragment"
+        android:label="fragment_editar_usuario_leitor"
+        tools:layout="@layout/fragment_editar_usuario_leitor" />
+    <fragment
+        android:id="@+id/nav_visualizar_usuario_leitor_fragment"
+        android:name="com.example.projetofinalpw3.fragment.VisualizarUsuarioLeitorFragment"
+        android:label="fragment_visualizar_usuario_leitor"
+        tools:layout="@layout/fragment_visualizar_usuario_leitor" />
+    <activity
+        android:id="@+id/nav_main_activity"
+        android:name="com.example.projetofinalpw3.MainActivity"
+        android:label="app_bar_main"
+        tools:layout="@layout/app_bar_main" />
 
 </navigation>
