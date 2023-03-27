@@ -56,13 +56,13 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
 
             apiInterface = APIClient.getClient().create(APIInterface.class);
 
-            btnCadastrar = root.findViewById(R.id.btnCadastrar);
-            edtEmail = root.findViewById(R.id.edtEmail);
-            edtSenha = root.findViewById(R.id.edtSenha);
-            edtNome = root.findViewById(R.id.edtNome);
-            edtCpf = root.findViewById(R.id.edtCpf);
-            edtConfSenha = root.findViewById(R.id.edtConfSenha);
-            btnCancelar = root.findViewById(R.id.btnCancelar);
+            btnCadastrar = root.findViewById(R.id.btnCadastrarUsuarioLeitorVinculado);
+            edtEmail = root.findViewById(R.id.edtEmailUsuarioLeitorVinculado);
+            edtSenha = root.findViewById(R.id.edtSenhaUsuarioLeitorVinculado);
+            edtNome = root.findViewById(R.id.edtNomeUsuarioLeitorVinculado);
+            edtCpf = root.findViewById(R.id.edtCpfUsuarioLeitorVinculado);
+            edtConfSenha = root.findViewById(R.id.edtConfSenhaUsuarioLeitorVinculado);
+            btnCancelar = root.findViewById(R.id.btnCancelarUsuarioLeitorVinculado);
 
 
             btnCadastrar.setOnClickListener(new View.OnClickListener(){

@@ -103,14 +103,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin8"
-            android:text="@string/cadUser_btnCad" />
+            android:text="@string/btnCadastrar" />
 
         <Button
             android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin4"
-            android:text="@string/cadUser_btnCanc" />
+            android:text="@string/cancelar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 
