@@ -1,66 +1,137 @@
 package com.example.projetofinalpw3.fragment;
 
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.projetofinalpw3.R;
+import com.example.projetofinalpw3.dto.UsuarioDTO;
+import com.example.projetofinalpw3.model.HistoriaSocial;
+import com.example.projetofinalpw3.model.TipoUsuario;
+import com.example.projetofinalpw3.model.Usuario;
+import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.example.projetofinalpw3.util.SenhaUtil;
+import com.google.android.material.snackbar.Snackbar;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link EditarUsuarioLeitorFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+
 public class EditarUsuarioLeitorFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private TextInputEditText textNome;
+    private TextInputEditText textCpf;
+    private TextInputEditText textEmail;
+    private TextInputEditText textSenha;
+    private TextInputEditText textConfSenha;
+    private String key;
+    private Button btnEditar;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public EditarUsuarioLeitorFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment EditarUsuarioLeitorFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static EditarUsuarioLeitorFragment newInstance(String param1, String param2) {
-        EditarUsuarioLeitorFragment fragment = new EditarUsuarioLeitorFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private Button btnCancelar;
+    private APIInterface apiInterface;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View root = inflater.inflate(R.layout.fragment_editar_usuario_leitor, container, false);
+        Bundle bundle = getArguments();
+
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        textNome = root.findViewById(R.id.edtNomeUsuarioLeitorVinculado);
+        textNome.setText(bundle.getString("nome"));
+
+        textCpf = root.findViewById(R.id.edtCpfUsuarioLeitorVinculado);
+        textCpf.setText(bundle.getString("cpf"));
+
+        textSenha = root.findViewById(R.id.edtSenhaUsuarioLeitorVinculado);
+        //textSenha.setText(bundle.getString("senha"));
+
+        textEmail = root.findViewById(R.id.edtEmailUsuarioLeitorVinculado);
+        textEmail.setText(bundle.getString("email"));
+
+        textConfSenha = root.findViewById(R.id.edtConfSenhaUsuarioLeitorVinculado);
+        //textConfSenha.setText(bundle.getString("senha"));
+
+        btnEditar = root.findViewById(R.id.btnEditarUsuarioVinculado);
+        key = bundle.getString("id");
+
+        btnEditar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editarUsuarioLeitor();
+            }
+        });
+
+        btnCancelar = root.findViewById(R.id.btnCancelarUsuarioLeitorVinculado);
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getView()).navigate(R.id.nav_lista_usuario_leitor_fragment);
+            }
+        });
+        return root;
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_editar_usuario_leitor, container, false);
+    public void editarUsuarioLeitor(){
+        new AlertDialog.Builder(getContext())
+                .setTitle("Editando usuário")
+                .setMessage("Tem certeza que deseja editar esse usuário?")
+                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                        if (!textNome.getText().toString().equals("")
+                                && !textCpf.getText().toString().equals("")
+                                && !textSenha.getText().toString().equals("")
+                                && !textConfSenha.getText().toString().equals("")) {
+                            if (textSenha.getText().toString().equals(textConfSenha.getText().toString())) {
+
+                                UsuarioDTO usu = new UsuarioDTO(Long.getLong(key),
+                                        textCpf.getText().toString(),
+                                        textNome.getText().toString(),
+                                        textEmail.getText().toString(),
+                                        textSenha.getText().toString());
+
+                                Call<UsuarioDTO> call = apiInterface.editaUsuarioLeitor(usu);
+                                call.enqueue(new Callback<UsuarioDTO>() {
+                                    @Override
+                                    public void onResponse(Call<UsuarioDTO> call, Response<UsuarioDTO> response) {
+                                        Snackbar.make(getView(), "Usuario " + response.body().getNome() + " editado com sucesso!", Snackbar.LENGTH_LONG)
+                                                .setTextColor(Color.GREEN).show();
+                                        Navigation.findNavController(getView()).navigate(R.id.nav_lista_usuario_leitor_fragment);
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<UsuarioDTO> call, Throwable t) {
+                                        call.cancel();
+                                        Log.e("post api", "entrou no onFailure" + t.getMessage());
+                                    }
+                                });
+                            } else {
+                                Snackbar.make(getView(), "Senha e confirmação de senha devem ser iguais!", Snackbar.LENGTH_LONG)
+                                        .setTextColor(Color.RED).show();
+                            }
+                        } else{
+                            Snackbar.make(getView(), "Dados inválidos!!!", Snackbar.LENGTH_LONG).show();
+                        }
+                    }
+                }).setNegativeButton("Não", null).show();
     }
+
 }

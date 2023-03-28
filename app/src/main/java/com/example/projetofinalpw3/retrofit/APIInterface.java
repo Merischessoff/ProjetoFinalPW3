@@ -2,6 +2,7 @@ package com.example.projetofinalpw3.retrofit;
 
 import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
 import com.example.projetofinalpw3.dto.TokenDTO;
+import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
@@ -12,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Header;
 
@@ -32,6 +34,9 @@ public interface APIInterface {
 
     @GET("/usuario/usuariosleitores/{email}")
     Call<List<Usuario>> pesquisaUsuariosVinculadosPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
+
+    @PUT("/usuario")
+    Call<UsuarioDTO> editaUsuarioLeitor(@Body UsuarioDTO usu);
 
     //@FormUrlEncoded
     //@POST("/api/users?")

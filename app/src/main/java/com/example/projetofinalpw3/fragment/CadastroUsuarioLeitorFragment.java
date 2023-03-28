@@ -44,7 +44,7 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
         private  Usuario usuarioCadastrado;
 
         private String email;
-        APIInterface apiInterface;
+        private APIInterface apiInterface;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

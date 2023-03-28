@@ -7,6 +7,11 @@ public class SenhaUtil {
         return BCrypt.hashpw(senha, salt);
     }
 
+    public static String descriptografarSenha(String senha) {
+        String salt = BCrypt.gensalt();
+        return BCrypt.hashpw(senha, salt);
+    }
+
     public static boolean verificarSenha(String senha, String hashSenha) {
         return BCrypt.checkpw(senha, hashSenha);
     }

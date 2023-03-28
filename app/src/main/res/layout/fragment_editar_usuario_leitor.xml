@@ -29,7 +29,7 @@
                 app:boxBackgroundColor="@null">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtNome"
+                    android:id="@+id/edtNomeUsuarioLeitorVinculado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_nome"
@@ -43,7 +43,7 @@
                 app:boxBackgroundColor="@null">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtCpf"
+                    android:id="@+id/edtCpfUsuarioLeitorVinculado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_cpf"
@@ -57,7 +57,7 @@
                 app:boxBackgroundColor="@null">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtEmail"
+                    android:id="@+id/edtEmailUsuarioLeitorVinculado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_email"
@@ -74,7 +74,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtSenha"
+                    android:id="@+id/edtSenhaUsuarioLeitorVinculado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_pwd"
@@ -91,7 +91,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/edtConfSenha"
+                    android:id="@+id/edtConfSenhaUsuarioLeitorVinculado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/login_cpwd"
@@ -106,7 +106,7 @@
                 android:text="@string/btnEditar" />
 
             <Button
-                android:id="@+id/btnCancelar"
+                android:id="@+id/btnCancelarUsuarioLeitorVinculado"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin4"

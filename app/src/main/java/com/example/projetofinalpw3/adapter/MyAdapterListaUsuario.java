@@ -57,7 +57,7 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         bundle.putString("cpf", listaUsuarios.get(position).getCpf());
         bundle.putString("email", listaUsuarios.get(position).getEmail());
         bundle.putString("nome", listaUsuarios.get(position).getNome());
-        bundle.putString("senha", listaUsuarios.get(position).getSenha());//?
+        //bundle.putString("senha", listaUsuarios.get(position).getSenha());
         myViewHolderListaUsuario.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_visualizar_usuario_leitor_fragment, bundle));
         myViewHolderListaUsuario.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_editar_usuario_leitor_fragment,  bundle));
     }

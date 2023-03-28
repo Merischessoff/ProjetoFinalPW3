@@ -40,8 +40,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_historia_social_editar, container, false);
         Bundle bundle = getArguments();
         txtSeq = root.findViewById(R.id.txtSeqHistoriaSocialEdit);

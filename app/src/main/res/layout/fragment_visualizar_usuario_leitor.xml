@@ -29,7 +29,7 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtNome"
+            android:id="@+id/visualNomeUsuarioLeitorVinculado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_nome"
@@ -43,7 +43,7 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtCpf"
+            android:id="@+id/visualCpfUsuarioLeitorVinculado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_cpf"
@@ -57,29 +57,19 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtEmail"
+            android:id="@+id/visualEmailUsuarioLeitorVinculado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_email"
             android:inputType="textEmailAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <Button
+        android:id="@+id/btnOkUsuarioLeitorVinculado"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:boxBackgroundColor="@null"
-        app:counterEnabled="true"
-        app:counterMaxLength="20"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/visualSenhaUsuarioVinculado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_pwd"
-            android:inputType="text" />
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_margin="@dimen/margin4"
+        android:text="@string/ok" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

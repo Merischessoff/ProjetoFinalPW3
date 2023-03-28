@@ -4,23 +4,27 @@ package com.example.projetofinalpw3.dto;
 import com.example.projetofinalpw3.model.TipoUsuario;
 
 public class UsuarioDTO {
+    private Long id;
     private String cpf;
     private String nome;
     private String email;
     private String senha;
-    private TipoUsuario tipo;
 
-    private String emailUsuarioVinculado;
-
-    public UsuarioDTO(String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
+    public UsuarioDTO(Long id, String cpf, String nome, String email, String senha) {
+        this.id = id;
         this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-        this.tipo = tipo;
-        this.emailUsuarioVinculado = emailUsuarioVinculado;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCpf() {
         return cpf;
@@ -54,31 +58,14 @@ public class UsuarioDTO {
         this.senha = senha;
     }
 
-    public TipoUsuario getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(TipoUsuario tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getEmailUsuarioVinculado() {
-        return emailUsuarioVinculado;
-    }
-
-    public void setEmailUsuarioVinculado(String emailUsuarioVinculado) {
-        this.emailUsuarioVinculado = emailUsuarioVinculado;
-    }
-
     @Override
     public String toString() {
         return "UsuarioDTO{" +
-                "cpf='" + cpf + '\'' +
+                "id=" + id +
+                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
-                ", tipo=" + tipo +
-                ", emailUsuarioVinculado='" + emailUsuarioVinculado + '\'' +
                 '}';
     }
 }
