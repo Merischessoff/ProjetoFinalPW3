@@ -35,9 +35,8 @@ public interface APIInterface {
     @GET("/usuario/usuariosleitores/{email}")
     Call<List<Usuario>> pesquisaUsuariosVinculadosPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
 
-    @PUT("/usuario")
-    Call<UsuarioDTO> editaUsuarioLeitor(@Body UsuarioDTO usu);
-
+    @PUT("usuario/{id}")
+    Call<UsuarioDTO> editaUsuarioLeitor(@Path("id") Long id, @Body UsuarioDTO usu);
     //@FormUrlEncoded
     //@POST("/api/users?")
    // Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);

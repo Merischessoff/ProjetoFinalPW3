@@ -55,9 +55,6 @@ public class EditarUsuarioLeitorFragment extends Fragment {
         textNome = root.findViewById(R.id.edtNomeUsuarioLeitorVinculado);
         textNome.setText(bundle.getString("nome"));
 
-        textCpf = root.findViewById(R.id.edtCpfUsuarioLeitorVinculado);
-        textCpf.setText(bundle.getString("cpf"));
-
         textSenha = root.findViewById(R.id.edtSenhaUsuarioLeitorVinculado);
         //textSenha.setText(bundle.getString("senha"));
 
@@ -97,22 +94,20 @@ public class EditarUsuarioLeitorFragment extends Fragment {
                     public void onClick(DialogInterface dialogInterface, int i) {
 
                         if (!textNome.getText().toString().equals("")
-                                && !textCpf.getText().toString().equals("")
                                 && !textSenha.getText().toString().equals("")
                                 && !textConfSenha.getText().toString().equals("")) {
                             if (textSenha.getText().toString().equals(textConfSenha.getText().toString())) {
 
-                                UsuarioDTO usu = new UsuarioDTO(Long.getLong(key),
-                                        textCpf.getText().toString(),
-                                        textNome.getText().toString(),
+                                UsuarioDTO usu = new UsuarioDTO(textNome.getText().toString(),
                                         textEmail.getText().toString(),
                                         textSenha.getText().toString());
 
-                                Call<UsuarioDTO> call = apiInterface.editaUsuarioLeitor(usu);
+                                Call<UsuarioDTO> call = apiInterface.editaUsuarioLeitor(Long.getLong(key), usu);
                                 call.enqueue(new Callback<UsuarioDTO>() {
                                     @Override
                                     public void onResponse(Call<UsuarioDTO> call, Response<UsuarioDTO> response) {
-                                        Snackbar.make(getView(), "Usuario " + response.body().getNome() + " editado com sucesso!", Snackbar.LENGTH_LONG)
+                                        Log.e("onResponse ", "editarUsuarioLeitor " + response.body());
+                                        Snackbar.make(getView(), "Usuario editado com sucesso!", Snackbar.LENGTH_LONG)
                                                 .setTextColor(Color.GREEN).show();
                                         Navigation.findNavController(getView()).navigate(R.id.nav_lista_usuario_leitor_fragment);
                                     }

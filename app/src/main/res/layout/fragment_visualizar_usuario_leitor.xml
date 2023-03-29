@@ -43,20 +43,6 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/visualCpfUsuarioLeitorVinculado"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/login_cpf"
-            android:inputType="textEmailAddress" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        app:boxBackgroundColor="@null">
-
-        <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/visualEmailUsuarioLeitorVinculado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -29,9 +29,6 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
         textNome = root.findViewById(R.id.visualNomeUsuarioLeitorVinculado);
         textNome.setText(bundle.getString("nome"));
 
-        textCpf = root.findViewById(R.id.visualCpfUsuarioLeitorVinculado);
-        textCpf.setText(bundle.getString("cpf"));
-
         textEmail = root.findViewById(R.id.visualEmailUsuarioLeitorVinculado);
         textEmail.setText(bundle.getString("email"));
 

@@ -4,34 +4,14 @@ package com.example.projetofinalpw3.dto;
 import com.example.projetofinalpw3.model.TipoUsuario;
 
 public class UsuarioDTO {
-    private Long id;
-    private String cpf;
     private String nome;
     private String email;
     private String senha;
 
-    public UsuarioDTO(Long id, String cpf, String nome, String email, String senha) {
-        this.id = id;
-        this.cpf = cpf;
+    public UsuarioDTO(String nome, String email, String senha) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -61,9 +41,7 @@ public class UsuarioDTO {
     @Override
     public String toString() {
         return "UsuarioDTO{" +
-                "id=" + id +
-                ", cpf='" + cpf + '\'' +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
                 '}';
