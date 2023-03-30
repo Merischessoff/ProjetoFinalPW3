@@ -3,6 +3,7 @@ package com.example.projetofinalpw3.retrofit;
 import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
 import com.example.projetofinalpw3.dto.TokenDTO;
 import com.example.projetofinalpw3.dto.UsuarioDTO;
+import com.example.projetofinalpw3.dto.UsuarioEditarDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
@@ -20,24 +21,19 @@ import retrofit2.http.Header;
 
 public interface APIInterface {
 
-    //@GET("/api/unknown")
-    //Call<MultipleResource> doGetListResources();
-
     @POST("/login")
     Call<TokenDTO> login(@Body UsuarioLoginDTO usu);
 
-    @POST("/usuario")
+    @POST("/usuario/cadastro")
     Call<Usuario> cadastroUsuario(@Body Usuario usu);
 
-    @GET("/usuario/email/{email}")
+    @GET("/usuario/pesquisa/{email}")
     Call<TipoUsuarioDTO> pesquisaUsuarioPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
 
-    @GET("/usuario/usuariosleitores/{email}")
+    @GET("/usuario/pesquisa/leitorvinculado/{email}")
     Call<List<Usuario>> pesquisaUsuariosVinculadosPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
 
-    @PUT("usuario/{id}")
-    Call<UsuarioDTO> editaUsuarioLeitor(@Path("id") Long id, @Body UsuarioDTO usu);
-    //@FormUrlEncoded
-    //@POST("/api/users?")
-   // Call<UserList> doCreateUserWithField(@Field("name") String name, @Field("job") String job);
+    @PUT("/usuario/edita/leitor/{email}")
+    Call<UsuarioEditarDTO> editaUsuarioLeitor(@Header("Authorization") String authorization, @Path("email") String email, @Body UsuarioEditarDTO usu);
+
 }

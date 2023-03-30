@@ -53,7 +53,8 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         });
 
         Bundle bundle = new Bundle();
-        bundle.putString("id", listaUsuarios.get(position).getId().toString());
+        Log.e("MyAdapterListaUsuario ","ID " + listaUsuarios.get(position).getId().toString());
+        bundle.putString("ID", listaUsuarios.get(position).getId().toString());
         //bundle.putString("cpf", listaUsuarios.get(position).getCpf());
         bundle.putString("email", listaUsuarios.get(position).getEmail());
         bundle.putString("nome", listaUsuarios.get(position).getNome());

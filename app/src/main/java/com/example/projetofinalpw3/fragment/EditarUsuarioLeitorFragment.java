@@ -1,6 +1,7 @@
 package com.example.projetofinalpw3.fragment;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -16,6 +17,7 @@ import android.widget.Button;
 
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.dto.UsuarioDTO;
+import com.example.projetofinalpw3.dto.UsuarioEditarDTO;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
@@ -45,6 +47,10 @@ public class EditarUsuarioLeitorFragment extends Fragment {
     private Button btnCancelar;
     private APIInterface apiInterface;
 
+    private String email;
+
+    private String token;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_editar_usuario_leitor, container, false);
@@ -58,14 +64,14 @@ public class EditarUsuarioLeitorFragment extends Fragment {
         textSenha = root.findViewById(R.id.edtSenhaUsuarioLeitorVinculado);
         //textSenha.setText(bundle.getString("senha"));
 
-        textEmail = root.findViewById(R.id.edtEmailUsuarioLeitorVinculado);
-        textEmail.setText(bundle.getString("email"));
-
         textConfSenha = root.findViewById(R.id.edtConfSenhaUsuarioLeitorVinculado);
         //textConfSenha.setText(bundle.getString("senha"));
+        email = bundle.getString("email");
+
+        Intent intent = getActivity().getIntent();
+        token = intent.getStringExtra("token");
 
         btnEditar = root.findViewById(R.id.btnEditarUsuarioVinculado);
-        key = bundle.getString("id");
 
         btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -98,14 +104,14 @@ public class EditarUsuarioLeitorFragment extends Fragment {
                                 && !textConfSenha.getText().toString().equals("")) {
                             if (textSenha.getText().toString().equals(textConfSenha.getText().toString())) {
 
-                                UsuarioDTO usu = new UsuarioDTO(textNome.getText().toString(),
-                                        textEmail.getText().toString(),
-                                        textSenha.getText().toString());
+                                UsuarioEditarDTO usu = new UsuarioEditarDTO(textNome.getText().toString(), SenhaUtil.criptografarSenha(textSenha.getText().toString()));
 
-                                Call<UsuarioDTO> call = apiInterface.editaUsuarioLeitor(Long.getLong(key), usu);
-                                call.enqueue(new Callback<UsuarioDTO>() {
+                                Log.e("usuario ", "usu " + " " + token + " " + " " + email + " " + usu);
+
+                                Call<UsuarioEditarDTO> call = apiInterface.editaUsuarioLeitor(token, email, usu);
+                                call.enqueue(new Callback<UsuarioEditarDTO>() {
                                     @Override
-                                    public void onResponse(Call<UsuarioDTO> call, Response<UsuarioDTO> response) {
+                                    public void onResponse(Call<UsuarioEditarDTO> call, Response<UsuarioEditarDTO> response) {
                                         Log.e("onResponse ", "editarUsuarioLeitor " + response.body());
                                         Snackbar.make(getView(), "Usuario editado com sucesso!", Snackbar.LENGTH_LONG)
                                                 .setTextColor(Color.GREEN).show();
@@ -113,7 +119,7 @@ public class EditarUsuarioLeitorFragment extends Fragment {
                                     }
 
                                     @Override
-                                    public void onFailure(Call<UsuarioDTO> call, Throwable t) {
+                                    public void onFailure(Call<UsuarioEditarDTO> call, Throwable t) {
                                         call.cancel();
                                         Log.e("post api", "entrou no onFailure" + t.getMessage());
                                     }
