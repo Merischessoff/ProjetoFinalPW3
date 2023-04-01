@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,20 +19,32 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.projetofinalpw3.R;
+import com.example.projetofinalpw3.dto.UsuarioEditarDTO;
 import com.example.projetofinalpw3.model.Usuario;
+import com.example.projetofinalpw3.retrofit.APIClient;
+import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.google.android.material.snackbar.Snackbar;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUsuario.MyViewHolderListaUsuario> {
-    List<Usuario> listaUsuarios = new ArrayList<Usuario>();
+    private List<Usuario> listaUsuarios = new ArrayList<Usuario>();
     Context context;
-    public MyAdapterListaUsuario(Context context, List<Usuario> usuarios) {
+    private String token;
+    private APIInterface apiInterface;
+
+    public MyAdapterListaUsuario(Context context, List<Usuario> usuarios, String token) {
         Log.e("MyAdapterListaUsuario", "MyAdapterListaUsuario " + usuarios.size());
         this.context = context;
         this.listaUsuarios = usuarios;
+        this.token = token;
     }
 
     @NonNull
@@ -45,15 +58,8 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
     public void onBindViewHolder(@NonNull MyAdapterListaUsuario.MyViewHolderListaUsuario myViewHolderListaUsuario, @SuppressLint("RecyclerView") int position) {
         Usuario h = listaUsuarios.get(position);
         myViewHolderListaUsuario.nome.setText(h.getNome());
-        myViewHolderListaUsuario.btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                removerItem(position);
-            }
-        });
 
         Bundle bundle = new Bundle();
-        Log.e("MyAdapterListaUsuario ","ID " + listaUsuarios.get(position).getId().toString());
         bundle.putString("ID", listaUsuarios.get(position).getId().toString());
         //bundle.putString("cpf", listaUsuarios.get(position).getCpf());
         bundle.putString("email", listaUsuarios.get(position).getEmail());
@@ -61,6 +67,13 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         //bundle.putString("senha", listaUsuarios.get(position).getSenha());
         myViewHolderListaUsuario.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_visualizar_usuario_leitor_fragment, bundle));
         myViewHolderListaUsuario.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_editar_usuario_leitor_fragment,  bundle));
+
+        myViewHolderListaUsuario.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removerItem(bundle, position);
+            }
+        });
     }
 
     @Override
@@ -68,17 +81,29 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         return listaUsuarios.size();
     }
 
-    public void removerItem(final int position) {
-        new AlertDialog.Builder(context)
+    public void removerItem(Bundle bundle, final int position) {
+       /* new AlertDialog.Builder(context)
                 .setTitle("Deletando usuario")
                 .setMessage("Tem certeza que deseja deletar esse perfil leitor?")
                 .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //Deleta api
+                    public void onClick(DialogInterface dialogInterface, int i) {*/
+                        apiInterface = APIClient.getClient().create(APIInterface.class);
+                        Call<Usuario> call = apiInterface.deletaUsuarioLeitor(token, bundle.getString("email"));
+                        call.enqueue(new Callback<Usuario>() {
+                            @Override
+                            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                                Log.e("onResponse ", "MyAdapterListaUsuario " + response.body());
+                            }
+                            @Override
+                            public void onFailure(Call<Usuario> call, Throwable t) {
+                                Log.e("onFailure ", "MyAdapterListaUsuario " + t.getMessage());
+                                call.cancel();
+                            }
+                        });
                         listaUsuarios.remove(position);
                         notifyItemRemoved(position);
-                    }}).setNegativeButton("Não", null).show();
+                    //}}).setNegativeButton("Não", null).show();
     }
 
     public class MyViewHolderListaUsuario extends RecyclerView.ViewHolder{

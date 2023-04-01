@@ -12,6 +12,7 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -36,4 +37,6 @@ public interface APIInterface {
     @PUT("/usuario/edita/leitor/{email}")
     Call<UsuarioEditarDTO> editaUsuarioLeitor(@Header("Authorization") String authorization, @Path("email") String email, @Body UsuarioEditarDTO usu);
 
+    @DELETE("/usuario/exclui/{email}")
+    Call<Usuario> deletaUsuarioLeitor(@Header("Authorization") String authorization, @Path("email") String email);
 }

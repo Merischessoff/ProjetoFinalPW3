@@ -59,7 +59,7 @@ public class ListaUsuarioLeitorFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Usuario>> call, Response<List<Usuario>> response) {
                 usuarios = response.body();
-                MyAdapterListaUsuario myAdapterListaUsuario = new MyAdapterListaUsuario(getActivity().getBaseContext(),usuarios);
+                MyAdapterListaUsuario myAdapterListaUsuario = new MyAdapterListaUsuario(getActivity().getBaseContext(),usuarios, token);
                 recyclerView.setAdapter(myAdapterListaUsuario);
                 recyclerView.setHasFixedSize(true);
 

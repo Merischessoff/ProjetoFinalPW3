@@ -17,6 +17,11 @@
             android:id="@+id/nav_fragment_cadastro_usuario_leitor"
             android:icon="@drawable/ic_baseline_add_circle_outline_24"
             android:title="@string/cadUsuarioLeitor" />
+        <item
+            android:id="@+id/nav"
+            android:icon="@drawable/ic_baseline_add_circle_outline_24"
+            android:title="@string/cadUsuarioLeitor" />
+
 
     </group>
 </menu>
