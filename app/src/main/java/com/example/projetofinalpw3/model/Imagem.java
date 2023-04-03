@@ -1,18 +1,31 @@
 package com.example.projetofinalpw3.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Imagem {
 
     private Long id;
-    private String seq;
+    private int seq;
     private String url;
 
-    HistoriaSocial historiaSocial;
+    private String texto;
 
-    public Imagem(Long id, String seq, String url, HistoriaSocial historiaSocial) {
+    private List<HistoriaSocial> historias = new ArrayList<HistoriaSocial>();
+
+    public Imagem(Long id, int seq, String url, String texto) {
         this.id = id;
         this.seq = seq;
         this.url = url;
-        this.historiaSocial = historiaSocial;
+        this.texto = texto;
+    }
+
+    public Imagem(Long id, int seq, String url, String texto, List<HistoriaSocial> historias) {
+        this.id = id;
+        this.seq = seq;
+        this.url = url;
+        this.texto = texto;
+        this.historias = historias;
     }
 
     public Imagem() {
@@ -22,41 +35,50 @@ public class Imagem {
         return id;
     }
 
-    public String getSeq() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public int getSeq() {
         return seq;
+    }
+
+    public void setSeq(int seq) {
+        this.seq = seq;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public HistoriaSocial getHistoriaSocial() {
-        return historiaSocial;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public void setSeq(String seq) {
-        this.seq = seq;
-    }
-
     public void setUrl(String url) {
         this.url = url;
     }
 
-    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
-        this.historiaSocial = historiaSocial;
+    public String getTexto() {
+        return texto;
+    }
+
+    public void setTexto(String texto) {
+        this.texto = texto;
+    }
+
+    public List<HistoriaSocial> getHistorias() {
+        return historias;
+    }
+
+    public void setHistorias(List<HistoriaSocial> historias) {
+        this.historias = historias;
     }
 
     @Override
     public String toString() {
         return "Imagem{" +
                 "id=" + id +
-                ", seq='" + seq + '\'' +
+                ", seq=" + seq +
                 ", url='" + url + '\'' +
-                ", historiaSocial=" + historiaSocial +
+                ", texto='" + texto + '\'' +
+                ", historias=" + historias +
                 '}';
     }
 }

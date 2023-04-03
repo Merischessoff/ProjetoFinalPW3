@@ -19,13 +19,13 @@
     <string name="login_cpwd">Confirme sua Senha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="cadHistSoc">Cadastro História Social</string>
+    <string name="cadHistSoc">Cadastro de Histórias Sociais</string>
     <string name="listHistSoc">Listar Histórias Sociais</string>
     <string name="visualHistSoc">História Social</string>
     <string name="btnCadastrar">Cadastrar</string>
     <string name="textoHistoria">Texto da história social</string>
     <string name="S">Imagem</string>
-    <string name="tituloHistoria">Título da história, caso história contenha mais de uma imagem cadastre com o mesmo título.</string>
+    <string name="tituloHistoria">Título da história social.</string>
     <string name="btnExcluir">Excluir</string>
     <string name="btnEditar">Editar</string>
     <string name="seqHistoria">Sequência em que imagem aparecerá na história</string>
@@ -33,7 +33,6 @@
     <string name="btnVisualizar2">Visualizar</string>
     <string name="url">Url</string>
     <string name="editHistSoc">Editar História Social</string>
-    <string name="urlHistoria">cole aqui a url da imagem ao invés de buscar no dispositivo</string>
     <string name="action_sobre">Sobre</string>
     <string name="ok">Ok</string>
     <string name="sobre">Este trabalho tem como objetivo construir um aplicativo para auxílio de crianças autistas com o desenvolvimento de atividades de vida diárias e habilidades sociais. Esse aplicativo apresentara lista de exercícios de modulação relacionados com atividades diárias e habilidades sociais apresentados por meio de uma história social contextualizando-os e uma segunda parte que deve ser realizada com o auxílio de um responsável pela criança. Um exemplo de exercício seria iniciado com uma história social que fala sobre contato visual e a segunda parte seria o exercício que deve ser realizado com a criança com o auxílio do responsável.</string>
@@ -50,4 +49,21 @@
     <string name="cad_user_leitor_titulo">Usuario Leitor</string>
     <string name="leitores">Seus Leitores</string>
     <string name="btnCancelar">Cancelar</string>
+    <string name="bancoHistorias">Banco de Histórias</string>
+    <string name="suasHistorias">Suas Histórias</string>
+    <string name="btnAvancar">Avançar</string>
+    <string name="numImagensHistoria">Número de imagens que deseja na história</string>
+    <string name="btnSelecionarImg">Selecionar Imagens</string>
+
+    <string-array name="itensAtividadeVidaDiaria">
+        <item>Higiene</item>
+        <item>Alimentação</item>
+        <item>Autocuidado</item>
+    </string-array>
+
+    <string-array name="itensHabilidadeSocial">
+        <item>Contato Visual</item>
+        <item>Começar uma conversa</item>
+        <item>Espaços</item>
+    </string-array>
 </resources>

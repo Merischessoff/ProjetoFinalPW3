@@ -18,10 +18,17 @@
             android:icon="@drawable/ic_baseline_add_circle_outline_24"
             android:title="@string/cadUsuarioLeitor" />
         <item
-            android:id="@+id/nav"
+            android:id="@+id/nav_banco_historias_fragment"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/bancoHistorias" />
+        <item
+            android:id="@+id/nav_fragment_historia_social_cad"
             android:icon="@drawable/ic_baseline_add_circle_outline_24"
-            android:title="@string/cadUsuarioLeitor" />
-
+            android:title="@string/cadHistSoc" />
+        <item
+            android:id="@+id/nav_fragment_historia_social_List"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/suasHistorias" />
 
     </group>
 </menu>

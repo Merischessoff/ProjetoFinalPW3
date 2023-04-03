@@ -8,48 +8,41 @@ public class HabilidadeSocial {
     private String nome;
     private String descricao;
 
-    private List<HistoriaSocial> historiasSociais;
+    private HistoriaSocial historiaSocial;
 
     public HabilidadeSocial() {
-    }
-
-    public HabilidadeSocial(Long id, String nome, String descricao, List<HistoriaSocial> historiasSociais) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.historiasSociais = historiasSociais;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public List<HistoriaSocial> getHistoriasSociais() {
-        return historiasSociais;
-    }
-
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
     }
 
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    public String getDescricao() {
+        return descricao;
+    }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 
-    public void setHistoriasSociais(List<HistoriaSocial> historiasSociais) {
-        this.historiasSociais = historiasSociais;
+    public HistoriaSocial getHistoriaSocial() {
+        return historiaSocial;
+    }
+
+    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
+        this.historiaSocial = historiaSocial;
     }
 
     @Override
@@ -58,9 +51,7 @@ public class HabilidadeSocial {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", historiasSociais=" + historiasSociais +
+                ", historiaSocial=" + historiaSocial +
                 '}';
     }
-
-
 }

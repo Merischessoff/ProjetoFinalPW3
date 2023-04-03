@@ -41,33 +41,9 @@ public class VisualizarHistoriaSocialFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_historia_social_visualizar, container, false);
         Bundle bundle = getArguments();
 
-        TextView txtNomeHistorialSocial = root.findViewById(R.id.txtTextoHistoriaSocialVis);
-        txtNomeHistorialSocial.setText(bundle.getString("TEXTO"));
-        String url = bundle.getString("URL");
-
-        foto = root.findViewById(R.id.imageHistoriaSocialVis);
-        if(url.contains("content")){
-            try {
-                Bitmap thumbnail = getActivity().getApplicationContext().getContentResolver().loadThumbnail(Uri.parse(url), new Size(400, 400), null);
-                foto.setImageBitmap(thumbnail);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }else{
-            carregaImagemURL(url);
-        }
         return root;
     }
 
-    public void carregaImagemURL(String url){
-        Picasso.with(getActivity().getBaseContext())
-                .load(url) // Equivalent of what ends up in onBitmapLoaded
-                .placeholder(R.mipmap.ic_launcher)
-                .error(R.drawable.ic_baseline_error_24)
-                .centerCrop()
-                .fit()
-                .into(foto);
-    }
 
     @Override
     public void onDestroyView() {

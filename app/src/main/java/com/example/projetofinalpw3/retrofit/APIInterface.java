@@ -5,6 +5,7 @@ import com.example.projetofinalpw3.dto.TokenDTO;
 import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.dto.UsuarioEditarDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
+import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
 
@@ -39,4 +40,7 @@ public interface APIInterface {
 
     @DELETE("/usuario/exclui/{email}")
     Call<Usuario> deletaUsuarioLeitor(@Header("Authorization") String authorization, @Path("email") String email);
+
+    @POST("/usuario/cadastro")
+    Call<Usuario> cadastroHistoriaSocial(@Header("Authorization") String authorization, @Body HistoriaSocial histSocial);
 }

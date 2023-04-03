@@ -4,22 +4,4 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.VisualizarHistoriaSocialFragment">
-    <ImageView
-        android:id="@+id/imageHistoriaSocialVis"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginTop="100dp"
-        android:src="@mipmap/fundo_foreground" />
-
-    <TextView
-        android:id="@+id/txtTextoHistoriaSocialVis"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
-        android:textAlignment="center"
-        android:text="@string/textoHistoria"
-        android:textSize="24sp" />
-
-
-</FrameLayout>
+    tools:context=".fragment.VisualizarHistoriaSocialFragment"/>
