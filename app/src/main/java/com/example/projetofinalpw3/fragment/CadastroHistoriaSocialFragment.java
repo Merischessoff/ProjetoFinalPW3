@@ -100,63 +100,55 @@ public class CadastroHistoriaSocialFragment extends Fragment {
             }
         });
 
-
         btnCadastrar = root.findViewById(R.id.btnCadastrar);
         btnCadastrar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+                AtividadeDeVidaDiaria avd = new AtividadeDeVidaDiaria();
+                HabilidadeSocial hs = new HabilidadeSocial();
+                AtividadeDeVidaDiaria Avd = new AtividadeDeVidaDiaria();
+                List<Imagem> imagens = new ArrayList<Imagem>();
+
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
 
-                HistoriaSocial historiaSocial = new HistoriaSocial();
-                AtividadeDeVidaDiaria avd = new AtividadeDeVidaDiaria();
-                HabilidadeSocial hs = new HabilidadeSocial();
-                List<Imagem> listaImagens = new ArrayList<Imagem>();
-                List<AtividadeDeVidaDiaria> listaAvd = new ArrayList<AtividadeDeVidaDiaria>();
-                List<HabilidadeSocial> listaHabSoc = new ArrayList<HabilidadeSocial>();
+                avd.setDescricao(spinner1.getSelectedItem().toString());
+                avd.setNome(spinner1.getSelectedItem().toString());
 
-                historiaSocial.setTitulo(titulo);
-                historiaSocial.setTexto(texto);
+                hs.setNome(spinner2.getSelectedItem().toString());
+                hs.setDescricao(spinner2.getSelectedItem().toString());
 
                 int i = 0;
                 for(Uri uri : uriLista){
                     Imagem img = new Imagem();
                     img.setSeq(i);
                     img.setUrl(uri.toString());
-                    img.setTexto(textos.get(i));
-                    listaImagens.add(img);
+                    Log.e("uri ", uri.toString());
+                    img.setTexto(textos.get(i).toString());
+                    Log.e("textos ", textos.get(i).toString());
+                    imagens.add(img);
                     i++;
                 }
-                historiaSocial.setImagens(listaImagens);
 
-                avd.setDescricao(spinner1.getSelectedItem().toString());
-                avd.setNome(spinner1.getSelectedItem().toString());
-                avd.setHistoriaSocial(historiaSocial);
-                listaAvd.add(avd);
+                HistoriaSocial historiaSocial = new HistoriaSocial()
+                        .withTitulo(titulo)
+                        .withTexto(texto)
+                        .withHabilidadeSocial(hs)
+                        .withAtividadeDeVidaDiaria(avd)
+                        .withImagem(imagens)
+                        .build();
 
-                historiaSocial.setAtividadeDeVidaDiarias(listaAvd);
-
-                hs.setNome(spinner2.getSelectedItem().toString());
-                hs.setDescricao(spinner2.getSelectedItem().toString());
-                hs.setHistoriaSocial(historiaSocial);
-
-                listaHabSoc.add(hs);
-
-                historiaSocial.setHabilidadesSociais(listaHabSoc);
-
-
-                Call<Usuario> call = apiInterface.cadastroHistoriaSocial(token, historiaSocial);
-                call.enqueue(new Callback<Usuario>() {
+                Log.e("token ", token);
+                Log.e("historiaSocial ", historiaSocial.toString());
+                Call<HistoriaSocial> call = apiInterface.cadastroHistoriaSocial(token, historiaSocial);
+                call.enqueue(new Callback<HistoriaSocial>() {
                     @Override
-                    public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                    public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
                         Log.e("onResponse onClick ", "salvando historia social " + response.body());
-                        Snackbar.make(getView(), "salvando historia social!", Snackbar.LENGTH_LONG)
-                                .setTextColor(Color.GREEN).show();
-                        //Navigation.findNavController(getView()).navigate(R.id.nav_lista_usuario_leitor_fragment);
                     }
 
                     @Override
-                    public void onFailure(Call<Usuario> call, Throwable t) {
+                    public void onFailure(Call<HistoriaSocial> call, Throwable t) {
                         call.cancel();
                         Log.e("post api", "entrou no onFailure" + t.getMessage());
                     }
@@ -167,7 +159,6 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
         return root;
     }
-
 
     ActivityResultLauncher<String[]> mGetMultipleContentsLauncher = registerForActivityResult(
             new ActivityResultContracts.OpenMultipleDocuments(),
@@ -191,10 +182,10 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
                             uriLista.add(uri);
+                            textos.add("texto como pegar");
                         }
                     }
                 }
             });
-
 
 }

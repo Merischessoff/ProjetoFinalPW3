@@ -54,14 +54,18 @@
     <string name="btnAvancar">Avançar</string>
     <string name="numImagensHistoria">Número de imagens que deseja na história</string>
     <string name="btnSelecionarImg">Selecionar Imagens</string>
+    <string name="categoriasAvd">Atividades de vida Diária</string>
+    <string name="categoriasHs">Habilidades Sociais</string>
 
     <string-array name="itensAtividadeVidaDiaria">
+        <item>Nenhum</item>
         <item>Higiene</item>
         <item>Alimentação</item>
         <item>Autocuidado</item>
     </string-array>
 
     <string-array name="itensHabilidadeSocial">
+        <item>Nenhum</item>
         <item>Contato Visual</item>
         <item>Começar uma conversa</item>
         <item>Espaços</item>

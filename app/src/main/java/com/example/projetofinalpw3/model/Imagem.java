@@ -11,24 +11,18 @@ public class Imagem {
 
     private String texto;
 
-    private List<HistoriaSocial> historias = new ArrayList<HistoriaSocial>();
+    private HistoriaSocial historiaSocial;
 
-    public Imagem(Long id, int seq, String url, String texto) {
+    public Imagem(Long id, int seq, String url, String texto, HistoriaSocial historiaSocial) {
         this.id = id;
         this.seq = seq;
         this.url = url;
         this.texto = texto;
+        this.historiaSocial = historiaSocial;
     }
 
-    public Imagem(Long id, int seq, String url, String texto, List<HistoriaSocial> historias) {
-        this.id = id;
-        this.seq = seq;
-        this.url = url;
-        this.texto = texto;
-        this.historias = historias;
-    }
+    public Imagem(){
 
-    public Imagem() {
     }
 
     public Long getId() {
@@ -63,12 +57,12 @@ public class Imagem {
         this.texto = texto;
     }
 
-    public List<HistoriaSocial> getHistorias() {
-        return historias;
+    public HistoriaSocial getHistoriaSocial() {
+        return historiaSocial;
     }
 
-    public void setHistorias(List<HistoriaSocial> historias) {
-        this.historias = historias;
+    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
+        this.historiaSocial = historiaSocial;
     }
 
     @Override
@@ -78,7 +72,7 @@ public class Imagem {
                 ", seq=" + seq +
                 ", url='" + url + '\'' +
                 ", texto='" + texto + '\'' +
-                ", historias=" + historias +
+                ", historiaSocial=" + historiaSocial +
                 '}';
     }
 }

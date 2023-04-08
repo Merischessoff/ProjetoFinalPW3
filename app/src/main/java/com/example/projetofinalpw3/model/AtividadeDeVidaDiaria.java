@@ -7,16 +7,17 @@ public class AtividadeDeVidaDiaria{
     private Long id;
     private String nome;
     private String descricao;
-    private HistoriaSocial historiaSocial;
+    private List<HistoriaSocial> historiasSociais;
 
-    public AtividadeDeVidaDiaria() {
-    }
-
-    public AtividadeDeVidaDiaria(Long id, String nome, String descricao, HistoriaSocial historiaSocial) {
+    public AtividadeDeVidaDiaria(Long id, String nome, String descricao, List<HistoriaSocial> historiasSociais) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.historiaSocial = historiaSocial;
+        this.historiasSociais = historiasSociais;
+    }
+
+
+    public AtividadeDeVidaDiaria() {
     }
 
     public Long getId() {
@@ -43,12 +44,12 @@ public class AtividadeDeVidaDiaria{
         this.descricao = descricao;
     }
 
-    public HistoriaSocial getHistoriaSocial() {
-        return historiaSocial;
+    public List<HistoriaSocial> getHistoriasSociais() {
+        return historiasSociais;
     }
 
-    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
-        this.historiaSocial = historiaSocial;
+    public void setHistoriasSociais(List<HistoriaSocial> historiasSociais) {
+        this.historiasSociais = historiasSociais;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class AtividadeDeVidaDiaria{
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", descricao='" + descricao + '\'' +
-                ", historiaSocial=" + historiaSocial +
+                ", historiasSociais=" + historiasSociais +
                 '}';
     }
 }

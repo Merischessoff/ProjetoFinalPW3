@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin8"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutTituloHistoriaSocial"
@@ -42,16 +43,20 @@
 
         <Button
             android:id="@+id/btnSelecionaImagens"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnSelecionarImg"
-            android:layout_margin="@dimen/margin8"/>
+            android:layout_marginTop="@dimen/margin8"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/btnSelecionarImg" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutTextoHistoriaSocial"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginTop="@dimen/margin8"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -67,35 +72,66 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="100"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginTop="@dimen/margin8"
             app:boxBackgroundColor="@null">
 
-            <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerAtividadeVidaDiaria"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textLegSpinnerAvd"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/itensAtividadeVidaDiaria"/>
+            android:layout_height="match_parent"
+            android:text="@string/categoriasAvd"
+            android:textAlignment="center"
+            android:background="@drawable/border_spinner_preenchido"
+            android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerAtividadeVidaDiaria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:entries="@array/itensAtividadeVidaDiaria"
+                android:background="@drawable/border_spinner"
+                />
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/layoutSpinnerHabilidadeSocial"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="100"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_marginTop="@dimen/margin8"
             app:boxBackgroundColor="@null">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textLegSpinnerHs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/categoriasHs"
+                android:textAlignment="center"
+                android:background="@drawable/border_spinner_preenchido"
+
+                android:textStyle="bold" />
+
             <androidx.appcompat.widget.AppCompatSpinner
-            android:id="@+id/spinnerHabilidadeSocial"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/itensHabilidadeSocial"/>
+                android:id="@+id/spinnerHabilidadeSocial"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_spinner"
+                android:entries="@array/itensHabilidadeSocial"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnCadastrar"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnCadastrar"
-            android:layout_margin="@dimen/margin8"/>
+            android:layout_marginTop="@dimen/margin8"
+            android:layout_marginBottom="@dimen/margin8"
+            android:layout_gravity="center_horizontal"
+
+            android:text="@string/btnCadastrar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </FrameLayout>

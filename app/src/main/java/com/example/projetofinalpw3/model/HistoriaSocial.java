@@ -7,29 +7,21 @@ public class HistoriaSocial {
     private String titulo;
     private String texto;
 
-    private List<HabilidadeSocial> habilidadesSociais;
+    private HabilidadeSocial habilidadeSocial;
 
-    private List<AtividadeDeVidaDiaria> atividadeDeVidaDiarias;
+    private AtividadeDeVidaDiaria atividadeDeVidaDiaria;
 
-    private List<Imagem> imagens;
+    private List<Imagem> imagem;
 
-    public HistoriaSocial() {
-    }
-
-    public HistoriaSocial(Long id, String titulo, String texto, List<HabilidadeSocial> habilidadesSociais, List<AtividadeDeVidaDiaria> atividadeDeVidaDiarias, List<Imagem> imagens) {
-        this.id = id;
+    public HistoriaSocial(String titulo, String texto, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagem) {
         this.titulo = titulo;
         this.texto = texto;
-        this.habilidadesSociais = habilidadesSociais;
-        this.atividadeDeVidaDiarias = atividadeDeVidaDiarias;
-        this.imagens = imagens;
+        this.habilidadeSocial = habilidadeSocial;
+        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
+        this.imagem = imagem;
     }
 
-    public HistoriaSocial(String titulo, String texto) {
-        this.id = id;
-        this.titulo = titulo;
-        this.texto = texto;
-    }
+    public HistoriaSocial(){}
 
     public Long getId() {
         return id;
@@ -55,28 +47,62 @@ public class HistoriaSocial {
         this.texto = texto;
     }
 
-    public List<HabilidadeSocial> getHabilidadesSociais() {
-        return habilidadesSociais;
+    public HabilidadeSocial getHabilidadeSocial() {
+        return habilidadeSocial;
     }
 
-    public void setHabilidadesSociais(List<HabilidadeSocial> habilidadesSociais) {
-        this.habilidadesSociais = habilidadesSociais;
+    public void setHabilidadeSocial(HabilidadeSocial habilidadeSocial) {
+        this.habilidadeSocial = habilidadeSocial;
     }
 
-    public List<AtividadeDeVidaDiaria> getAtividadeDeVidaDiarias() {
-        return atividadeDeVidaDiarias;
+    public AtividadeDeVidaDiaria getAtividadeDeVidaDiaria() {
+        return atividadeDeVidaDiaria;
     }
 
-    public void setAtividadeDeVidaDiarias(List<AtividadeDeVidaDiaria> atividadeDeVidaDiarias) {
-        this.atividadeDeVidaDiarias = atividadeDeVidaDiarias;
+    public void setAtividadeDeVidaDiaria(AtividadeDeVidaDiaria atividadeDeVidaDiaria) {
+        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
     }
 
-    public List<Imagem> getImagens() {
-        return imagens;
+    public List<Imagem> getImagem() {
+        return imagem;
     }
 
-    public void setImagens(List<Imagem> imagens) {
-        this.imagens = imagens;
+    public void setImagem(List<Imagem> imagem) {
+        this.imagem = imagem;
+    }
+
+    public HistoriaSocial withId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public HistoriaSocial withTitulo(String titulo) {
+        this.titulo = titulo;
+        return this;
+    }
+
+    public HistoriaSocial withTexto(String texto) {
+        this.texto = texto;
+        return this;
+    }
+
+    public HistoriaSocial withHabilidadeSocial(HabilidadeSocial habilidadeSocial) {
+        this.habilidadeSocial = habilidadeSocial;
+        return this;
+    }
+
+    public HistoriaSocial withAtividadeDeVidaDiaria(AtividadeDeVidaDiaria atividadeDeVidaDiaria) {
+        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
+        return this;
+    }
+
+    public HistoriaSocial withImagem(List<Imagem> imagem) {
+        this.imagem = imagem;
+        return this;
+    }
+
+    public HistoriaSocial build() {
+        return new HistoriaSocial(titulo, texto, habilidadeSocial, atividadeDeVidaDiaria, imagem);
     }
 
     @Override
@@ -85,9 +111,9 @@ public class HistoriaSocial {
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
-                ", habilidadesSociais=" + habilidadesSociais +
-                ", atividadeDeVidaDiarias=" + atividadeDeVidaDiarias +
-                ", imagens=" + imagens +
+                ", habilidadeSocial=" + habilidadeSocial +
+                ", atividadeDeVidaDiaria=" + atividadeDeVidaDiaria +
+                ", imagem=" + imagem +
                 '}';
     }
 }

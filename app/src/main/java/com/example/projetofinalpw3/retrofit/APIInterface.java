@@ -41,6 +41,6 @@ public interface APIInterface {
     @DELETE("/usuario/exclui/{email}")
     Call<Usuario> deletaUsuarioLeitor(@Header("Authorization") String authorization, @Path("email") String email);
 
-    @POST("/usuario/cadastro")
-    Call<Usuario> cadastroHistoriaSocial(@Header("Authorization") String authorization, @Body HistoriaSocial histSocial);
+    @POST("/historiasocial")
+    Call<HistoriaSocial> cadastroHistoriaSocial(@Header("Authorization") String authorization, @Body HistoriaSocial histSocial);
 }

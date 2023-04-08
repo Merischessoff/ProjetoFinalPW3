@@ -8,7 +8,14 @@ public class HabilidadeSocial {
     private String nome;
     private String descricao;
 
-    private HistoriaSocial historiaSocial;
+    private List<HistoriaSocial> historiaSocial;
+
+    public HabilidadeSocial(Long id, String nome, String descricao, List<HistoriaSocial> historiaSocial) {
+        this.id = id;
+        this.nome = nome;
+        this.descricao = descricao;
+        this.historiaSocial = historiaSocial;
+    }
 
     public HabilidadeSocial() {
     }
@@ -37,11 +44,11 @@ public class HabilidadeSocial {
         this.descricao = descricao;
     }
 
-    public HistoriaSocial getHistoriaSocial() {
+    public List<HistoriaSocial> getHistoriaSocial() {
         return historiaSocial;
     }
 
-    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
+    public void setHistoriaSocial(List<HistoriaSocial> historiaSocial) {
         this.historiaSocial = historiaSocial;
     }
 
