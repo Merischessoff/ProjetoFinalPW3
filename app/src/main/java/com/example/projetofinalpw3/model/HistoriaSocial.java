@@ -7,18 +7,23 @@ public class HistoriaSocial {
     private String titulo;
     private String texto;
 
+    private String emailUsuarioResponsavel;
+
+    private Usuario usuarioLeitor;
+
     private HabilidadeSocial habilidadeSocial;
 
     private AtividadeDeVidaDiaria atividadeDeVidaDiaria;
 
     private List<Imagem> imagem;
 
-    public HistoriaSocial(String titulo, String texto, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagem) {
+    public HistoriaSocial(String titulo, String texto, String emailUsuarioResponsavel, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagem) {
         this.titulo = titulo;
         this.texto = texto;
         this.habilidadeSocial = habilidadeSocial;
         this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
         this.imagem = imagem;
+        this.emailUsuarioResponsavel = emailUsuarioResponsavel;
     }
 
     public HistoriaSocial(){}
@@ -71,8 +76,29 @@ public class HistoriaSocial {
         this.imagem = imagem;
     }
 
+    public String getEmailUsuarioResponsavel() {
+        return emailUsuarioResponsavel;
+    }
+
+    public void setEmailUsuarioResponsavel(String emailUsuarioResponsavel) {
+        this.emailUsuarioResponsavel = emailUsuarioResponsavel;
+    }
+
+    public Usuario getUsuarioLeitor() {
+        return usuarioLeitor;
+    }
+
+    public void setUsuarioLeitor(Usuario usuarioLeitor) {
+        this.usuarioLeitor = usuarioLeitor;
+    }
+
     public HistoriaSocial withId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public HistoriaSocial withEmail(String email) {
+        this.emailUsuarioResponsavel = email;
         return this;
     }
 
@@ -102,7 +128,7 @@ public class HistoriaSocial {
     }
 
     public HistoriaSocial build() {
-        return new HistoriaSocial(titulo, texto, habilidadeSocial, atividadeDeVidaDiaria, imagem);
+        return new HistoriaSocial(titulo, texto, emailUsuarioResponsavel, habilidadeSocial, atividadeDeVidaDiaria, imagem);
     }
 
     @Override
@@ -111,6 +137,8 @@ public class HistoriaSocial {
                 "id=" + id +
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
+                ", emailUsuarioResponsavel='" + emailUsuarioResponsavel + '\'' +
+                ", usuarioLeitor=" + usuarioLeitor +
                 ", habilidadeSocial=" + habilidadeSocial +
                 ", atividadeDeVidaDiaria=" + atividadeDeVidaDiaria +
                 ", imagem=" + imagem +

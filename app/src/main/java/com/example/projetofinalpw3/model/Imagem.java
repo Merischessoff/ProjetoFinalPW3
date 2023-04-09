@@ -11,14 +11,11 @@ public class Imagem {
 
     private String texto;
 
-    private HistoriaSocial historiaSocial;
-
-    public Imagem(Long id, int seq, String url, String texto, HistoriaSocial historiaSocial) {
+    public Imagem(Long id, int seq, String url, String texto) {
         this.id = id;
         this.seq = seq;
         this.url = url;
         this.texto = texto;
-        this.historiaSocial = historiaSocial;
     }
 
     public Imagem(){
@@ -57,13 +54,6 @@ public class Imagem {
         this.texto = texto;
     }
 
-    public HistoriaSocial getHistoriaSocial() {
-        return historiaSocial;
-    }
-
-    public void setHistoriaSocial(HistoriaSocial historiaSocial) {
-        this.historiaSocial = historiaSocial;
-    }
 
     @Override
     public String toString() {
@@ -71,8 +61,7 @@ public class Imagem {
                 "id=" + id +
                 ", seq=" + seq +
                 ", url='" + url + '\'' +
-                ", texto='" + texto + '\'' +
-                ", historiaSocial=" + historiaSocial +
+                ", texto='" + texto +
                 '}';
     }
 }

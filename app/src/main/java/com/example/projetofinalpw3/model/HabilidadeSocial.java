@@ -8,13 +8,10 @@ public class HabilidadeSocial {
     private String nome;
     private String descricao;
 
-    private List<HistoriaSocial> historiaSocial;
-
-    public HabilidadeSocial(Long id, String nome, String descricao, List<HistoriaSocial> historiaSocial) {
+    public HabilidadeSocial(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.historiaSocial = historiaSocial;
     }
 
     public HabilidadeSocial() {
@@ -44,21 +41,14 @@ public class HabilidadeSocial {
         this.descricao = descricao;
     }
 
-    public List<HistoriaSocial> getHistoriaSocial() {
-        return historiaSocial;
-    }
 
-    public void setHistoriaSocial(List<HistoriaSocial> historiaSocial) {
-        this.historiaSocial = historiaSocial;
-    }
 
     @Override
     public String toString() {
         return "HabilidadeSocial{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", historiaSocial=" + historiaSocial +
+                ", descricao='" + descricao +
                 '}';
     }
 }

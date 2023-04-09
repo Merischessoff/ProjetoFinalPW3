@@ -7,13 +7,11 @@ public class AtividadeDeVidaDiaria{
     private Long id;
     private String nome;
     private String descricao;
-    private List<HistoriaSocial> historiasSociais;
 
-    public AtividadeDeVidaDiaria(Long id, String nome, String descricao, List<HistoriaSocial> historiasSociais) {
+    public AtividadeDeVidaDiaria(Long id, String nome, String descricao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-        this.historiasSociais = historiasSociais;
     }
 
 
@@ -44,21 +42,13 @@ public class AtividadeDeVidaDiaria{
         this.descricao = descricao;
     }
 
-    public List<HistoriaSocial> getHistoriasSociais() {
-        return historiasSociais;
-    }
-
-    public void setHistoriasSociais(List<HistoriaSocial> historiasSociais) {
-        this.historiasSociais = historiasSociais;
-    }
 
     @Override
     public String toString() {
         return "AtividadeDeVidaDiaria{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
-                ", historiasSociais=" + historiasSociais +
+                ", descricao='" + descricao +
                 '}';
     }
 }

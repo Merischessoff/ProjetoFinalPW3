@@ -16,6 +16,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +52,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Random;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,17 +65,22 @@ public class CadastroHistoriaSocialFragment extends Fragment {
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1;
     private ImageView foto;
     private Button btnCadastrar;
-    AppCompatSpinner spinner1;
-    AppCompatSpinner spinner2;
+    private AppCompatSpinner spinnerAvd;
+    private AppCompatSpinner spinnerHabSoc;
     private Button btnSelecionaImg;
-    private List<Uri> uriLista = new ArrayList<Uri>();
 
-    private List<String> textos = new ArrayList<String>();
+    private Map<Integer, Uri> imagensId = new HashMap<Integer,Uri>();
+
+    private List<Integer> textosId = new ArrayList<Integer>();
     private View root;
     private TextView textSelecionado;
     private APIInterface apiInterface;
 
     private String token;
+
+    private String email;
+
+    private TextInputEditText t;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
@@ -81,6 +91,7 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         token = intent.getStringExtra("token");
+        email = intent.getStringExtra("email");
 
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -89,8 +100,8 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                     REQUEST_CODE_READ_EXTERNAL_STORAGE);
         }
 
-        spinner1 = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
-        spinner2 = root.findViewById(R.id.spinnerHabilidadeSocial);
+        spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
+        spinnerHabSoc = root.findViewById(R.id.spinnerHabilidadeSocial);
 
         btnSelecionaImg = root.findViewById(R.id.btnSelecionaImagens);
         btnSelecionaImg.setOnClickListener(new View.OnClickListener() {
@@ -104,33 +115,42 @@ public class CadastroHistoriaSocialFragment extends Fragment {
         btnCadastrar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                AtividadeDeVidaDiaria avd = new AtividadeDeVidaDiaria();
-                HabilidadeSocial hs = new HabilidadeSocial();
-                AtividadeDeVidaDiaria Avd = new AtividadeDeVidaDiaria();
+                AtividadeDeVidaDiaria avd = null;
+                HabilidadeSocial hs = null;
+                if(!spinnerAvd.getSelectedItem().toString().trim().equalsIgnoreCase("")){
+                    avd = new AtividadeDeVidaDiaria();
+                    avd.setDescricao(spinnerAvd.getSelectedItem().toString());
+                    avd.setNome(spinnerAvd.getSelectedItem().toString());
+                }
+                if(!spinnerHabSoc.getSelectedItem().toString().trim().equalsIgnoreCase("")) {
+                    hs = new HabilidadeSocial();
+                    hs.setNome(spinnerAvd.getSelectedItem().toString());
+                    hs.setDescricao(spinnerAvd.getSelectedItem().toString());
+                }
                 List<Imagem> imagens = new ArrayList<Imagem>();
 
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
 
-                avd.setDescricao(spinner1.getSelectedItem().toString());
-                avd.setNome(spinner1.getSelectedItem().toString());
-
-                hs.setNome(spinner2.getSelectedItem().toString());
-                hs.setDescricao(spinner2.getSelectedItem().toString());
-
                 int i = 0;
-                for(Uri uri : uriLista){
+                for (Map.Entry<Integer, Uri> entry : imagensId.entrySet()) {
                     Imagem img = new Imagem();
-                    img.setSeq(i);
-                    img.setUrl(uri.toString());
-                    Log.e("uri ", uri.toString());
-                    img.setTexto(textos.get(i).toString());
-                    Log.e("textos ", textos.get(i).toString());
+                    img.setSeq(i+1);
+                    img.setUrl(entry.getValue().toString());
+
+                    Log.e("uri ", entry.getValue().toString());
+
+                    t = root.findViewById(textosId.get(i));
+                    img.setTexto(t.getText().toString());
+
+                    Log.e("textos ", t.getText().toString());
+
                     imagens.add(img);
                     i++;
                 }
-
+                
                 HistoriaSocial historiaSocial = new HistoriaSocial()
+                        .withEmail(email)
                         .withTitulo(titulo)
                         .withTexto(texto)
                         .withHabilidadeSocial(hs)
@@ -139,12 +159,16 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                         .build();
 
                 Log.e("token ", token);
+                Log.e("email ", email);
                 Log.e("historiaSocial ", historiaSocial.toString());
                 Call<HistoriaSocial> call = apiInterface.cadastroHistoriaSocial(token, historiaSocial);
                 call.enqueue(new Callback<HistoriaSocial>() {
                     @Override
                     public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
                         Log.e("onResponse onClick ", "salvando historia social " + response.body());
+                        Snackbar.make(v, "História salva com sucesso!", Snackbar.LENGTH_LONG)
+                                .setTextColor(Color.GREEN).show();
+                        //Navigation.findNavController(v).navigate(R.id.nav_fragment_cadastro_usuario_leitor);
                     }
 
                     @Override
@@ -167,7 +191,12 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
                         GridLayout imageContainer = root.findViewById(R.id.image_grid);
+                        Random random = new Random();
 
+                        // Gera um número inteiro aleatório entre 0 e 99
+                        int numeroAleatorioTexto = random.nextInt(100);
+                        int numeroAleatorioImg = random.nextInt(100);
+                        int numeroAleatorioImgContainer = random.nextInt(100);
                         for (Uri uri : result) {
                             ImageView imageView = new ImageView(requireContext());
                             TextInputEditText textoHist = new TextInputEditText(requireContext());
@@ -178,11 +207,14 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                             textoHist.setLayoutParams(
                                     new LinearLayout.LayoutParams(150, 150)
                             );
+                            textoHist.setId(numeroAleatorioTexto);
+                            imageView.setId(numeroAleatorioImg);
                             imageView.setImageURI(uri);
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
-                            uriLista.add(uri);
-                            textos.add("texto como pegar");
+                            imageContainer.setId(numeroAleatorioImgContainer);
+                            imagensId.put(imageView.getId(), uri);
+                            textosId.add(textoHist.getId());
                         }
                     }
                 }

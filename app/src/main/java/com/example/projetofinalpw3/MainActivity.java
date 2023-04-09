@@ -34,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TokenDTO token = new TokenDTO("");
 
+    private String email = "";
+
     private TipoUsuarioDTO tipoUsuario = new TipoUsuarioDTO("");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         token.setToken(intent.getStringExtra("token"));
         tipoUsuario.setTipo(intent.getStringExtra("tipoUsuario"));
+        email = intent.getStringExtra("email");
 
         binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
             @Override
