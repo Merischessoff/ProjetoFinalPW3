@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.projetofinalpw3.dto.UsuarioCadDTO;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
@@ -55,7 +56,7 @@ public class CadUsuarioActivity extends AppCompatActivity {
                         && !edtCpf.getText().toString().equals("")) {
                     if (edtSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
                         TipoUsuario tipo = TipoUsuario.RESPONSAVEL;
-                        Usuario usu = new Usuario(0l, edtCpf.getText().toString(), edtNome.getText().toString(),
+                        UsuarioCadDTO usu = new UsuarioCadDTO(edtCpf.getText().toString(), edtNome.getText().toString(),
                                 edtEmail.getText().toString(),
                                 SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo, "");
 

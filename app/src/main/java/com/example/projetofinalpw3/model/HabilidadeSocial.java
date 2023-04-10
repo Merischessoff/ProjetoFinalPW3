@@ -1,6 +1,7 @@
 package com.example.projetofinalpw3.model;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HabilidadeSocial {
@@ -8,13 +9,16 @@ public class HabilidadeSocial {
     private String nome;
     private String descricao;
 
-    public HabilidadeSocial(Long id, String nome, String descricao) {
+    private List<HistoriaSocial> historiasSociais = new ArrayList<HistoriaSocial>();
+
+    public HabilidadeSocial() {
+    }
+
+    public HabilidadeSocial(Long id, String nome, String descricao, List<HistoriaSocial> lista) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
-    }
-
-    public HabilidadeSocial() {
+        this.historiasSociais = lista;
     }
 
     public Long getId() {
@@ -41,14 +45,21 @@ public class HabilidadeSocial {
         this.descricao = descricao;
     }
 
+    public List<HistoriaSocial> getLista() {
+        return historiasSociais;
+    }
 
+    public void setLista(List<HistoriaSocial> lista) {
+        this.historiasSociais = lista;
+    }
 
     @Override
     public String toString() {
         return "HabilidadeSocial{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", descricao='" + descricao +
+                ", descricao='" + descricao + '\'' +
+                ", historiasSociais=" + historiasSociais +
                 '}';
     }
 }

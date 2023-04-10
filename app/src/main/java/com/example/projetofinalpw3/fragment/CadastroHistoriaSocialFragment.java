@@ -80,7 +80,6 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
     private String email;
 
-    private TextInputEditText t;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
@@ -132,6 +131,8 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
 
+
+
                 int i = 0;
                 for (Map.Entry<Integer, Uri> entry : imagensId.entrySet()) {
                     Imagem img = new Imagem();
@@ -140,22 +141,21 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
                     Log.e("uri ", entry.getValue().toString());
 
-                    t = root.findViewById(textosId.get(i));
+                    TextInputEditText t = root.findViewById(textosId.get(i));
                     img.setTexto(t.getText().toString());
 
                     Log.e("textos ", t.getText().toString());
-
                     imagens.add(img);
                     i++;
                 }
-                
+
                 HistoriaSocial historiaSocial = new HistoriaSocial()
                         .withEmail(email)
                         .withTitulo(titulo)
                         .withTexto(texto)
                         .withHabilidadeSocial(hs)
                         .withAtividadeDeVidaDiaria(avd)
-                        .withImagem(imagens)
+                        .withImagens(imagens)
                         .build();
 
                 Log.e("token ", token);
@@ -168,7 +168,7 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                         Log.e("onResponse onClick ", "salvando historia social " + response.body());
                         Snackbar.make(v, "História salva com sucesso!", Snackbar.LENGTH_LONG)
                                 .setTextColor(Color.GREEN).show();
-                        //Navigation.findNavController(v).navigate(R.id.nav_fragment_cadastro_usuario_leitor);
+                        Navigation.findNavController(v).navigate(R.id.nav_fragment_historia_social_List);
                     }
 
                     @Override

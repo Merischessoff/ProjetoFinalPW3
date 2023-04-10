@@ -15,14 +15,14 @@ public class HistoriaSocial {
 
     private AtividadeDeVidaDiaria atividadeDeVidaDiaria;
 
-    private List<Imagem> imagem;
+    private List<Imagem> imagens;
 
-    public HistoriaSocial(String titulo, String texto, String emailUsuarioResponsavel, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagem) {
+    public HistoriaSocial(String titulo, String texto, String emailUsuarioResponsavel, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagens) {
         this.titulo = titulo;
         this.texto = texto;
         this.habilidadeSocial = habilidadeSocial;
         this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
-        this.imagem = imagem;
+        this.imagens = imagens;
         this.emailUsuarioResponsavel = emailUsuarioResponsavel;
     }
 
@@ -68,12 +68,12 @@ public class HistoriaSocial {
         this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
     }
 
-    public List<Imagem> getImagem() {
-        return imagem;
+    public List<Imagem> getImagens() {
+        return imagens;
     }
 
-    public void setImagem(List<Imagem> imagem) {
-        this.imagem = imagem;
+    public void setImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
     }
 
     public String getEmailUsuarioResponsavel() {
@@ -122,13 +122,13 @@ public class HistoriaSocial {
         return this;
     }
 
-    public HistoriaSocial withImagem(List<Imagem> imagem) {
-        this.imagem = imagem;
+    public HistoriaSocial withImagens(List<Imagem> imagens) {
+        this.imagens = imagens;
         return this;
     }
 
     public HistoriaSocial build() {
-        return new HistoriaSocial(titulo, texto, emailUsuarioResponsavel, habilidadeSocial, atividadeDeVidaDiaria, imagem);
+        return new HistoriaSocial(titulo, texto, emailUsuarioResponsavel, habilidadeSocial, atividadeDeVidaDiaria, imagens);
     }
 
     @Override
@@ -141,7 +141,7 @@ public class HistoriaSocial {
                 ", usuarioLeitor=" + usuarioLeitor +
                 ", habilidadeSocial=" + habilidadeSocial +
                 ", atividadeDeVidaDiaria=" + atividadeDeVidaDiaria +
-                ", imagem=" + imagem +
+                ", imagens=" + imagens +
                 '}';
     }
 }
