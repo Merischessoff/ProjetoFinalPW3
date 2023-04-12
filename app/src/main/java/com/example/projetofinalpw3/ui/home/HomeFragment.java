@@ -27,17 +27,17 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        Button btnAbrirSite1 = root.findViewById(R.id.btnAbrirSite1);
-        btnAbrirSite1.setOnClickListener(new View.OnClickListener(){
+        //Button btnAbrirSite1 = root.findViewById(R.id.btnAbrirSite1);
+       /* btnAbrirSite1.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(
                         "https://neuroconecta.com.br/recursos-visuais-qual-a-importancia-no-dia-a-dia-de-pessoas-com-autismo"));
                 startActivity(intent);
             }
-        });
+        });*/
 
-        Button btnAbrirSite2 = root.findViewById(R.id.btnAbrirSite2);
+        /*Button btnAbrirSite2 = root.findViewById(R.id.btnAbrirSite2);
         btnAbrirSite2.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -45,7 +45,7 @@ public class HomeFragment extends Fragment {
                         "https://www.inspiradospeloautismo.com.br/a-abordagem/atividades-de-vida-diaria-para-pessoas-com-autismo/"));
                 startActivity(intent);
             }
-        });
+        });*/
 
 
         return root;
