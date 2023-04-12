@@ -118,20 +118,22 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 HabilidadeSocial hs = null;
                 if(!spinnerAvd.getSelectedItem().toString().trim().equalsIgnoreCase("")){
                     avd = new AtividadeDeVidaDiaria();
+                    avd.setId((long) spinnerAvd.getSelectedItemPosition()+1);
+                    Log.e("posicao spinner ", String.valueOf(avd.getId()));
                     avd.setDescricao(spinnerAvd.getSelectedItem().toString());
                     avd.setNome(spinnerAvd.getSelectedItem().toString());
                 }
                 if(!spinnerHabSoc.getSelectedItem().toString().trim().equalsIgnoreCase("")) {
                     hs = new HabilidadeSocial();
-                    hs.setNome(spinnerAvd.getSelectedItem().toString());
-                    hs.setDescricao(spinnerAvd.getSelectedItem().toString());
+                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition()+1);
+                    Log.e("posicao spinner ", String.valueOf(hs.getId()));
+                    hs.setNome(spinnerHabSoc.getSelectedItem().toString());
+                    hs.setDescricao(spinnerHabSoc.getSelectedItem().toString());
                 }
                 List<Imagem> imagens = new ArrayList<Imagem>();
 
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
-
-
 
                 int i = 0;
                 for (Map.Entry<Integer, Uri> entry : imagensId.entrySet()) {

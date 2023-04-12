@@ -1,6 +1,8 @@
 package com.example.projetofinalpw3.model;
 
 
+import java.util.List;
+
 public class Usuario {
     private Long id;
     private String cpf;
@@ -11,6 +13,8 @@ public class Usuario {
 
     private String emailUsuarioVinculado;
 
+    private List<HistoriaSocial> historiasSociais;
+
     public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
         this.id = id;
         this.cpf = cpf;
@@ -19,6 +23,17 @@ public class Usuario {
         this.senha = senha;
         this.tipo = tipo;
         this.emailUsuarioVinculado = emailUsuarioVinculado;
+    }
+
+    public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado, List<HistoriaSocial> historiasSociais) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.tipo = tipo;
+        this.emailUsuarioVinculado = emailUsuarioVinculado;
+        this.historiasSociais = historiasSociais;
     }
 
     public Long getId() {
@@ -77,6 +92,14 @@ public class Usuario {
         this.emailUsuarioVinculado = emailUsuarioVinculado;
     }
 
+    public List<HistoriaSocial> getHistoriasSociais() {
+        return historiasSociais;
+    }
+
+    public void setHistoriasSociais(List<HistoriaSocial> historiaSociais) {
+        this.historiasSociais = historiaSociais;
+    }
+
     @Override
     public String toString() {
         return "Usuario{" +
@@ -87,6 +110,7 @@ public class Usuario {
                 ", senha='" + senha + '\'' +
                 ", tipo=" + tipo +
                 ", emailUsuarioVinculado='" + emailUsuarioVinculado + '\'' +
+                ", historiasSociais=" + historiasSociais +
                 '}';
     }
 }

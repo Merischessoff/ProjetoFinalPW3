@@ -57,17 +57,24 @@
     <string name="categoriasAvd">Atividades de vida Diária</string>
     <string name="categoriasHs">Habilidades Sociais</string>
 
-    <string-array name="itensAtividadeVidaDiaria">
-        <item></item>
+    <string-array name="itensAtividadeVidaDiariaNome">
         <item>Higiene</item>
         <item>Alimentação</item>
         <item>Autocuidado</item>
     </string-array>
 
-    <string-array name="itensHabilidadeSocial">
-        <item></item>
+    <string-array name="itensAtividadeVidaDiariaDescricao">
+        <item>Higiene</item>
+        <item>Alimentação</item>
+        <item>Autocuidado</item>
+    </string-array>
+
+    <string-array name="itensHabilidadeSocialNome">
         <item>Contato Visual</item>
         <item>Começar uma conversa</item>
-        <item>Espaço</item>
+    </string-array>
+    <string-array name="itensHabilidadeSocialDescricao">
+        <item>Contato Visual</item>
+        <item>Começar uma conversa</item>
     </string-array>
 </resources>

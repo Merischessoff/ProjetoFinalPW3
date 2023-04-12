@@ -1,5 +1,6 @@
 package com.example.projetofinalpw3.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HistoriaSocial {
@@ -9,19 +10,19 @@ public class HistoriaSocial {
 
     private String emailUsuarioResponsavel;
 
-    private Usuario usuarioLeitor;
+    private List<Usuario> usuariosLeitores = new ArrayList<Usuario>();
 
-    private HabilidadeSocial habilidadeSocial;
+    private List<HabilidadeSocial> habilidadesSociais = new ArrayList<HabilidadeSocial>();
 
-    private AtividadeDeVidaDiaria atividadeDeVidaDiaria;
+    private List<AtividadeDeVidaDiaria> atividadesDeVidaDiarias = new ArrayList<AtividadeDeVidaDiaria>();
 
-    private List<Imagem> imagens;
+    private List<Imagem> imagens = new ArrayList<Imagem>();
 
-    public HistoriaSocial(String titulo, String texto, String emailUsuarioResponsavel, HabilidadeSocial habilidadeSocial, AtividadeDeVidaDiaria atividadeDeVidaDiaria, List<Imagem> imagens) {
+    public HistoriaSocial(String titulo, String texto, String emailUsuarioResponsavel, List<HabilidadeSocial> habilidadesSociais, List<AtividadeDeVidaDiaria> atividadeDeVidaDiarias, List<Imagem> imagens) {
         this.titulo = titulo;
         this.texto = texto;
-        this.habilidadeSocial = habilidadeSocial;
-        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
+        this.habilidadesSociais = habilidadesSociais;
+        this.atividadesDeVidaDiarias = atividadeDeVidaDiarias;
         this.imagens = imagens;
         this.emailUsuarioResponsavel = emailUsuarioResponsavel;
     }
@@ -52,20 +53,20 @@ public class HistoriaSocial {
         this.texto = texto;
     }
 
-    public HabilidadeSocial getHabilidadeSocial() {
-        return habilidadeSocial;
+    public List<HabilidadeSocial> getHabilidadesSociais() {
+        return habilidadesSociais;
     }
 
-    public void setHabilidadeSocial(HabilidadeSocial habilidadeSocial) {
-        this.habilidadeSocial = habilidadeSocial;
+    public void setHabilidadesSociais(List<HabilidadeSocial> habilidadesSociais) {
+        this.habilidadesSociais = habilidadesSociais;
     }
 
-    public AtividadeDeVidaDiaria getAtividadeDeVidaDiaria() {
-        return atividadeDeVidaDiaria;
+    public List<AtividadeDeVidaDiaria> getAtividadesDeVidaDiarias() {
+        return atividadesDeVidaDiarias;
     }
 
-    public void setAtividadeDeVidaDiaria(AtividadeDeVidaDiaria atividadeDeVidaDiaria) {
-        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
+    public void setAtividadesDeVidaDiarias(List<AtividadeDeVidaDiaria> atividadesDeVidaDiarias) {
+        this.atividadesDeVidaDiarias = atividadesDeVidaDiarias;
     }
 
     public List<Imagem> getImagens() {
@@ -84,12 +85,12 @@ public class HistoriaSocial {
         this.emailUsuarioResponsavel = emailUsuarioResponsavel;
     }
 
-    public Usuario getUsuarioLeitor() {
-        return usuarioLeitor;
+    public List<Usuario> getUsuariosLeitores() {
+        return usuariosLeitores;
     }
 
-    public void setUsuarioLeitor(Usuario usuarioLeitor) {
-        this.usuarioLeitor = usuarioLeitor;
+    public void setUsuariosLeitores(List<Usuario> usuariosLeitores) {
+        this.usuariosLeitores = usuariosLeitores;
     }
 
     public HistoriaSocial withId(Long id) {
@@ -113,12 +114,12 @@ public class HistoriaSocial {
     }
 
     public HistoriaSocial withHabilidadeSocial(HabilidadeSocial habilidadeSocial) {
-        this.habilidadeSocial = habilidadeSocial;
+        this.habilidadesSociais.add(habilidadeSocial);
         return this;
     }
 
     public HistoriaSocial withAtividadeDeVidaDiaria(AtividadeDeVidaDiaria atividadeDeVidaDiaria) {
-        this.atividadeDeVidaDiaria = atividadeDeVidaDiaria;
+        this.atividadesDeVidaDiarias.add(atividadeDeVidaDiaria);
         return this;
     }
 
@@ -128,7 +129,7 @@ public class HistoriaSocial {
     }
 
     public HistoriaSocial build() {
-        return new HistoriaSocial(titulo, texto, emailUsuarioResponsavel, habilidadeSocial, atividadeDeVidaDiaria, imagens);
+        return new HistoriaSocial(titulo, texto, emailUsuarioResponsavel, habilidadesSociais, atividadesDeVidaDiarias, imagens);
     }
 
     @Override
@@ -138,9 +139,9 @@ public class HistoriaSocial {
                 ", titulo='" + titulo + '\'' +
                 ", texto='" + texto + '\'' +
                 ", emailUsuarioResponsavel='" + emailUsuarioResponsavel + '\'' +
-                ", usuarioLeitor=" + usuarioLeitor +
-                ", habilidadeSocial=" + habilidadeSocial +
-                ", atividadeDeVidaDiaria=" + atividadeDeVidaDiaria +
+                ", usuariosLeitores=" + usuariosLeitores +
+                ", habilidadesSociais=" + habilidadesSociais +
+                ", atividadesDeVidaDiarias=" + atividadesDeVidaDiarias +
                 ", imagens=" + imagens +
                 '}';
     }

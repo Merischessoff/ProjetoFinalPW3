@@ -130,11 +130,11 @@ public class EditarHistoriaSocialFragment extends Fragment {
         //carrega na tela se estava associado à alguma atividade de vida diária ou habilidade social
 
         spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
-        if(achou) {
+        /*if(achou) {
             String[] itens = getResources().getStringArray(R.array.itensAtividadeVidaDiaria);
             int pos = -1;
             for (int i = 0; i < itens.length; i++) {
-                if (itens[i].equals(historiaSocial.getAtividadeDeVidaDiaria().getNome())) {
+                if (itens[i].equals(historiaSocial.getAtividadesDeVidaDiarias().getNome())) {
                     pos = i;
                     break;
                 }
@@ -142,13 +142,13 @@ public class EditarHistoriaSocialFragment extends Fragment {
             if (pos != -1) {
                 spinnerAvd.setSelection(pos);
             }
-        }
+        }*/
         spinnerHabSoc = root.findViewById(R.id.spinnerHabilidadeSocial);
-        if(achou) {
+        /*if(achou) {
             String[] itens2 = getResources().getStringArray(R.array.itensHabilidadeSocial);
             int pos = -1;
             for (int i = 0; i < itens2.length; i++) {
-                if (itens2[i].equals(historiaSocial.getHabilidadeSocial().getNome())) {
+                if (itens2[i].equals(historiaSocial.getHabilidadesSociais().getNome())) {
                     pos = i;
                     break;
                 }
@@ -156,7 +156,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
             if (pos != -1) {
                 spinnerHabSoc.setSelection(pos);
             }
-        }
+        }*/
 
         //Carrega imagens salvas no banco
         if(achou) {
