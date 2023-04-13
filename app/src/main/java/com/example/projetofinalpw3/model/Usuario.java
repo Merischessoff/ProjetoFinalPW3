@@ -1,9 +1,14 @@
 package com.example.projetofinalpw3.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Parcelable {
     private Long id;
     private String cpf;
     private String nome;
@@ -112,5 +117,45 @@ public class Usuario {
                 ", emailUsuarioVinculado='" + emailUsuarioVinculado + '\'' +
                 ", historiasSociais=" + historiasSociais +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(id);
+        dest.writeString(cpf);
+        dest.writeString(nome);
+        dest.writeString(email);
+        dest.writeString(senha);
+        dest.writeInt(tipo.ordinal());
+        dest.writeString(emailUsuarioVinculado);
+        dest.writeList(historiasSociais);
+    }
+
+    public static final Creator<Usuario> CREATOR = new Creator<Usuario>() {
+        @Override
+        public Usuario createFromParcel(Parcel in) {
+            return new Usuario(in);
+        }
+
+        @Override
+        public Usuario[] newArray(int size) {
+            return new Usuario[size];
+        }
+    };
+
+    protected Usuario(Parcel in) {
+        id = in.readLong();
+        cpf = in.readString();
+        nome = in.readString();
+        email = in.readString();
+        senha = in.readString();
+        tipo = (TipoUsuario) in.readSerializable();
+        emailUsuarioVinculado = in.readString();
+        historiasSociais = in.createTypedArrayList(HistoriaSocial.CREATOR);
     }
 }

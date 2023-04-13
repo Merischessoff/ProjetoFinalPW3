@@ -58,22 +58,26 @@
     <string name="categoriasHs">Habilidades Sociais</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
+        <item>Nenhum</item>
         <item>Higiene</item>
         <item>Alimentação</item>
         <item>Autocuidado</item>
     </string-array>
 
     <string-array name="itensAtividadeVidaDiariaDescricao">
+        <item>Nenhum</item>
         <item>Higiene</item>
         <item>Alimentação</item>
         <item>Autocuidado</item>
     </string-array>
 
     <string-array name="itensHabilidadeSocialNome">
+        <item>Nenhum</item>
         <item>Contato Visual</item>
         <item>Começar uma conversa</item>
     </string-array>
     <string-array name="itensHabilidadeSocialDescricao">
+        <item>Nenhum</item>
         <item>Contato Visual</item>
         <item>Começar uma conversa</item>
     </string-array>

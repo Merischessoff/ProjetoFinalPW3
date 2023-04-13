@@ -1,10 +1,15 @@
 package com.example.projetofinalpw3.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class AtividadeDeVidaDiaria{
+public class AtividadeDeVidaDiaria implements Parcelable {
     private Long id;
     private String nome;
     private String descricao;
@@ -62,4 +67,34 @@ public class AtividadeDeVidaDiaria{
                 ", historiasSociais=" + historiasSociais +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.nome);
+        dest.writeString(this.descricao);
+        dest.writeList(this.historiasSociais);
+    }
+
+    public static final Parcelable.Creator<AtividadeDeVidaDiaria> CREATOR = new Parcelable.Creator<AtividadeDeVidaDiaria>() {
+        @Override
+        public AtividadeDeVidaDiaria createFromParcel(Parcel source) {
+            Long id = source.readLong();
+            String nome = source.readString();
+            String descricao = source.readString();
+            List<HistoriaSocial> historiasSociais = new ArrayList<>();
+            source.readList(historiasSociais, getClass().getClassLoader());
+            return new AtividadeDeVidaDiaria(id, nome, descricao, historiasSociais);
+        }
+
+        @Override
+        public AtividadeDeVidaDiaria[] newArray(int size) {
+            return new AtividadeDeVidaDiaria[size];
+        }
+    };
 }

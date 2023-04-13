@@ -39,7 +39,7 @@ public class ListaHistoriaSocialFragment extends Fragment {
 
     private String token;
     private String emailUsuarioVinculado;
-    private List<HistoriaSocialDTO> historias = new ArrayList<HistoriaSocialDTO>();
+    private List<HistoriaSocial> historias = new ArrayList<HistoriaSocial>();
     private APIInterface apiInterface;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,11 +56,11 @@ public class ListaHistoriaSocialFragment extends Fragment {
     }
     private void carregaHistoriasSociais(){
         apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<List<HistoriaSocialDTO>> call = apiInterface.pesquisaHistoriasPropriasPorEmail(token, emailUsuarioVinculado);
+        Call<List<HistoriaSocial>> call = apiInterface.pesquisaHistoriasPropriasPorEmail(token, emailUsuarioVinculado);
 
-        call.enqueue(new Callback<List<HistoriaSocialDTO>>() {
+        call.enqueue(new Callback<List<HistoriaSocial>>() {
             @Override
-            public void onResponse(Call<List<HistoriaSocialDTO>> call, Response<List<HistoriaSocialDTO>> response) {
+            public void onResponse(Call<List<HistoriaSocial>> call, Response<List<HistoriaSocial>> response) {
                 historias = response.body();
                 MyAdapterListHistSocial myAdapterListaHistorias = new MyAdapterListHistSocial(getActivity().getBaseContext(),historias, token);
                 recyclerView.setAdapter(myAdapterListaHistorias);
@@ -74,7 +74,7 @@ public class ListaHistoriaSocialFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<HistoriaSocialDTO>> call, Throwable t) {
+            public void onFailure(Call<List<HistoriaSocial>> call, Throwable t) {
                 call.cancel();
                 Log.e("onFailure", "ListaHistoriaSocialFragment " + t.getMessage());
             }

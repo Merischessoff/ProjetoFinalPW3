@@ -1,9 +1,14 @@
 package com.example.projetofinalpw3.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class HistoriaSocial {
+public class HistoriaSocial implements Parcelable {
     private Long id;
     private String titulo;
     private String texto;
@@ -145,4 +150,46 @@ public class HistoriaSocial {
                 ", imagens=" + imagens +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeString(this.titulo);
+        dest.writeString(this.texto);
+        dest.writeString(this.emailUsuarioResponsavel);
+        dest.writeTypedList(this.usuariosLeitores);
+        dest.writeTypedList(this.habilidadesSociais);
+        dest.writeTypedList(this.atividadesDeVidaDiarias);
+        dest.writeTypedList(this.imagens);
+    }
+
+    public static final Creator<HistoriaSocial> CREATOR = new Creator<HistoriaSocial>() {
+        @Override
+        public HistoriaSocial createFromParcel(Parcel source) {
+            HistoriaSocial historiaSocial = new HistoriaSocial();
+            historiaSocial.id = source.readLong();
+            historiaSocial.titulo = source.readString();
+            historiaSocial.texto = source.readString();
+            historiaSocial.emailUsuarioResponsavel = source.readString();
+            //historiaSocial.usuariosLeitores = new ArrayList<>();
+            //source.readTypedList(historiaSocial.usuariosLeitores, Usuario.CREATOR);
+            historiaSocial.habilidadesSociais = new ArrayList<>();
+            source.readTypedList(historiaSocial.habilidadesSociais, HabilidadeSocial.CREATOR);
+            historiaSocial.atividadesDeVidaDiarias = new ArrayList<>();
+            source.readTypedList(historiaSocial.atividadesDeVidaDiarias, AtividadeDeVidaDiaria.CREATOR);
+            historiaSocial.imagens = new ArrayList<>();
+            source.readTypedList(historiaSocial.imagens, Imagem.CREATOR);
+            return historiaSocial;
+        }
+
+        @Override
+        public HistoriaSocial[] newArray(int size) {
+            return new HistoriaSocial[size];
+        }
+    };
 }

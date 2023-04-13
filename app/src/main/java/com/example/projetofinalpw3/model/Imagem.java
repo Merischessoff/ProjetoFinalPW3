@@ -1,9 +1,14 @@
 package com.example.projetofinalpw3.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Imagem {
+public class Imagem implements Parcelable {
 
     private Long id;
     private int seq;
@@ -64,4 +69,36 @@ public class Imagem {
                 ", texto='" + texto + '\'' +
                 '}';
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeLong(this.id);
+        dest.writeInt(this.seq);
+        dest.writeString(this.url);
+        dest.writeString(this.texto);
+    }
+
+    protected Imagem(Parcel in) {
+        this.id = in.readLong();
+        this.seq = in.readInt();
+        this.url = in.readString();
+        this.texto = in.readString();
+    }
+
+    public static final Parcelable.Creator<Imagem> CREATOR = new Parcelable.Creator<Imagem>() {
+        @Override
+        public Imagem createFromParcel(Parcel source) {
+            return new Imagem(source);
+        }
+
+        @Override
+        public Imagem[] newArray(int size) {
+            return new Imagem[size];
+        }
+    };
 }

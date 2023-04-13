@@ -118,14 +118,14 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 HabilidadeSocial hs = null;
                 if(!spinnerAvd.getSelectedItem().toString().trim().equalsIgnoreCase("")){
                     avd = new AtividadeDeVidaDiaria();
-                    avd.setId((long) spinnerAvd.getSelectedItemPosition()+1);
+                    avd.setId((long) spinnerAvd.getSelectedItemPosition());
                     Log.e("posicao spinner ", String.valueOf(avd.getId()));
                     avd.setDescricao(spinnerAvd.getSelectedItem().toString());
                     avd.setNome(spinnerAvd.getSelectedItem().toString());
                 }
                 if(!spinnerHabSoc.getSelectedItem().toString().trim().equalsIgnoreCase("")) {
                     hs = new HabilidadeSocial();
-                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition()+1);
+                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition());
                     Log.e("posicao spinner ", String.valueOf(hs.getId()));
                     hs.setNome(spinnerHabSoc.getSelectedItem().toString());
                     hs.setDescricao(spinnerHabSoc.getSelectedItem().toString());

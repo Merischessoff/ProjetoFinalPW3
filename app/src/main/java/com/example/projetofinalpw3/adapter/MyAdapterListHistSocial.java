@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,11 +37,11 @@ import retrofit2.Response;
 
 
 public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListHistSocial.MyViewHolderListHistSocial> {
-    List<HistoriaSocialDTO> listaHistoria = new ArrayList<>();
+    List<HistoriaSocial> listaHistoria = new ArrayList<HistoriaSocial>();
     Context context;
 
     String token;
-    public MyAdapterListHistSocial(Context context, List<HistoriaSocialDTO> historias, String token) {
+    public MyAdapterListHistSocial(Context context, List<HistoriaSocial> historias, String token) {
         this.context = context;
         this.listaHistoria = historias;
         this.token = token;
@@ -54,19 +56,22 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderListHistSocial myViewHolderListHistSocial, @SuppressLint("RecyclerView") int position) {
-        HistoriaSocialDTO h = listaHistoria.get(position);
+        HistoriaSocial h = listaHistoria.get(position);
         myViewHolderListHistSocial.titulo.setText(h.getTitulo());
         Bundle bundle = new Bundle();
         bundle.putString("id", listaHistoria.get(position).getId().toString());
         bundle.putString("titulo", listaHistoria.get(position).getTitulo());
         bundle.putString("texto", listaHistoria.get(position).getTexto());
+        bundle.putString("emailUsuarioResponsavel", listaHistoria.get(position).getEmailUsuarioResponsavel());
+        bundle.putParcelableArrayList("listaAvd", new ArrayList<>(listaHistoria.get(position).getAtividadesDeVidaDiarias()));
+        bundle.putParcelableArrayList("listaHs", new ArrayList<>(listaHistoria.get(position).getHabilidadesSociais()));
+        bundle.putParcelableArrayList("listaImagens", new ArrayList<>(listaHistoria.get(position).getImagens()));
         myViewHolderListHistSocial.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 removerItem(bundle, position);
             }
         });
-
 
         myViewHolderListHistSocial.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle));
         myViewHolderListHistSocial.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Edit,  bundle));
@@ -103,6 +108,9 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
 
                     //}}).setNegativeButton("Não", null).show();
     }
+
+
+
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;

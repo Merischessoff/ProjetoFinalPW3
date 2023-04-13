@@ -47,7 +47,7 @@ public interface APIInterface {
     Call<HistoriaSocial> cadastroHistoriaSocial(@Header("Authorization") String authorization, @Body HistoriaSocial histSocial);
 
     @GET("/historiasocial/pesquisa/historiasproprias/{email}")
-    Call<List<HistoriaSocialDTO>> pesquisaHistoriasPropriasPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
+    Call<List<HistoriaSocial>> pesquisaHistoriasPropriasPorEmail(@Header("Authorization") String authorization, @Path("email") String email);
 
     @DELETE("/historiasocial/{id}")
     Call<HistoriaSocial> deletaHistoriaPropria(@Header("Authorization") String authorization, @Path("id") Long id);

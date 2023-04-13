@@ -84,7 +84,6 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
     private String titulo;
 
-    private HistoriaSocial historiaSocial;
     private String texto;
 
     private TextInputEditText tituloHistoria;
@@ -99,9 +98,22 @@ public class EditarHistoriaSocialFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_historia_social_editar, container, false);
         Bundle bundle = getArguments();
 
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
         Intent intent = getActivity().getIntent();
         token = intent.getStringExtra("token");
         email = intent.getStringExtra("email");
+
+        List<AtividadeDeVidaDiaria> listaAtividades = bundle.getParcelableArrayList("listaAvd");
+        List<HabilidadeSocial> listaHabilidadesSociais = bundle.getParcelableArrayList("listaHs");
+        List<Imagem> listaImagens = bundle.getParcelableArrayList("listaImagens");
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_CODE_READ_EXTERNAL_STORAGE);
+        }
 
         //começa a carregar o titulo e o texto do bundle que foi buscado com o adapter
         tituloHistoria = root.findViewById(R.id.txtTituloHistoriaSocial);
@@ -109,77 +121,51 @@ public class EditarHistoriaSocialFragment extends Fragment {
         tituloHistoria.setText(bundle.getString("titulo"));
         textoHistoria.setText(bundle.getString("texto"));
 
-        //Vai chamar a api e buscar o objeto completo por id
-        apiInterface = APIClient.getClient().create(APIInterface.class);
-        id = bundle.getString("id");
-        Call<HistoriaSocial> call = apiInterface.pesquisaHistoriaPropriaId(token, Long.parseLong(id));
-        call.enqueue(new Callback<HistoriaSocial>() {
-            @Override
-            public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
-                historiaSocial = response.body();
-                Log.e("Historia Social", "body " + response.body().toString());
-                Log.e("Historia Social API ", historiaSocial.toString());
-                achou = true;
-            }
-            @Override
-            public void onFailure(Call<HistoriaSocial> call, Throwable t) {
-                Log.e("onFailure ", "EditarHistoriaSocialFragment " + t.getMessage());
-            }
-        });
-
-        //carrega na tela se estava associado à alguma atividade de vida diária ou habilidade social
-
         spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
-        /*if(achou) {
-            String[] itens = getResources().getStringArray(R.array.itensAtividadeVidaDiaria);
-            int pos = -1;
-            for (int i = 0; i < itens.length; i++) {
-                if (itens[i].equals(historiaSocial.getAtividadesDeVidaDiarias().getNome())) {
+        String[] itens = getResources().getStringArray(R.array.itensAtividadeVidaDiariaNome);
+        int pos = -1;
+        for (int i = 0; i < itens.length; i++) {
+                if (itens[i].equals(listaAtividades.get(0).getNome())) {
                     pos = i;
                     break;
                 }
-            }
-            if (pos != -1) {
-                spinnerAvd.setSelection(pos);
-            }
-        }*/
+        }
+        if (pos != -1) {
+            spinnerAvd.setSelection(pos);
+        }
         spinnerHabSoc = root.findViewById(R.id.spinnerHabilidadeSocial);
-        /*if(achou) {
-            String[] itens2 = getResources().getStringArray(R.array.itensHabilidadeSocial);
-            int pos = -1;
-            for (int i = 0; i < itens2.length; i++) {
-                if (itens2[i].equals(historiaSocial.getHabilidadesSociais().getNome())) {
-                    pos = i;
-                    break;
-                }
+        String[] itens2 = getResources().getStringArray(R.array.itensHabilidadeSocialNome);
+        int pos2 = -1;
+        for (int i = 0; i < itens2.length; i++) {
+            if (itens2[i].equals(listaHabilidadesSociais.get(0).getNome())) {
+                pos2 = i;
+                break;
             }
-            if (pos != -1) {
-                spinnerHabSoc.setSelection(pos);
-            }
-        }*/
+        }
+        if (pos2 != -1) {
+            spinnerHabSoc.setSelection(pos2);
+        }
 
         //Carrega imagens salvas no banco
-        if(achou) {
-            GridLayout imageContainer = root.findViewById(R.id.image_grid);
-            Random random = new Random();
-            int idTexto = random.nextInt(100);
-            int idImg = random.nextInt(100);
-            int idImgContainer = random.nextInt(100);
-            for (Imagem img : historiaSocial.getImagens()) {
-                ImageView imageView = new ImageView(requireContext());
-                TextInputEditText textoHist = new TextInputEditText(requireContext());
+        GridLayout imageContainer = root.findViewById(R.id.image_grid);
+        Random random = new Random();
+        int idTexto = random.nextInt(100);
+        int idImg = random.nextInt(100);
+        int idImgContainer = random.nextInt(100);
+        for (Imagem img : listaImagens) {
+            ImageView imageView = new ImageView(requireContext());
+            TextInputEditText textoHist = new TextInputEditText(requireContext());
+            imageView.setLayoutParams(
+                    new LinearLayout.LayoutParams(150, 150)
+            );
+            textoHist.setLayoutParams(
+                    new LinearLayout.LayoutParams(150, 150)
+            );
+            textoHist.setId(idTexto);
+            textoHist.setText(img.getTexto());
+            imageView.setId(idImg);
 
-                imageView.setLayoutParams(
-                        new LinearLayout.LayoutParams(150, 150)
-                );
-                textoHist.setLayoutParams(
-                        new LinearLayout.LayoutParams(150, 150)
-                );
-                textoHist.setId(idTexto);
-                textoHist.setText(img.getTexto());
-                imageView.setId(idImg);
-
-                Glide.with(requireContext())
+            Glide.with(requireContext())
                         .load(img.getUrl())
                         .apply(RequestOptions.centerCropTransform()) // ajuste de imagem opcional
                         .into(imageView);
@@ -189,7 +175,6 @@ public class EditarHistoriaSocialFragment extends Fragment {
                 imagensId.put(imageView.getId(), Uri.parse(img.getUrl()));
                 textosId.add(textoHist.getId());
             }
-        }
 
         btnSelecionaImg = root.findViewById(R.id.btnSelecionaImagens);
         btnSelecionaImg.setOnClickListener(new View.OnClickListener() {
@@ -245,8 +230,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
                 Log.e("token ", token);
                 Log.e("email ", email);
-                Log.e("historiaSocial ", historiaSocial.toString());
-                
+
                 Call<HistoriaSocial> call = apiInterface.cadastroHistoriaSocial(token, historiaSocialNova);
                 call.enqueue(new Callback<HistoriaSocial>() {
                     @Override
