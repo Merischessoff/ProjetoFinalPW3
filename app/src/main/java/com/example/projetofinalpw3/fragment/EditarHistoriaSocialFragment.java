@@ -62,13 +62,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditarHistoriaSocialFragment extends Fragment {
-    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1;
+    private static final int MY_PERMISSIONS_INTERNET = 123;
+    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
     private ImageView foto;
     private Button btnEditar;
     private AppCompatSpinner spinnerAvd;
     private AppCompatSpinner spinnerHabSoc;
     private Button btnSelecionaImg;
-
+    private List<Imagem> listaImagens;
     private Map<Integer, Uri> imagensId = new HashMap<Integer,Uri>();
 
     private List<Integer> textosId = new ArrayList<Integer>();
@@ -91,6 +92,11 @@ public class EditarHistoriaSocialFragment extends Fragment {
     private TextInputEditText textoHistoria;
 
     private TextInputEditText t;
+
+    private ActivityResultLauncher<String> requestPermissionLauncher;
+
+    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
+
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Nullable
     @Override
@@ -106,13 +112,25 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
         List<AtividadeDeVidaDiaria> listaAtividades = bundle.getParcelableArrayList("listaAvd");
         List<HabilidadeSocial> listaHabilidadesSociais = bundle.getParcelableArrayList("listaHs");
-        List<Imagem> listaImagens = bundle.getParcelableArrayList("listaImagens");
+        listaImagens = bundle.getParcelableArrayList("listaImagens");
 
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(),
-                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
-                    REQUEST_CODE_READ_EXTERNAL_STORAGE);
+        GridLayout imageContainer = root.findViewById(R.id.image_grid);
+        for (Imagem img: listaImagens) {
+            ImageView imageView = new ImageView(requireContext());
+            TextInputEditText textoHist = new TextInputEditText(requireContext());
+
+            imageView.setLayoutParams(
+                    new LinearLayout.LayoutParams(150,150)
+            );
+            textoHist.setLayoutParams(
+                    new LinearLayout.LayoutParams(150, 150)
+            );
+            Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+            imageContainer.addView(imageView);
+            textoHist.setText(img.getTexto());
+            imageContainer.addView(textoHist);
+            imagensId.put(imageView.getId(), Uri.parse(img.getUrl()));
+            textosId.add(textoHist.getId());
         }
 
         //começa a carregar o titulo e o texto do bundle que foi buscado com o adapter
@@ -145,36 +163,6 @@ public class EditarHistoriaSocialFragment extends Fragment {
         if (pos2 != -1) {
             spinnerHabSoc.setSelection(pos2);
         }
-
-        //Carrega imagens salvas no banco
-        GridLayout imageContainer = root.findViewById(R.id.image_grid);
-        Random random = new Random();
-        int idTexto = random.nextInt(100);
-        int idImg = random.nextInt(100);
-        int idImgContainer = random.nextInt(100);
-        for (Imagem img : listaImagens) {
-            ImageView imageView = new ImageView(requireContext());
-            TextInputEditText textoHist = new TextInputEditText(requireContext());
-            imageView.setLayoutParams(
-                    new LinearLayout.LayoutParams(150, 150)
-            );
-            textoHist.setLayoutParams(
-                    new LinearLayout.LayoutParams(150, 150)
-            );
-            textoHist.setId(idTexto);
-            textoHist.setText(img.getTexto());
-            imageView.setId(idImg);
-
-            Glide.with(requireContext())
-                        .load(img.getUrl())
-                        .apply(RequestOptions.centerCropTransform()) // ajuste de imagem opcional
-                        .into(imageView);
-                imageContainer.addView(imageView);
-                imageContainer.addView(textoHist);
-                imageContainer.setId(idImgContainer);
-                imagensId.put(imageView.getId(), Uri.parse(img.getUrl()));
-                textosId.add(textoHist.getId());
-            }
 
         btnSelecionaImg = root.findViewById(R.id.btnSelecionaImagens);
         btnSelecionaImg.setOnClickListener(new View.OnClickListener() {
@@ -289,4 +277,6 @@ public class EditarHistoriaSocialFragment extends Fragment {
                     }
                 }
             });
+
+
 }

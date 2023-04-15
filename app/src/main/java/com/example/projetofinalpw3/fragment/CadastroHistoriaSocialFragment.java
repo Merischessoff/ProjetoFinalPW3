@@ -62,7 +62,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CadastroHistoriaSocialFragment extends Fragment {
-    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 1;
+    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
     private ImageView foto;
     private Button btnCadastrar;
     private AppCompatSpinner spinnerAvd;
@@ -79,13 +79,13 @@ public class CadastroHistoriaSocialFragment extends Fragment {
     private String token;
 
     private String email;
-
+    private GridLayout imageContainer;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
         root = inflater.inflate(R.layout.fragment_historia_social_cadastrar, container, false);
         Bundle bundle = getArguments();
-
+        imageContainer = root.findViewById(R.id.image_grid);
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
         Intent intent = getActivity().getIntent();
@@ -118,14 +118,14 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 HabilidadeSocial hs = null;
                 if(!spinnerAvd.getSelectedItem().toString().trim().equalsIgnoreCase("")){
                     avd = new AtividadeDeVidaDiaria();
-                    avd.setId((long) spinnerAvd.getSelectedItemPosition());
+                    avd.setId((long) spinnerAvd.getSelectedItemPosition()+1);
                     Log.e("posicao spinner ", String.valueOf(avd.getId()));
                     avd.setDescricao(spinnerAvd.getSelectedItem().toString());
                     avd.setNome(spinnerAvd.getSelectedItem().toString());
                 }
                 if(!spinnerHabSoc.getSelectedItem().toString().trim().equalsIgnoreCase("")) {
                     hs = new HabilidadeSocial();
-                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition());
+                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition()+1);
                     Log.e("posicao spinner ", String.valueOf(hs.getId()));
                     hs.setNome(spinnerHabSoc.getSelectedItem().toString());
                     hs.setDescricao(spinnerHabSoc.getSelectedItem().toString());
@@ -192,9 +192,7 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 @Override
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
-                        GridLayout imageContainer = root.findViewById(R.id.image_grid);
                         Random random = new Random();
-
                         // Gera um número inteiro aleatório entre 0 e 99
                         int numeroAleatorioTexto = random.nextInt(100);
                         int numeroAleatorioImg = random.nextInt(100);
