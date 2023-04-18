@@ -17,9 +17,9 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
             android:text="@string/cad_user_leitor_titulo"
             android:textAlignment="center"
+            android:layout_margin="@dimen/margin2"
             android:textSize="15dp" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -100,16 +100,20 @@
 
         <Button
             android:id="@+id/btnCadastrarUsuarioLeitorVinculado"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin8"
+            android:layout_margin="@dimen/margin4"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/btnCadastrar" />
 
         <Button
             android:id="@+id/btnCancelarUsuarioLeitorVinculado"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_margin="@dimen/margin4"
+            android:gravity="center"
             android:text="@string/btnCancelar" />
 
     </androidx.appcompat.widget.LinearLayoutCompat>

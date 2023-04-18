@@ -81,6 +81,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/categoriasAvd"
+                android:textColor="@color/white"
                 android:textAlignment="center"
                 android:background="@drawable/border_spinner_preenchido"
                 android:textStyle="bold" />
@@ -110,9 +111,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/categoriasHs"
+                android:textColor="@color/white"
                 android:textAlignment="center"
                 android:background="@drawable/border_spinner_preenchido"
-
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatSpinner

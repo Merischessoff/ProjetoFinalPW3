@@ -1,7 +1,6 @@
 package com.example.projetofinalpw3.fragment;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -14,14 +13,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,21 +31,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
-import com.example.projetofinalpw3.dto.HistoriaSocialDTO;
 import com.example.projetofinalpw3.model.AtividadeDeVidaDiaria;
 import com.example.projetofinalpw3.model.HabilidadeSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.Imagem;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.example.projetofinalpw3.util.Util;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -71,31 +62,27 @@ public class EditarHistoriaSocialFragment extends Fragment {
     private Button btnSelecionaImg;
     private List<Imagem> listaImagens;
     private Map<Integer, Uri> imagensId = new HashMap<Integer,Uri>();
-
+    private Map<Integer, Integer> imagensIdPos = new HashMap<Integer,Integer>();
+    private Map<Integer, Integer> textosIdPos = new HashMap<Integer,Integer>();
     private List<Integer> textosId = new ArrayList<Integer>();
     private View root;
     private TextView textSelecionado;
     private APIInterface apiInterface;
-
     private String token;
-
     private String email;
     private boolean achou = false;
     private String id;
-
     private String titulo;
 
     private String texto;
-
     private TextInputEditText tituloHistoria;
-
     private TextInputEditText textoHistoria;
-
+    private GridLayout imageContainer;
     private TextInputEditText t;
-
     private ActivityResultLauncher<String> requestPermissionLauncher;
-
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
+
+    private Util util;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Nullable
@@ -103,6 +90,15 @@ public class EditarHistoriaSocialFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_historia_social_editar, container, false);
         Bundle bundle = getArguments();
+
+        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(),
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                    REQUEST_CODE_READ_EXTERNAL_STORAGE);
+        }else {
+            // Acesso permitido, você pode prosseguir com o código que estava tentando executar
+        }
 
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
@@ -114,23 +110,39 @@ public class EditarHistoriaSocialFragment extends Fragment {
         List<HabilidadeSocial> listaHabilidadesSociais = bundle.getParcelableArrayList("listaHs");
         listaImagens = bundle.getParcelableArrayList("listaImagens");
 
-        GridLayout imageContainer = root.findViewById(R.id.image_grid);
+        imageContainer = root.findViewById(R.id.image_grid);
+        int j = 0;
         for (Imagem img: listaImagens) {
             ImageView imageView = new ImageView(requireContext());
             TextInputEditText textoHist = new TextInputEditText(requireContext());
+            Button deleteButton = new Button(requireContext());
 
-            imageView.setLayoutParams(
-                    new LinearLayout.LayoutParams(150,150)
-            );
-            textoHist.setLayoutParams(
-                    new LinearLayout.LayoutParams(150, 150)
-            );
+            textoHist.setId(util.geraId());
+            imageView.setId(util.geraId());
+            imageContainer.setId(util.geraId());
+            deleteButton.setId(util.geraId());
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    deletaImagem(imageView.getId(), textoHist.getId(), deleteButton.getId() , root);
+                }
+            });
+            deleteButton.setText("X");
+            deleteButton.setLayoutParams(new LinearLayout.LayoutParams(80, 80));
+            imageView.setLayoutParams(new LinearLayout.LayoutParams(200,200));
+            textoHist.setLayoutParams(new LinearLayout.LayoutParams(200, 200));
+            textoHist.setText(img.getTexto());
+
             Glide.with(requireContext()).load(img.getUrl()).into(imageView);
             imageContainer.addView(imageView);
-            textoHist.setText(img.getTexto());
             imageContainer.addView(textoHist);
+            imageContainer.addView(deleteButton);
+
             imagensId.put(imageView.getId(), Uri.parse(img.getUrl()));
+            imagensIdPos.put(imageView.getId(),j);
             textosId.add(textoHist.getId());
+            textosIdPos.put(textoHist.getId(),j);
+            j++;
         }
 
         //começa a carregar o titulo e o texto do bundle que foi buscado com o adapter
@@ -242,19 +254,34 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
         return root;
     }
+
+    private void deletaImagem(int imageViewID, int textoHistID, int deleteButtonId, View root) {
+        Log.e("imagens ", "ids "+ imagensId);
+        Log.e("textos ", "ids "+ textosId);
+
+        int posImg = imagensIdPos.get(imageViewID);
+        imagensId.remove(posImg);
+        ImageView img = root.findViewById(imageViewID);
+        int posText = textosIdPos.get(textoHistID);
+        textosId.remove(posText);
+        TextView text = root.findViewById(textoHistID);
+        Button btn = root.findViewById(deleteButtonId);
+        imageContainer.removeView(img);
+        imageContainer.removeView(text);
+        imageContainer.removeView(btn);
+
+        Log.e("imagens ", "ids "+ imagensId);
+        Log.e("textos ", "ids "+ textosId);
+
+    }
+
     ActivityResultLauncher<String[]> mGetMultipleContentsLauncher = registerForActivityResult(
             new ActivityResultContracts.OpenMultipleDocuments(),
             new ActivityResultCallback<List<Uri>>() {
                 @Override
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
-                        GridLayout imageContainer = root.findViewById(R.id.image_grid);
-                        Random random = new Random();
-
-                        // Gera um número inteiro aleatório entre 0 e 99
-                        int numeroAleatorioTexto = random.nextInt(100);
-                        int numeroAleatorioImg = random.nextInt(100);
-                        int numeroAleatorioImgContainer = random.nextInt(100);
+                        //imageContainer = root.findViewById(R.id.image_grid);
                         for (Uri uri : result) {
                             ImageView imageView = new ImageView(requireContext());
                             TextInputEditText textoHist = new TextInputEditText(requireContext());
@@ -265,12 +292,12 @@ public class EditarHistoriaSocialFragment extends Fragment {
                             textoHist.setLayoutParams(
                                     new LinearLayout.LayoutParams(150, 150)
                             );
-                            textoHist.setId(numeroAleatorioTexto);
-                            imageView.setId(numeroAleatorioImg);
+                            textoHist.setId(util.geraId());
+                            imageView.setId(util.geraId());
                             imageView.setImageURI(uri);
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
-                            imageContainer.setId(numeroAleatorioImgContainer);
+                            imageContainer.setId(util.geraId());
                             imagensId.put(imageView.getId(), uri);
                             textosId.add(textoHist.getId());
                         }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryDarkColor"
+    android:background="@color/primaryLightColor"
     tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -55,17 +55,21 @@
 
         <Button
             android:id="@+id/btnLogin"
-            android:layout_width="match_parent"
-            android:layout_margin="@dimen/margin8"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin4"
+            android:gravity="center"
             android:backgroundTint="@color/orange"
             android:text="@string/login_btn" />
 
         <Button
             android:id="@+id/btnCadastro"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/margin8"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/margin4"
+            android:gravity="center"
             android:backgroundTint="@color/orange"
             android:text="@string/login_cadastro" />
     </androidx.appcompat.widget.LinearLayoutCompat>

@@ -40,6 +40,7 @@ import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.ui.gallery.GalleryViewModel;
+import com.example.projetofinalpw3.util.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
@@ -80,6 +81,7 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
     private String email;
     private GridLayout imageContainer;
+    private Util util;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         GalleryViewModel galleryViewModel = new ViewModelProvider(this).get(GalleryViewModel.class);
@@ -97,6 +99,8 @@ public class CadastroHistoriaSocialFragment extends Fragment {
             ActivityCompat.requestPermissions(requireActivity(),
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_CODE_READ_EXTERNAL_STORAGE);
+        }else {
+            // Acesso permitido, você pode prosseguir com o código que estava tentando executar
         }
 
         spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
@@ -192,11 +196,7 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                 @Override
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
-                        Random random = new Random();
-                        // Gera um número inteiro aleatório entre 0 e 99
-                        int numeroAleatorioTexto = random.nextInt(100);
-                        int numeroAleatorioImg = random.nextInt(100);
-                        int numeroAleatorioImgContainer = random.nextInt(100);
+
                         for (Uri uri : result) {
                             ImageView imageView = new ImageView(requireContext());
                             TextInputEditText textoHist = new TextInputEditText(requireContext());
@@ -207,12 +207,12 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                             textoHist.setLayoutParams(
                                     new LinearLayout.LayoutParams(150, 150)
                             );
-                            textoHist.setId(numeroAleatorioTexto);
-                            imageView.setId(numeroAleatorioImg);
+                            textoHist.setId(util.geraId());
+                            imageView.setId(util.geraId());
                             imageView.setImageURI(uri);
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
-                            imageContainer.setId(numeroAleatorioImgContainer);
+                            imageContainer.setId(util.geraId());
                             imagensId.put(imageView.getId(), uri);
                             textosId.add(textoHist.getId());
                         }
