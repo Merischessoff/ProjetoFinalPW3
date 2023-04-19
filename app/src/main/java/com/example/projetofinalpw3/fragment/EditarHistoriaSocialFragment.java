@@ -281,25 +281,42 @@ public class EditarHistoriaSocialFragment extends Fragment {
                 @Override
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
-                        //imageContainer = root.findViewById(R.id.image_grid);
+                        int d = 0;
                         for (Uri uri : result) {
                             ImageView imageView = new ImageView(requireContext());
                             TextInputEditText textoHist = new TextInputEditText(requireContext());
-
+                            Button deleteButton = new Button(requireContext());
+                            deleteButton.setId(util.geraId());
+                            textoHist.setId(util.geraId());
+                            imageView.setId(util.geraId());
+                            //imageContainer.setId(util.geraId());
+                            deleteButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    deletaImagem(imageView.getId(), textoHist.getId(), deleteButton.getId() , getView());
+                                }
+                            });
+                            deleteButton.setText("X");
+                            deleteButton.setLayoutParams(new LinearLayout.LayoutParams(80, 80));
                             imageView.setLayoutParams(
                                     new LinearLayout.LayoutParams(150,150)
                             );
                             textoHist.setLayoutParams(
                                     new LinearLayout.LayoutParams(150, 150)
                             );
-                            textoHist.setId(util.geraId());
-                            imageView.setId(util.geraId());
+
                             imageView.setImageURI(uri);
+
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
-                            imageContainer.setId(util.geraId());
+                            imageContainer.addView(deleteButton);
+
                             imagensId.put(imageView.getId(), uri);
                             textosId.add(textoHist.getId());
+
+                            imagensIdPos.put(imageView.getId(),d);
+                            textosIdPos.put(textoHist.getId(),d);
+                            d++;
                         }
                     }
                 }

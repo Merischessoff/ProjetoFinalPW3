@@ -36,6 +36,7 @@ import com.example.projetofinalpw3.model.AtividadeDeVidaDiaria;
 import com.example.projetofinalpw3.model.HabilidadeSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.Imagem;
+import com.example.projetofinalpw3.model.Img;
 import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
@@ -70,9 +71,8 @@ public class CadastroHistoriaSocialFragment extends Fragment {
     private AppCompatSpinner spinnerHabSoc;
     private Button btnSelecionaImg;
 
-    private Map<Integer, Uri> imagensId = new HashMap<Integer,Uri>();
-
-    private List<Integer> textosId = new ArrayList<Integer>();
+    private Map<Integer, Img> imagensId = new HashMap<Integer,Img>();
+    private Map<Integer, Integer> imagensIdPos = new HashMap<Integer,Integer>();
     private View root;
     private TextView textSelecionado;
     private APIInterface apiInterface;
@@ -138,19 +138,13 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
                 String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
                 String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
-
-                int i = 0;
-                for (Map.Entry<Integer, Uri> entry : imagensId.entrySet()) {
+                int i=1;
+                for (Map.Entry<Integer, Img> entry : imagensId.entrySet()) {
                     Imagem img = new Imagem();
-                    img.setSeq(i+1);
-                    img.setUrl(entry.getValue().toString());
-
-                    Log.e("uri ", entry.getValue().toString());
-
-                    TextInputEditText t = root.findViewById(textosId.get(i));
+                    img.setSeq(i);
+                    img.setUrl(entry.getValue().getUri().toString());
+                    TextInputEditText t = root.findViewById(entry.getValue().getIdTexto());
                     img.setTexto(t.getText().toString());
-
-                    Log.e("textos ", t.getText().toString());
                     imagens.add(img);
                     i++;
                 }
@@ -189,32 +183,71 @@ public class CadastroHistoriaSocialFragment extends Fragment {
 
         return root;
     }
+    private void deletaImagem(int imageViewID, int deleteButtonId, View root) {
+        Img img = new Img();
+        int posImg = imagensIdPos.get(imageViewID);
 
+        ImageView imgView = root.findViewById(imageViewID);
+        imageContainer.removeView(imgView);
+
+        img = imagensId.get(imageViewID);
+
+        Log.e("Img ", "aqui " + img.toString());
+        TextView text = root.findViewById(img.getIdTexto());
+        imageContainer.removeView(text);
+
+        Button btn = root.findViewById(deleteButtonId);
+        imageContainer.removeView(btn);
+
+        imagensId.remove(posImg);
+        imagensIdPos.remove(imageViewID);
+
+    }
     ActivityResultLauncher<String[]> mGetMultipleContentsLauncher = registerForActivityResult(
             new ActivityResultContracts.OpenMultipleDocuments(),
             new ActivityResultCallback<List<Uri>>() {
                 @Override
                 public void onActivityResult(List<Uri> result) {
                     if (result != null && !result.isEmpty()) {
-
+                        int d = 0;
                         for (Uri uri : result) {
                             ImageView imageView = new ImageView(requireContext());
                             TextInputEditText textoHist = new TextInputEditText(requireContext());
-
+                            Button deleteButton = new Button(requireContext());
+                            deleteButton.setId(util.geraId());
+                            textoHist.setId(util.geraId());
+                            imageView.setId(util.geraId());
+                            //imageContainer.setId(util.geraId());
+                            deleteButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    deletaImagem(imageView.getId(), deleteButton.getId() , getView());
+                                }
+                            });
+                            deleteButton.setText("X");
+                            deleteButton.setLayoutParams(new LinearLayout.LayoutParams(80, 80));
                             imageView.setLayoutParams(
                                     new LinearLayout.LayoutParams(150,150)
                             );
                             textoHist.setLayoutParams(
                                     new LinearLayout.LayoutParams(150, 150)
                             );
-                            textoHist.setId(util.geraId());
-                            imageView.setId(util.geraId());
+
                             imageView.setImageURI(uri);
+
                             imageContainer.addView(imageView);
                             imageContainer.addView(textoHist);
-                            imageContainer.setId(util.geraId());
-                            imagensId.put(imageView.getId(), uri);
-                            textosId.add(textoHist.getId());
+                            imageContainer.addView(deleteButton);
+
+                            Img img = new Img();
+                            img.setUri(uri);
+                            img.setIdImagem(imageView.getId());
+                            img.setIdTexto(textoHist.getId());
+
+                            imagensId.put(imageView.getId(), img);
+                            imagensIdPos.put(imageView.getId(),d);
+
+                            d++;
                         }
                     }
                 }
