@@ -63,6 +63,7 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
         bundle.putString("titulo", listaHistoria.get(position).getTitulo());
         bundle.putString("texto", listaHistoria.get(position).getTexto());
         bundle.putString("emailUsuarioResponsavel", listaHistoria.get(position).getEmailUsuarioResponsavel());
+        bundle.putString("token", token);
         bundle.putParcelableArrayList("listaAvd", new ArrayList<>(listaHistoria.get(position).getAtividadesDeVidaDiarias()));
         bundle.putParcelableArrayList("listaHs", new ArrayList<>(listaHistoria.get(position).getHabilidadesSociais()));
         bundle.putParcelableArrayList("listaImagens", new ArrayList<>(listaHistoria.get(position).getImagens()));

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLightColor"
+    android:background="@color/secondaryDarkColor"
     tools:context=".LoginActivity">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -22,7 +22,7 @@
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_margin="@dimen/margin8"
-            app:srcCompat="@mipmap/ic_launcher2" />
+            app:srcCompat="@mipmap/logotipo_versao_vertical_foreground" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -60,7 +60,8 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin4"
             android:gravity="center"
-            android:backgroundTint="@color/orange"
+            android:textColor="@color/secondaryDarkColor"
+            android:backgroundTint="@color/tertiaryColor"
             android:text="@string/login_btn" />
 
         <Button
@@ -70,7 +71,8 @@
             android:layout_gravity="center"
             android:layout_margin="@dimen/margin4"
             android:gravity="center"
-            android:backgroundTint="@color/orange"
+            android:textColor="@color/secondaryDarkColor"
+            android:backgroundTint="@color/tertiaryColor"
             android:text="@string/login_cadastro" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

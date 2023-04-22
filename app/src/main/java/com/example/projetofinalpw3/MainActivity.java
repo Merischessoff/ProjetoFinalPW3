@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_sobre:
                 ImageView image = new ImageView(this);
-                image.setImageResource(R.mipmap.ifrs2_round);
+                image.setImageResource(R.mipmap.logotipo_fundo_foreground);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Meridiane Schessoff Nunes - Programação para web 3.");
                 //define a mensagem

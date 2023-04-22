@@ -90,6 +90,9 @@ public class CadastroHistoriaSocialFragment extends Fragment {
         imageContainer = root.findViewById(R.id.image_grid);
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
+        imagensId = new HashMap<Integer,Img>();
+        imagensIdPos = new HashMap<Integer,Integer>();
+
         Intent intent = getActivity().getIntent();
         token = intent.getStringExtra("token");
         email = intent.getStringExtra("email");
@@ -158,16 +161,13 @@ public class CadastroHistoriaSocialFragment extends Fragment {
                         .withImagens(imagens)
                         .build();
 
-                Log.e("token ", token);
-                Log.e("email ", email);
-                Log.e("historiaSocial ", historiaSocial.toString());
                 Call<HistoriaSocial> call = apiInterface.cadastroHistoriaSocial(token, historiaSocial);
                 call.enqueue(new Callback<HistoriaSocial>() {
                     @Override
                     public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
                         Log.e("onResponse onClick ", "salvando historia social " + response.body());
                         Snackbar.make(v, "História salva com sucesso!", Snackbar.LENGTH_LONG)
-                                .setTextColor(Color.GREEN).show();
+                                .setTextColor(Color.BLUE).show();
                         Navigation.findNavController(v).navigate(R.id.nav_fragment_historia_social_List);
                     }
 
@@ -199,8 +199,8 @@ public class CadastroHistoriaSocialFragment extends Fragment {
         Button btn = root.findViewById(deleteButtonId);
         imageContainer.removeView(btn);
 
-        imagensId.remove(posImg);
-        imagensIdPos.remove(imageViewID);
+        imagensId.remove(imageViewID);
+        imagensIdPos.remove(posImg);
 
     }
     ActivityResultLauncher<String[]> mGetMultipleContentsLauncher = registerForActivityResult(

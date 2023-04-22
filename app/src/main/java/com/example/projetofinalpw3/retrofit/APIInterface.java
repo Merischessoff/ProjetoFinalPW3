@@ -54,4 +54,7 @@ public interface APIInterface {
 
     @GET("/historiasocial/pesquisa/historiapropria/{id}")
     Call<HistoriaSocial> pesquisaHistoriaPropriaId(@Header("Authorization") String authorization, @Path("id") Long id);
+
+    @PUT("/historiasocial/edita/historiapropria/{id}")
+    Call<HistoriaSocial> editaHistoriaPropriaId(@Header("Authorization") String authorization, @Path("id") Long id, @Body HistoriaSocial hist);
 }

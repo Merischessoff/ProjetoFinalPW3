@@ -36,6 +36,7 @@ import com.example.projetofinalpw3.model.AtividadeDeVidaDiaria;
 import com.example.projetofinalpw3.model.HabilidadeSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.Imagem;
+import com.example.projetofinalpw3.model.Img;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.util.Util;
@@ -61,15 +62,13 @@ public class EditarHistoriaSocialFragment extends Fragment {
     private AppCompatSpinner spinnerHabSoc;
     private Button btnSelecionaImg;
     private List<Imagem> listaImagens;
-    private Map<Integer, Uri> imagensId = new HashMap<Integer,Uri>();
+    private Map<Integer, Img> imagensId = new HashMap<Integer,Img>();
     private Map<Integer, Integer> imagensIdPos = new HashMap<Integer,Integer>();
-    private Map<Integer, Integer> textosIdPos = new HashMap<Integer,Integer>();
-    private List<Integer> textosId = new ArrayList<Integer>();
     private View root;
     private TextView textSelecionado;
     private APIInterface apiInterface;
     private String token;
-    private String email;
+    private String emailUsuarioResponsavel;
     private boolean achou = false;
     private String id;
     private String titulo;
@@ -81,7 +80,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
     private TextInputEditText t;
     private ActivityResultLauncher<String> requestPermissionLauncher;
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
-
+    private Long idHistoria;
     private Util util;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -104,7 +103,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
         Intent intent = getActivity().getIntent();
         token = intent.getStringExtra("token");
-        email = intent.getStringExtra("email");
+        emailUsuarioResponsavel = bundle.getString("emailUsuarioResponsavel");
 
         List<AtividadeDeVidaDiaria> listaAtividades = bundle.getParcelableArrayList("listaAvd");
         List<HabilidadeSocial> listaHabilidadesSociais = bundle.getParcelableArrayList("listaHs");
@@ -113,6 +112,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
         imageContainer = root.findViewById(R.id.image_grid);
         int j = 0;
         for (Imagem img: listaImagens) {
+
             ImageView imageView = new ImageView(requireContext());
             TextInputEditText textoHist = new TextInputEditText(requireContext());
             Button deleteButton = new Button(requireContext());
@@ -124,7 +124,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    deletaImagem(imageView.getId(), textoHist.getId(), deleteButton.getId() , root);
+                    deletaImagem(imageView.getId(), deleteButton.getId() , root);
                 }
             });
             deleteButton.setText("X");
@@ -138,14 +138,19 @@ public class EditarHistoriaSocialFragment extends Fragment {
             imageContainer.addView(textoHist);
             imageContainer.addView(deleteButton);
 
-            imagensId.put(imageView.getId(), Uri.parse(img.getUrl()));
+            Img imgAux = new Img();
+            imgAux.setUri(Uri.parse(img.getUrl()));
+            imgAux.setIdImagem(imageView.getId());
+            imgAux.setIdTexto(textoHist.getId());
+            imagensId.put(imageView.getId(), imgAux);
             imagensIdPos.put(imageView.getId(),j);
-            textosId.add(textoHist.getId());
-            textosIdPos.put(textoHist.getId(),j);
+
             j++;
         }
 
         //começa a carregar o titulo e o texto do bundle que foi buscado com o adapter
+        idHistoria = Long.parseLong(bundle.getString("id"));
+
         tituloHistoria = root.findViewById(R.id.txtTituloHistoriaSocial);
         textoHistoria = root.findViewById(R.id.txtTextoHistoriaSocial);
         tituloHistoria.setText(bundle.getString("titulo"));
@@ -192,55 +197,52 @@ public class EditarHistoriaSocialFragment extends Fragment {
                 HabilidadeSocial hs = null;
                 if(!spinnerAvd.getSelectedItem().toString().trim().equalsIgnoreCase("")){
                     avd = new AtividadeDeVidaDiaria();
+                    avd.setId((long) spinnerAvd.getSelectedItemPosition()+1);
+                    //Log.e("posicao spinner ", String.valueOf(avd.getId()));
                     avd.setDescricao(spinnerAvd.getSelectedItem().toString());
                     avd.setNome(spinnerAvd.getSelectedItem().toString());
                 }
                 if(!spinnerHabSoc.getSelectedItem().toString().trim().equalsIgnoreCase("")) {
                     hs = new HabilidadeSocial();
-                    hs.setNome(spinnerAvd.getSelectedItem().toString());
-                    hs.setDescricao(spinnerAvd.getSelectedItem().toString());
+                    hs.setId((long) spinnerHabSoc.getSelectedItemPosition()+1);
+                    //Log.e("posicao spinner ", String.valueOf(hs.getId()));
+                    hs.setNome(spinnerHabSoc.getSelectedItem().toString());
+                    hs.setDescricao(spinnerHabSoc.getSelectedItem().toString());
                 }
                 List<Imagem> imagens = new ArrayList<Imagem>();
 
-                int i = 0;
-                for (Map.Entry<Integer, Uri> entry : imagensId.entrySet()) {
+                String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
+                String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
+                int i=1;
+                for (Map.Entry<Integer, Img> entry : imagensId.entrySet()) {
                     Imagem img = new Imagem();
-                    img.setSeq(i+1);
-                    img.setUrl(entry.getValue().toString());
-
-                    Log.e("uri ", entry.getValue().toString());
-
-                    t = root.findViewById(textosId.get(i));
+                    img.setSeq(i);
+                    img.setUrl(entry.getValue().getUri().toString());
+                    TextInputEditText t = root.findViewById(entry.getValue().getIdTexto());
                     img.setTexto(t.getText().toString());
-
-                    Log.e("textos ", t.getText().toString());
-
                     imagens.add(img);
                     i++;
                 }
-
-                HistoriaSocial historiaSocialNova = new HistoriaSocial()
-                        .withEmail(email)
-                        .withTitulo(((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString())
-                        .withTexto(((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString())
+                HistoriaSocial historiaSocial = new HistoriaSocial()
+                        .withEmail(emailUsuarioResponsavel)
+                        .withTitulo(titulo)
+                        .withTexto(texto)
                         .withHabilidadeSocial(hs)
                         .withAtividadeDeVidaDiaria(avd)
                         .withImagens(imagens)
                         .build();
 
-                Log.e("token ", token);
-                Log.e("email ", email);
+                Log.e("objeto historia social ", "id: " + idHistoria + " historia " + historiaSocial.toString());
 
-                Call<HistoriaSocial> call = apiInterface.cadastroHistoriaSocial(token, historiaSocialNova);
+                Call<HistoriaSocial> call = apiInterface.editaHistoriaPropriaId(token, idHistoria, historiaSocial);
                 call.enqueue(new Callback<HistoriaSocial>() {
                     @Override
                     public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
                         Log.e("onResponse onClick ", "salvando historia social " + response.body());
                         Snackbar.make(v, "História salva com sucesso!", Snackbar.LENGTH_LONG)
-                                .setTextColor(Color.GREEN).show();
+                                        .setTextColor(Color.BLUE).show();
                         Navigation.findNavController(v).navigate(R.id.nav_fragment_historia_social_List);
                     }
-
                     @Override
                     public void onFailure(Call<HistoriaSocial> call, Throwable t) {
                         call.cancel();
@@ -251,27 +253,27 @@ public class EditarHistoriaSocialFragment extends Fragment {
             }
         });
 
-
         return root;
     }
 
-    private void deletaImagem(int imageViewID, int textoHistID, int deleteButtonId, View root) {
-        Log.e("imagens ", "ids "+ imagensId);
-        Log.e("textos ", "ids "+ textosId);
-
+    private void deletaImagem(int imageViewID, int deleteButtonId, View root) {
+        Img img = new Img();
         int posImg = imagensIdPos.get(imageViewID);
-        imagensId.remove(posImg);
-        ImageView img = root.findViewById(imageViewID);
-        int posText = textosIdPos.get(textoHistID);
-        textosId.remove(posText);
-        TextView text = root.findViewById(textoHistID);
-        Button btn = root.findViewById(deleteButtonId);
-        imageContainer.removeView(img);
+
+        ImageView imgView = root.findViewById(imageViewID);
+        imageContainer.removeView(imgView);
+
+        img = imagensId.get(imageViewID);
+
+        Log.e("Img ", "aqui " + img.toString());
+        TextView text = root.findViewById(img.getIdTexto());
         imageContainer.removeView(text);
+
+        Button btn = root.findViewById(deleteButtonId);
         imageContainer.removeView(btn);
 
-        Log.e("imagens ", "ids "+ imagensId);
-        Log.e("textos ", "ids "+ textosId);
+        imagensId.remove(imageViewID);
+        imagensIdPos.remove(posImg);
 
     }
 
@@ -293,7 +295,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
                             deleteButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    deletaImagem(imageView.getId(), textoHist.getId(), deleteButton.getId() , getView());
+                                    deletaImagem(imageView.getId(), deleteButton.getId() , getView());
                                 }
                             });
                             deleteButton.setText("X");
@@ -311,11 +313,14 @@ public class EditarHistoriaSocialFragment extends Fragment {
                             imageContainer.addView(textoHist);
                             imageContainer.addView(deleteButton);
 
-                            imagensId.put(imageView.getId(), uri);
-                            textosId.add(textoHist.getId());
+                            Img img = new Img();
+                            img.setUri(uri);
+                            img.setIdImagem(imageView.getId());
+                            img.setIdTexto(textoHist.getId());
 
+                            imagensId.put(imageView.getId(), img);
                             imagensIdPos.put(imageView.getId(),d);
-                            textosIdPos.put(textoHist.getId(),d);
+
                             d++;
                         }
                     }
