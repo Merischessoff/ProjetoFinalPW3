@@ -4,4 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.VisualizarHistoriaSocialFragment"/>
+    android:background="@color/tertiaryLightColor"
+    tools:context=".fragment.VisualizarHistoriaSocialFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="540dp"
+        android:orientation="vertical"
+        android:layout_gravity="top">
+
+        <TextView
+            android:id="@+id/tituloHistoriaSocial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:textSize="30dp"
+            android:textColor="@color/secondaryColor"
+            android:layout_margin="@dimen/margin10"
+            android:text="Título" />
+        <TextView
+            android:id="@+id/textoHistoriaSocial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center"
+            android:textSize="20dp"
+            android:textColor="@color/secondaryColor"
+            android:layout_margin="@dimen/margin10"
+            android:text="Título" />
+
+        <GridLayout
+            android:id="@+id/imagemPricipal"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:columnCount="1"
+            android:rowCount="1"
+            android:gravity="center"
+            android:layout_margin="@dimen/margin10"
+            />
+
+        <TextView
+            android:id="@+id/textoImgHistoriaSocial"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:textSize="20dp"
+            android:layout_margin="@dimen/margin8"
+            android:textColor="@color/secondaryColor"
+            android:text="Texto" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:background="@color/primaryLightColor">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/proximo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/anterior"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </LinearLayout>
+</FrameLayout>

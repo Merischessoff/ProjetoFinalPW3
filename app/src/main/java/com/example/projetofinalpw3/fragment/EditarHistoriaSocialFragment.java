@@ -54,8 +54,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class EditarHistoriaSocialFragment extends Fragment {
-    private static final int MY_PERMISSIONS_INTERNET = 123;
-    private static final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STORAGE = 123;
+    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
     private ImageView foto;
     private Button btnEditar;
     private AppCompatSpinner spinnerAvd;
@@ -79,7 +78,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
     private GridLayout imageContainer;
     private TextInputEditText t;
     private ActivityResultLauncher<String> requestPermissionLauncher;
-    private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
+
     private Long idHistoria;
     private Util util;
 
