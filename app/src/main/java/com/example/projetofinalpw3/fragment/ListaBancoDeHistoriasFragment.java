@@ -1,18 +1,14 @@
 package com.example.projetofinalpw3.fragment;
 
-import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+
 import com.example.projetofinalpw3.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -23,7 +19,7 @@ import com.google.firebase.storage.StorageReference;
 import java.io.File;
 
 
-public class BancoDeHistoriasFragment extends Fragment {
+public class ListaBancoDeHistoriasFragment extends Fragment {
 
     private View root;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

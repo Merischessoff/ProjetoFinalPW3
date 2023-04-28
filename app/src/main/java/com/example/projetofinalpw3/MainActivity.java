@@ -10,8 +10,10 @@ import android.widget.ImageView;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.ActivityResultRegistry;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -26,6 +28,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
+    //implements NavigationView.OnNavigationItemSelectedListener
     private ActivityResultRegistry mRegistry;
     private ActivityResultLauncher<String> mGetContent;
     private AppBarConfiguration mAppBarConfiguration;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private String email = "";
 
     private TipoUsuarioDTO tipoUsuario = new TipoUsuarioDTO("");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,10 +65,13 @@ public class MainActivity extends AppCompatActivity {
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
-            mAppBarConfiguration = new AppBarConfiguration.Builder(
-                    R.id.nav_home,
-                    R.id.nav_fragment_cadastro_usuario_leitor)
-                    .setOpenableLayout(drawer).build();
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,
+                R.id.nav_fragment_cadastro_usuario_leitor,
+                R.id.nav_fragment_historia_social_List,
+                R.id.nav_banco_historias_fragment,
+                R.id.nav_fragment_historia_social_cad,
+                R.id.nav_lista_usuario_leitor_fragment)
+                .setOpenableLayout(drawer).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
@@ -109,10 +116,32 @@ public class MainActivity extends AppCompatActivity {
                 // Create the AlertDialog object and return it
                 builder.create().show();
                 return true;
-            default:
-                // If we got here, the user's action was not recognized.
-                // Invoke the superclass to handle it.
-                return super.onOptionsItemSelected(item);
         }
+        return super.onOptionsItemSelected(item);
     }
+  /*  @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.nav_home:
+            case R.id.nav_fragment_historia_social_List:
+                // permitir que o usuário acesse esses itens de menu
+                // adicione aqui o código para abrir a Activity/Fragment correspondente
+                break;
+            case R.id.nav_lista_usuario_leitor_fragment:
+            case R.id.nav_fragment_cadastro_usuario_leitor:
+            case R.id.nav_banco_historias_fragment:
+            case R.id.nav_fragment_historia_social_cad:
+                // não permitir que o usuário acesse esses itens de menu
+                // adicione aqui o código para exibir uma mensagem de erro ou ocultar o item de menu
+                break;
+        }
+
+        // fechar o drawer
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }*/
+
 }
