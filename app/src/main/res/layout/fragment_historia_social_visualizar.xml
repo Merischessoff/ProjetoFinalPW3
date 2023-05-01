@@ -4,68 +4,75 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/tertiaryLightColor"
     tools:context=".fragment.VisualizarHistoriaSocialFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="540dp"
-        android:orientation="vertical"
-        android:layout_gravity="top">
+        android:layout_height="match_parent"
+        android:layout_gravity="top"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/tituloHistoriaSocial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
-            android:textSize="30dp"
-            android:textColor="@color/secondaryColor"
             android:layout_margin="@dimen/margin10"
-            android:text="Título" />
+            android:text="Título"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryColor"
+            android:textSize="30dp" />
+
         <TextView
             android:id="@+id/textoHistoriaSocial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|center"
-            android:textSize="20dp"
-            android:textColor="@color/secondaryColor"
             android:layout_margin="@dimen/margin10"
-            android:text="Título" />
+            android:text="Texto"
+            android:textAlignment="center"
+            android:textColor="@color/secondaryColor"
+            android:textSize="20dp" />
 
         <GridLayout
             android:id="@+id/imagemPricipal"
             android:layout_width="match_parent"
-            android:layout_height="350dp"
-            android:columnCount="1"
-            android:rowCount="1"
-            android:gravity="center"
+            android:layout_height="414dp"
             android:layout_margin="@dimen/margin10"
-            />
+            android:background="@color/cinza"
+            android:columnCount="1"
+            android:gravity="center"
+            android:rowCount="1" />
 
         <TextView
             android:id="@+id/textoImgHistoriaSocial"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20dp"
             android:layout_margin="@dimen/margin8"
+            android:text="Texto Imagem selecionada"
+            android:textAlignment="center"
             android:textColor="@color/secondaryColor"
-            android:text="Texto" />
+            android:textSize="20dp" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:orientation="vertical"
-        android:layout_gravity="bottom"
-        android:background="@color/primaryLightColor">
+        android:layout_height="588dp"
+        android:layout_margin="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:gravity="center_horizontal"
-            android:orientation="horizontal">
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/anterior"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/proximo"
@@ -73,11 +80,6 @@
             android:layout_height="36dp"
             app:srcCompat="@drawable/baseline_arrow_forward_ios_24" />
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/anterior"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            app:srcCompat="@drawable/baseline_arrow_back_ios_new_24" />
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </LinearLayout>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </FrameLayout>

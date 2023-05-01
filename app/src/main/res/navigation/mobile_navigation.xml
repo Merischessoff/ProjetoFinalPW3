@@ -10,21 +10,10 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <fragment
         android:id="@+id/nav_fragment_historia_social_cad"
         android:name="com.example.projetofinalpw3.fragment.CadastroHistoriaSocialFragment"
         android:label="@string/cadHistSoc"
-        tools:layout="@layout/fragment_historia_social_cadastrar">
-    </fragment>
+        tools:layout="@layout/fragment_historia_social_cadastrar"/>
     <fragment
         android:id="@+id/nav_fragment_historia_social_List"
         android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialFragment"
@@ -41,26 +30,7 @@
         android:id="@+id/nav_fragment_historia_social_Edit"
         android:name="com.example.projetofinalpw3.fragment.EditarHistoriaSocialFragment"
         android:label="@string/editHistSoc"
-        tools:layout="@layout/fragment_historia_social_editar">
-    </fragment>
-    <fragment
-        android:id="@+id/nav_btn_cadastrar"
-        android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
-        android:label="@string/cadUsuarioLeitor"
-        tools:layout="@layout/fragment_cadastro_usuario_leitor">
-        <action
-            android:id="@+id/action_btnCadastrar_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
-    <fragment
-        android:id="@+id/nav_btn_cancelar"
-        android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
-        android:label="@string/cadUsuarioLeitor"
-        tools:layout="@layout/fragment_cadastro_usuario_leitor">
-        <action
-            android:id="@+id/action_btnCadastrar_to_nav_home"
-            app:destination="@id/nav_home" />
-    </fragment>
+        tools:layout="@layout/fragment_historia_social_editar"/>
     <activity
         android:id="@+id/nav_login_activity"
         android:name="com.example.projetofinalpw3.LoginActivity"
@@ -69,38 +39,58 @@
     <activity
         android:id="@+id/nav_cad_usuario_activity"
         android:name="com.example.projetofinalpw3.CadUsuarioActivity"
-        android:label="activity_cad_usuario"
+        android:label="Cadastro Usuário Responsável"
         tools:layout="@layout/activity_cad_usuario" />
     <fragment
         android:id="@+id/nav_fragment_cadastro_usuario_leitor"
         android:name="com.example.projetofinalpw3.fragment.CadastroUsuarioLeitorFragment"
         android:label="@string/cadUsuarioLeitor"
-        tools:layout="@layout/fragment_cadastro_usuario_leitor">
-    </fragment>
+        tools:layout="@layout/fragment_cadastro_usuario_leitor"/>
     <fragment
         android:id="@+id/nav_lista_usuario_leitor_fragment"
         android:name="com.example.projetofinalpw3.fragment.ListaUsuarioLeitorFragment"
-        android:label="fragment_lista_usuario_leitor_list"
-        tools:layout="@layout/fragment_lista_usuario_leitor_list" />
+        android:label="Lista usuário Leitor"
+        tools:layout="@layout/fragment_lista_usuario_leitor" />
     <fragment
         android:id="@+id/nav_editar_usuario_leitor_fragment"
         android:name="com.example.projetofinalpw3.fragment.EditarUsuarioLeitorFragment"
-        android:label="fragment_editar_usuario_leitor"
+        android:label="Editar usuário Leitor"
         tools:layout="@layout/fragment_editar_usuario_leitor" />
     <fragment
         android:id="@+id/nav_visualizar_usuario_leitor_fragment"
         android:name="com.example.projetofinalpw3.fragment.VisualizarUsuarioLeitorFragment"
-        android:label="fragment_visualizar_usuario_leitor"
+        android:label="Visualizar usuário Leitor"
         tools:layout="@layout/fragment_visualizar_usuario_leitor" />
+    <fragment
+        android:id="@+id/nav_banco_historias_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialFragment"
+        android:label="Lista Banco de histórias"
+        tools:layout="@layout/fragment_lista_historias_associar" />
+    <fragment
+        android:id="@+id/listaHistoriaAssociarFragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaAssociarFragment"
+        android:label="fragment_lista_historias_associar"
+        tools:layout="@layout/fragment_lista_historias_associar" />
+    <fragment
+        android:id="@+id/visualizarBancoDeHistoriaSocialFragment"
+        android:name="com.example.projetofinalpw3.fragment.VisualizarBancoDeHistoriaSocialFragment"
+        android:label="fragment_visualizar_banco_de_historia_social"
+        tools:layout="@layout/fragment_visualizar_banco_de_historia_social" />
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/slideshowFragment"
+        android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
+        android:label="fragment_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
     <activity
-        android:id="@+id/nav_main_activity"
+        android:id="@+id/mainActivity"
         android:name="com.example.projetofinalpw3.MainActivity"
         android:label="app_bar_main"
         tools:layout="@layout/app_bar_main" />
-    <fragment
-        android:id="@+id/nav_banco_historias_fragment"
-        android:name="com.example.projetofinalpw3.fragment.BancoDeHistoriasFragment"
-        android:label="fragment_banco_de_historias"
-        tools:layout="@layout/fragment_banco_de_historias" />
+
 
 </navigation>

@@ -20,7 +20,7 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         android:layout_marginBottom="32dp"
         android:text="@string/cad_user_leitor_titulo"
         android:textAlignment="center"
-        android:textSize="15dp" />
+        android:textSize="20dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -52,10 +52,16 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
 
     <Button
         android:id="@+id/btnOkUsuarioLeitorVinculado"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/ok" />
+    <Button
+        android:id="@+id/btnVincularHistorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin4"
+        android:text="@string/vincular" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

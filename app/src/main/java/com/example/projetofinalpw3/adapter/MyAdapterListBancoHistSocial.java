@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -72,14 +73,14 @@ public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapter
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
-        ImageButton btnEdit;
-        ImageButton btnVisual;
+        Button btnEdit;
+        Button btnVisual;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
-            titulo = itemView.findViewById(R.id.textViewTitulo);
-            btnEdit= itemView.findViewById(R.id.btnEditar);
-            btnVisual = itemView.findViewById(R.id.btnVisualizar);
+            titulo = itemView.findViewById(R.id.textViewTituloBancoHistSoc);
+            btnEdit= itemView.findViewById(R.id.btnEditarBancoHistSoc);
+            btnVisual = itemView.findViewById(R.id.btnVisualizarBancoHistSoc);
         }
     }
 }

@@ -6,7 +6,7 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Configurações</string>
-    <string name="menu_home">Principal</string>
+    <string name="menu_home">Home</string>
     <string name="menu_gallery">Galeria</string>
     <string name="menu_slideshow">Slideshow</string>
 
@@ -19,7 +19,7 @@
     <string name="login_cpwd">Confirme sua Senha</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="cadHistSoc">Cadastro de Histórias Sociais</string>
+    <string name="cadHistSoc">Nova História</string>
     <string name="listHistSoc">Listar Histórias Sociais</string>
     <string name="visualHistSoc">História Social</string>
     <string name="btnCadastrar">Cadastrar</string>
@@ -45,17 +45,19 @@
     <string name="listExercicios">Exercícios</string>
     <string name="login_cpf">CPF</string>
     <string name="login_nome">Nome</string>
-    <string name="cadUsuarioLeitor">Cadastro de Leitores</string>
+    <string name="cadUsuarioLeitor">Novo Leitor</string>
     <string name="cad_user_leitor_titulo">Usuario Leitor</string>
-    <string name="leitores">Seus Leitores</string>
+    <string name="leitores">Leitores</string>
     <string name="btnCancelar">Cancelar</string>
     <string name="bancoHistorias">Banco de Histórias</string>
-    <string name="suasHistorias">Suas Histórias</string>
+    <string name="suasHistorias">Minhas Histórias</string>
     <string name="btnAvancar">Avançar</string>
     <string name="numImagensHistoria">Número de imagens que deseja na história</string>
     <string name="btnSelecionarImg">Selecionar Imagens</string>
     <string name="categoriasAvd">Atividades de vida Diária</string>
     <string name="categoriasHs">Habilidades Sociais</string>
+    <string name="vincular">Vincular Histórias</string>
+    <string name="btnAssociar">Associar História</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
         <item>Nenhum</item>
@@ -74,11 +76,15 @@
     <string-array name="itensHabilidadeSocialNome">
         <item>Nenhum</item>
         <item>Contato Visual</item>
-        <item>Começar uma conversa</item>
+        <item>Linguagem Corporal</item>
+        <item>Emoções</item>
+        <item>Comunicação</item>
     </string-array>
     <string-array name="itensHabilidadeSocialDescricao">
         <item>Nenhum</item>
         <item>Contato Visual</item>
-        <item>Começar uma conversa</item>
+        <item>Linguagem Corporal</item>
+        <item>Emoções</item>
+        <item>Comunicação</item>
     </string-array>
 </resources>

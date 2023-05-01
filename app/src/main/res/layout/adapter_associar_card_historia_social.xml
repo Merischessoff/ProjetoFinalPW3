@@ -14,7 +14,16 @@
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewNome2"
+            android:id="@+id/textViewNomeUsuarioVincular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Usuário Leitor"
+            android:textSize="18dp"
+            android:textAlignment="center"
+            android:textStyle="italic" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textViewNomeVincular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="História Social"
@@ -22,7 +31,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTitulo2"
+            android:id="@+id/textViewTituloVincular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Título" />
@@ -32,25 +41,11 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="right">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnExcluir2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnExcluir"
-            android:layout_marginRight="@dimen/margin8"
-         />
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnEditar2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/btnEditar"
-            android:layout_marginLeft="@dimen/margin8"
-          />
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnVisualizar2"
+                android:id="@+id/btnVincularHistória"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/btnVisualizar2"
+                android:text="@string/btnAssociar"
                 android:layout_marginLeft="@dimen/margin8"
                 android:layout_marginRight="@dimen/margin8"
                 />

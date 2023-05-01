@@ -7,6 +7,7 @@ import com.example.projetofinalpw3.dto.UsuarioCadDTO;
 import com.example.projetofinalpw3.dto.UsuarioDTO;
 import com.example.projetofinalpw3.dto.UsuarioEditarDTO;
 import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
+import com.example.projetofinalpw3.model.BancoDeHistoriaSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.model.TipoUsuario;
 import com.example.projetofinalpw3.model.Usuario;
@@ -57,4 +58,7 @@ public interface APIInterface {
 
     @PUT("/historiasocial/edita/historiapropria/{id}")
     Call<HistoriaSocial> editaHistoriaPropriaId(@Header("Authorization") String authorization, @Path("id") Long id, @Body HistoriaSocial hist);
+
+    @GET("/bancodehistoriasocial")
+    Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistorias(@Header("Authorization") String authorization);
 }

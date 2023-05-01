@@ -15,16 +15,9 @@ import android.view.ViewGroup;
 
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
-import com.example.projetofinalpw3.adapter.MyAdapterListaUsuario;
-import com.example.projetofinalpw3.dto.HistoriaSocialDTO;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
-//import com.google.firebase.database.DataSnapshot;
-//import com.google.firebase.database.DatabaseError;
-//import com.google.firebase.database.DatabaseReference;
-//import com.google.firebase.database.FirebaseDatabase;
-//import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +26,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * A fragment representing a list of Items.
+ */
+public class ListaHistoriaAssociarFragment extends Fragment {
 
-public class ListaHistoriaSocialFragment extends Fragment {
     private RecyclerView recyclerView;
     private View root;
 

@@ -7,7 +7,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,7 +37,7 @@ public class ListaUsuarioLeitorFragment extends Fragment {
     private View root;
     private List<Usuario> usuarios = new ArrayList<Usuario>();
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_lista_usuario_leitor_list, container, false);
+        root = inflater.inflate(R.layout.fragment_lista_usuario_leitor, container, false);
         recyclerView = root.findViewById(R.id.recyclerViewUsuarioLeitor);
 
         Intent intent = getActivity().getIntent();
