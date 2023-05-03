@@ -15,4 +15,6 @@ public class SenhaUtil {
     public static boolean verificarSenha(String senha, String hashSenha) {
         return BCrypt.checkpw(senha, hashSenha);
     }
+
+
 }

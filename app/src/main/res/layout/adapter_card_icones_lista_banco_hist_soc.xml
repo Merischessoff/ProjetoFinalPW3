@@ -17,15 +17,9 @@
             android:id="@+id/textViewTituloBancoHistSoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="História Social"
+            android:text="Banco de História Social"
             android:textSize="18dp"
             android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTextoBancoHistSoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Título" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"

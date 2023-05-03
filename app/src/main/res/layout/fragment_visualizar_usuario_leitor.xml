@@ -29,7 +29,7 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/visualNomeUsuarioLeitorVinculado"
+            android:id="@+id/visualNomeUsuarioLeitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_nome"
@@ -43,7 +43,7 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         app:boxBackgroundColor="@null">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/visualEmailUsuarioLeitorVinculado"
+            android:id="@+id/visualEmailUsuarioLeitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/login_email"
@@ -51,17 +51,23 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnOkUsuarioLeitorVinculado"
+        android:id="@+id/btnOkUsuarioLeitor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/ok" />
     <Button
+        android:id="@+id/btnVincularBancoHistorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin4"
+        android:text="@string/vincularBancoHistSoc" />
+    <Button
         android:id="@+id/btnVincularHistorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
-        android:text="@string/vincular" />
+        android:text="@string/vincularHistSoc" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

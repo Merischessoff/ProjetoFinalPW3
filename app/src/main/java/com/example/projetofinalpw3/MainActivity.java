@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,
                 R.id.nav_fragment_cadastro_usuario_leitor,
                 R.id.nav_fragment_historia_social_List,
-                R.id.nav_banco_historias_fragment,
+                R.id.nav_lista_banco_historias_fragment,
                 R.id.nav_fragment_historia_social_cad,
                 R.id.nav_lista_usuario_leitor_fragment)
                 .setOpenableLayout(drawer).build();

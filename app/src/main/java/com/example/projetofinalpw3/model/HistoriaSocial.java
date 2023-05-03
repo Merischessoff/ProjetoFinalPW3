@@ -122,9 +122,18 @@ public class HistoriaSocial implements Parcelable {
         this.habilidadesSociais.add(habilidadeSocial);
         return this;
     }
+    public HistoriaSocial withHabilidadesSociais(List<HabilidadeSocial> habilidadesSociais) {
+        this.habilidadesSociais = habilidadesSociais;
+        return this;
+    }
 
     public HistoriaSocial withAtividadeDeVidaDiaria(AtividadeDeVidaDiaria atividadeDeVidaDiaria) {
         this.atividadesDeVidaDiarias.add(atividadeDeVidaDiaria);
+        return this;
+    }
+
+    public HistoriaSocial withAtividadeDeVidaDiarias(List<AtividadeDeVidaDiaria> atividadesDeVidaDiarias) {
+        this.atividadesDeVidaDiarias = atividadesDeVidaDiarias;
         return this;
     }
 

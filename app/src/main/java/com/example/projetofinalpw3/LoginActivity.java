@@ -2,10 +2,12 @@ package com.example.projetofinalpw3;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
@@ -14,7 +16,11 @@ import com.example.projetofinalpw3.dto.UsuarioLoginDTO;
 import com.example.projetofinalpw3.model.HabilidadeSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private TipoUsuarioDTO tipoUsuario = new TipoUsuarioDTO("");
     private TokenDTO token = new TokenDTO("");
     private APIInterface apiInterface;
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     if (!edtEmail.getText().toString().equals("") && !edtSenha.getText().toString().equals("")) {
                         validateLogin(edtEmail.getText().toString(), edtSenha.getText().toString());
+                        validateLoginFirebase(edtEmail.getText().toString(), edtSenha.getText().toString());
                     } else
                         Toast.makeText(LoginActivity.this, "Informe email e senha!", Toast.LENGTH_SHORT).show();
                 }
@@ -71,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                     String body = String.valueOf(response.body().getToken());
                     token = new TokenDTO(response.body().getToken());
                     pesquisaUsuarioPorEmail(token);
+
                 } else {
                     //Log.d("validateLogin", "dados inválidos!");
                     Toast.makeText(LoginActivity.this, "Dados inválidos!", Toast.LENGTH_SHORT).show();
@@ -84,6 +92,22 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void validateLoginFirebase(String email, String senha){
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithEmailAndPassword("gonkaschessoff@gmail.com", "123456").addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()) {
+                    //Toast.makeText(LoginActivity.this, "sucesso!", Toast.LENGTH_SHORT).show();
+                    Log.d("LOGIN", "Firebase sucesso!");
+                }else{
+                    //Toast.makeText(LoginActivity.this, "Dados de login inválidos!", Toast.LENGTH_SHORT).show();
+                    Log.d("LOGIN", "Firebase dados inválidos!");
+                }
+            }
+        });
     }
 
     private void pesquisaUsuarioPorEmail(TokenDTO token){

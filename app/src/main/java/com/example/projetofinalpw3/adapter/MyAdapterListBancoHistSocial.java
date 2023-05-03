@@ -3,12 +3,10 @@ package com.example.projetofinalpw3.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,26 +16,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.model.BancoDeHistoriaSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
-import com.example.projetofinalpw3.retrofit.APIClient;
-import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.example.projetofinalpw3.util.APIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 
 public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapterListBancoHistSocial.MyViewHolderListHistSocial> {
-    List<BancoDeHistoriaSocial> listaHistoria = new ArrayList<BancoDeHistoriaSocial>();
-    Context context;
+    private List<BancoDeHistoriaSocial> listaHistoria = new ArrayList<BancoDeHistoriaSocial>();
+    private Context context;
+    private String email;
+    private String token;
+    private APIUtil apiUtil;
 
-    String token;
-    public MyAdapterListBancoHistSocial(Context context, List<BancoDeHistoriaSocial> historias, String token) {
+    private HistoriaSocial historiaSocial;
+    public MyAdapterListBancoHistSocial(Context context, List<BancoDeHistoriaSocial> historias, String token, String email) {
         this.context = context;
         this.listaHistoria = historias;
         this.token = token;
+        this.email= email;
     }
 
     @NonNull
@@ -56,13 +53,19 @@ public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapter
         bundle.putString("titulo", listaHistoria.get(position).getTitulo());
         bundle.putString("texto", listaHistoria.get(position).getTexto());
         bundle.putString("token", token);
+        bundle.putString("email", email);
         bundle.putParcelableArrayList("listaAvd", new ArrayList<>(listaHistoria.get(position).getAtividadesDeVidaDiarias()));
         bundle.putParcelableArrayList("listaHs", new ArrayList<>(listaHistoria.get(position).getHabilidadesSociais()));
         bundle.putParcelableArrayList("listaImagens", new ArrayList<>(listaHistoria.get(position).getImagens()));
 
+        myViewHolderListHistSocial.btnVisual.setOnClickListener(
+                Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle)
+        );
 
-        myViewHolderListHistSocial.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle));
-        myViewHolderListHistSocial.btnEdit.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Edit,  bundle));
+        myViewHolderListHistSocial.btnEdit.setOnClickListener(
+            Navigation.createNavigateOnClickListener(R.id.nav_editarBancoDeHistoriaSocialFragment,  bundle)
+        );
+
     }
 
     @Override

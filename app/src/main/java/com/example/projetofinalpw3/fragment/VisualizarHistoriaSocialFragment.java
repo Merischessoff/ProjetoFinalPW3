@@ -42,8 +42,14 @@ import com.example.projetofinalpw3.model.Img;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 import com.example.projetofinalpw3.util.Util;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,113 +88,158 @@ public class VisualizarHistoriaSocialFragment extends Fragment {
                     new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                     REQUEST_CODE_READ_EXTERNAL_STORAGE);
         }else {
-            // Acesso permitido, você pode prosseguir com o código que estava tentando executar
-        }
+            listaImagens = bundle.getParcelableArrayList("listaImagens");
 
-        listaImagens = bundle.getParcelableArrayList("listaImagens");
+            imageContainer = root.findViewById(R.id.imagemPricipal);
 
-        imageContainer = root.findViewById(R.id.imagemPricipal);
-
-        for (int i = 0; i < listaImagens.size(); i++) {
-            if(i==0) {
-                Imagem img = listaImagens.get(i);
-                ImageView imageView = new ImageView(requireContext());
-                imageView.setId(util.geraId());
-
-                Glide.with(requireContext()).load(img.getUrl()).into(imageView);
-
-                TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
-                textoImagem.setText(img.getTexto());
-                
-                imagensId.put(i, img);
-                atual = i;
-                GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                params.width = 200;
-                params.height = 200;
-                params.setMargins(8, 8, 8, 8); // margem entre as imagens
-                params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                atualView = imageView;
-                imageContainer.addView(imageView, params);
-            }else{
-                Imagem img = listaImagens.get(i);
-                imagensId.put(i, img);
-            }
-        }
-
-
-        tituloHistoria = root.findViewById(R.id.tituloHistoriaSocial);
-        textoHistoria = root.findViewById(R.id.textoHistoriaSocial);
-        tituloHistoria.setText(bundle.getString("titulo"));
-        textoHistoria.setText(bundle.getString("texto"));
-
-        proximo = root.findViewById(R.id.proximo);
-        proximo.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(atual < listaImagens.size()-1) {
-                    Log.e("tamanho lista ", ""+ listaImagens.size());
-                    Log.e("atual ", ""+ atual);
-                    atual++;
-                    Log.e("atual++ ", ""+ atual);
-                    imageContainer.removeView(atualView);
-                    Imagem img = listaImagens.get(atual);
+            for (int i = 0; i < listaImagens.size(); i++) {
+                if(i==0) {
+                    Imagem img = listaImagens.get(i);
                     ImageView imageView = new ImageView(requireContext());
                     imageView.setId(util.geraId());
 
-                    Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+                    if(img.getUrl().contains("gs://projetofinalpw3.appspot.com")){
+                        try {
+                            getImagensFirebase(imageView, img);
+                        }catch (Exception e){
+                            Log.e("Exception", e.toString());
+                        }
+                    }else {
+                        Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+                    }
 
                     TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                     textoImagem.setText(img.getTexto());
 
-                    imagensId.put(atual, img);
-
+                    imagensId.put(i, img);
+                    atual = i;
                     GridLayout.LayoutParams params = new GridLayout.LayoutParams();
                     params.width = 200;
                     params.height = 200;
                     params.setMargins(8, 8, 8, 8); // margem entre as imagens
                     params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
                     params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                    imageContainer.addView(imageView, params);
                     atualView = imageView;
+                    imageContainer.addView(imageView, params);
                 }else{
-
+                    Imagem img = listaImagens.get(i);
+                    imagensId.put(i, img);
                 }
             }
-        });
 
-        anterior = root.findViewById(R.id.anterior);
-        anterior.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                if(atual > 0) {
-                    atual--;
-                    imageContainer.removeView(atualView);
-                    Imagem img = listaImagens.get(atual);
-                    ImageView imageView = new ImageView(requireContext());
-                    imageView.setId(util.geraId());
 
-                    Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+            tituloHistoria = root.findViewById(R.id.tituloHistoriaSocial);
+            textoHistoria = root.findViewById(R.id.textoHistoriaSocial);
+            tituloHistoria.setText(bundle.getString("titulo"));
+            textoHistoria.setText(bundle.getString("texto"));
 
-                    TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
-                    textoImagem.setText(img.getTexto());
+            proximo = root.findViewById(R.id.proximo);
+            proximo.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if(atual < listaImagens.size()-1) {
+                        Log.e("tamanho lista ", ""+ listaImagens.size());
+                        Log.e("atual ", ""+ atual);
+                        atual++;
+                        Log.e("atual++ ", ""+ atual);
+                        imageContainer.removeView(atualView);
+                        Imagem img = listaImagens.get(atual);
+                        ImageView imageView = new ImageView(requireContext());
+                        imageView.setId(util.geraId());
 
-                    imagensId.put(atual, img);
+                        if(img.getUrl().contains("gs://projetofinalpw3.appspot.com")){
+                            try {
+                                getImagensFirebase(imageView, img);
+                            }catch (Exception e){
+                                Log.e("Exception", e.toString());
+                            }
+                        }else {
+                            Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+                        }
 
-                    GridLayout.LayoutParams params = new GridLayout.LayoutParams();
-                    params.width = 200;
-                    params.height = 200;
-                    params.setMargins(8, 8, 8, 8); // margem entre as imagens
-                    params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                    params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-                    imageContainer.addView(imageView, params);
-                    atualView = imageView;
-                }else{
+                        TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
+                        textoImagem.setText(img.getTexto());
 
+                        imagensId.put(atual, img);
+
+                        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                        params.width = 200;
+                        params.height = 200;
+                        params.setMargins(8, 8, 8, 8); // margem entre as imagens
+                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+                        imageContainer.addView(imageView, params);
+                        atualView = imageView;
+                    }else{
+
+                    }
                 }
-            }
-        });
+            });
+
+            anterior = root.findViewById(R.id.anterior);
+            anterior.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    if(atual > 0) {
+                        atual--;
+                        imageContainer.removeView(atualView);
+                        Imagem img = listaImagens.get(atual);
+                        ImageView imageView = new ImageView(requireContext());
+                        imageView.setId(util.geraId());
+
+                        if(img.getUrl().contains("gs://projetofinalpw3.appspot.com")){
+                            try {
+                                getImagensFirebase(imageView, img);
+                            }catch (Exception e){
+                                Log.e("Exception", e.toString());
+                            }
+                        }else {
+                            Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+                        }
+
+                        TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
+                        textoImagem.setText(img.getTexto());
+
+                        imagensId.put(atual, img);
+
+                        GridLayout.LayoutParams params = new GridLayout.LayoutParams();
+                        params.width = 200;
+                        params.height = 200;
+                        params.setMargins(8, 8, 8, 8); // margem entre as imagens
+                        params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+                        params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+                        imageContainer.addView(imageView, params);
+                        atualView = imageView;
+                    }else{
+
+                    }
+                }
+            });
+        }
         return root;
     }
+    public void getImagensFirebase(ImageView imageView, Imagem img){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
 
+        if (user != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference gsReference = storage.getReferenceFromUrl(img.getUrl());
+            gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Log.e("URI", uri.toString());
+                    Glide.with(requireContext())
+                            .load(uri)
+                            .into(imageView);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("FALHA", exception.toString());
+                }
+            });
+        }
+
+    }
 }

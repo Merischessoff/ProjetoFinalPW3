@@ -3,7 +3,6 @@ package com.example.projetofinalpw3.fragment;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.projetofinalpw3.R;
@@ -39,10 +37,11 @@ import com.example.projetofinalpw3.model.Imagem;
 import com.example.projetofinalpw3.model.Img;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
+import com.example.projetofinalpw3.util.APIUtil;
+import com.example.projetofinalpw3.util.FirebaseUtil;
 import com.example.projetofinalpw3.util.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,11 +53,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-public class EditarHistoriaSocialFragment extends Fragment {
+public class EditarBancoDeHistoriaSocialFragment extends Fragment {
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
     private ImageView foto;
     private Button btnEditar;
@@ -86,12 +81,15 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
     private Long idHistoria;
     private Util util;
+    private APIUtil apiUtil;
+    private FirebaseUtil firebaseUtil;
+
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_historia_social_editar, container, false);
+        View root = inflater.inflate(R.layout.fragment_banco_de_historia_social_editar, container, false);
         Bundle bundle = getArguments();
 
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
@@ -103,7 +101,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
             apiInterface = APIClient.getClient().create(APIInterface.class);
             Intent intent = getActivity().getIntent();
             token = intent.getStringExtra("token");
-            emailUsuarioResponsavel = bundle.getString("emailUsuarioResponsavel");
+            emailUsuarioResponsavel = bundle.getString("email");
 
             List<AtividadeDeVidaDiaria> listaAtividades = bundle.getParcelableArrayList("listaAvd");
             List<HabilidadeSocial> listaHabilidadesSociais = bundle.getParcelableArrayList("listaHs");
@@ -133,14 +131,10 @@ public class EditarHistoriaSocialFragment extends Fragment {
                 textoHist.setLayoutParams(new LinearLayout.LayoutParams(200, 200));
                 textoHist.setText(img.getTexto());
 
-                if(img.getUrl().contains("gs://projetofinalpw3.appspot.com")){
-                    try {
-                        getImagensFirebase(imageView, img);
-                    }catch (Exception e){
-                        Log.e("Exception", e.toString());
-                    }
-                }else {
-                    Glide.with(requireContext()).load(img.getUrl()).into(imageView);
+                try {
+                    getImagensFirebase(imageView, img);
+                }catch (Exception e){
+                    Log.e("Exception", e.toString());
                 }
                 imageContainer.addView(imageView);
                 imageContainer.addView(textoHist);
@@ -152,12 +146,8 @@ public class EditarHistoriaSocialFragment extends Fragment {
                 imgAux.setIdTexto(textoHist.getId());
                 imagensId.put(imageView.getId(), imgAux);
                 imagensIdPos.put(imageView.getId(),j);
-
                 j++;
             }
-
-            //começa a carregar o titulo e o texto do bundle que foi buscado com o adapter
-            idHistoria = Long.parseLong(bundle.getString("id"));
 
             tituloHistoria = root.findViewById(R.id.txtTituloHistoriaSocial);
             textoHistoria = root.findViewById(R.id.txtTextoHistoriaSocial);
@@ -167,7 +157,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
             spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
             String[] itens = getResources().getStringArray(R.array.itensAtividadeVidaDiariaNome);
             int pos = -1;
-            if(listaAtividades.size()>0) {
+            if(listaAtividades.size()>0){
                 for (int i = 0; i < itens.length; i++) {
                     if (itens[i].equals(listaAtividades.get(0).getNome())) {
                         pos = i;
@@ -245,21 +235,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
                     Log.e("objeto historia social ", "id: " + idHistoria + " historia " + historiaSocial.toString());
 
-                    Call<HistoriaSocial> call = apiInterface.editaHistoriaPropriaId(token, idHistoria, historiaSocial);
-                    call.enqueue(new Callback<HistoriaSocial>() {
-                        @Override
-                        public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
-                            Log.e("onResponse onClick ", "salvando historia social " + response.body());
-                            Snackbar.make(v, "História salva com sucesso!", Snackbar.LENGTH_LONG)
-                                    .setTextColor(Color.BLUE).show();
-                            Navigation.findNavController(v).navigate(R.id.nav_fragment_historia_social_List);
-                        }
-                        @Override
-                        public void onFailure(Call<HistoriaSocial> call, Throwable t) {
-                            call.cancel();
-                            Log.e("post api", "entrou no onFailure" + t.getMessage());
-                        }
-                    });
+                    apiUtil.cadastraHistoriaSocial(token, historiaSocial, v);
 
                 }
             });
@@ -276,7 +252,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
 
         img = imagensId.get(imageViewID);
 
-        Log.e("Img ", "aqui " + img.toString());
+        //Log.e("Img ", "aqui " + img.toString());
         TextView text = root.findViewById(img.getIdTexto());
         imageContainer.removeView(text);
 

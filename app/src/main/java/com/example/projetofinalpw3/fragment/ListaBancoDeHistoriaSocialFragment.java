@@ -57,7 +57,7 @@ public class ListaBancoDeHistoriaSocialFragment extends Fragment {
             @Override
             public void onResponse(Call<List<BancoDeHistoriaSocial>> call, Response<List<BancoDeHistoriaSocial>> response) {
                 historias = response.body();
-                MyAdapterListBancoHistSocial myAdapterListaBancoHistorias = new MyAdapterListBancoHistSocial(getActivity().getBaseContext(),historias, token);
+                MyAdapterListBancoHistSocial myAdapterListaBancoHistorias = new MyAdapterListBancoHistSocial(getActivity().getBaseContext(),historias, token, emailUsuarioVinculado);
                 recyclerView.setAdapter(myAdapterListaBancoHistorias);
                 recyclerView.setHasFixedSize(true);
 

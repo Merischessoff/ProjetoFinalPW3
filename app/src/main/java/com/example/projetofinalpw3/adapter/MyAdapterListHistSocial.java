@@ -84,12 +84,12 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
     }
 
     public void removerItem(Bundle bundle, final int position) {
-        /*new AlertDialog.Builder(context)
-                .setTitle("Deletando história")
-                .setMessage("Tem certeza que deseja deletar essa história?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {*/
+        //new AlertDialog.Builder(context)
+         //       .setTitle("Deletando história")
+         //       .setMessage("Tem certeza que deseja deletar essa história?")
+         //       .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+           //         @Override
+          //          public void onClick(DialogInterface dialogInterface, int i) {
                         APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
                         Call<HistoriaSocial> call = apiInterface.deletaHistoriaPropria(token, Long.parseLong(bundle.getString("id")));
                         call.enqueue(new Callback<HistoriaSocial>() {
@@ -107,7 +107,7 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
                         listaHistoria.remove(position);
                         notifyItemRemoved(position);
 
-                    //}}).setNegativeButton("Não", null).show();
+               //     }}).setNegativeButton("Não", null).show();
     }
 
 

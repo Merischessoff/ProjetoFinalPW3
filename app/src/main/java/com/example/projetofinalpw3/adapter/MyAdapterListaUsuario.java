@@ -62,7 +62,7 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         Bundle bundle = new Bundle();
         bundle.putString("ID", listaUsuarios.get(position).getId().toString());
         //bundle.putString("cpf", listaUsuarios.get(position).getCpf());
-        bundle.putString("email", listaUsuarios.get(position).getEmail());
+        bundle.putString("emailUsuarioLeitor", listaUsuarios.get(position).getEmail());
         bundle.putString("nome", listaUsuarios.get(position).getNome());
         //bundle.putString("senha", listaUsuarios.get(position).getSenha());
         myViewHolderListaUsuario.btnVisual.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.nav_visualizar_usuario_leitor_fragment, bundle));
@@ -82,12 +82,12 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
     }
 
     public void removerItem(Bundle bundle, final int position) {
-       /* new AlertDialog.Builder(context)
-                .setTitle("Deletando usuario")
-                .setMessage("Tem certeza que deseja deletar esse perfil leitor?")
-                .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {*/
+       //new AlertDialog.Builder(context)
+        //        .setTitle("Deletando usuario")
+         //       .setMessage("Tem certeza que deseja deletar esse perfil leitor?")
+         //       .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+         //           @Override
+           //         public void onClick(DialogInterface dialogInterface, int i) {
                         apiInterface = APIClient.getClient().create(APIInterface.class);
                         Call<Usuario> call = apiInterface.deletaUsuarioLeitor(token, bundle.getString("email"));
                         call.enqueue(new Callback<Usuario>() {
@@ -103,7 +103,7 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
                         });
                         listaUsuarios.remove(position);
                         notifyItemRemoved(position);
-                    //}}).setNegativeButton("Não", null).show();
+             //       }}).setNegativeButton("Não", null).show();
     }
 
     public class MyViewHolderListaUsuario extends RecyclerView.ViewHolder{

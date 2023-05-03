@@ -59,6 +59,15 @@ public interface APIInterface {
     @PUT("/historiasocial/edita/historiapropria/{id}")
     Call<HistoriaSocial> editaHistoriaPropriaId(@Header("Authorization") String authorization, @Path("id") Long id, @Body HistoriaSocial hist);
 
+    @GET("/historiasocial/pesquisa/historiasproprias/{emailresponsavel}/{emailleitor}")
+    Call<List<HistoriaSocial>> pesquisaHistoriasPropriasPorEmailUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailresponsavel") String emailresponsavel, @Path("emailleitor") String emailleitor);
+
     @GET("/bancodehistoriasocial")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistorias(@Header("Authorization") String authorization);
+
+    @GET("/bancodehistoriasocial/pesquisa/{emailleitor}")
+    Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+
+    @POST("/bancodehistoriasocial/{idbancodehistoria}/{idusuario}")
+    Call<String> vincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 }

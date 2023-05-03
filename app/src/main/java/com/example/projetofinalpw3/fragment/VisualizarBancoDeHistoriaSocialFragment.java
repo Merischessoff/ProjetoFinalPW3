@@ -28,6 +28,8 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -59,12 +61,9 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
 
     private String uriAuxiliar = "";
 
-    private ImageView imageView;
-
-    private Imagem img = new Imagem();
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        root = inflater.inflate(R.layout.fragment_historia_social_visualizar, container, false);
+        root = inflater.inflate(R.layout.fragment_banco_de_historia_social_visualizar, container, false);
         Bundle bundle = getArguments();
 
         storage = FirebaseStorage.getInstance();
@@ -80,11 +79,15 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
 
             for (int i = 0; i < listaImagens.size(); i++) {
                 if (i == 0) {
-                    img = listaImagens.get(i);
-                    imageView = new ImageView(requireContext());
+                    Imagem img = listaImagens.get(i);
+                    ImageView imageView = new ImageView(requireContext());
                     imageView.setId(util.geraId());
 
-                    getImagensFirebase();
+                    try {
+                        getImagensFirebase(imageView, img);
+                    }catch (Exception e){
+                        Log.e("Exception", e.toString());
+                    }
 
                     TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                     textoImagem.setText(img.getTexto());
@@ -124,7 +127,11 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
                         ImageView imageView = new ImageView(requireContext());
                         imageView.setId(util.geraId());
 
-                        getImagensFirebase();
+                        try {
+                            getImagensFirebase(imageView, img);
+                        }catch (Exception e){
+                            Log.e("Exception", e.toString());
+                        }
 
                         TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                         textoImagem.setText(img.getTexto());
@@ -154,7 +161,11 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
                         ImageView imageView = new ImageView(requireContext());
                         imageView.setId(util.geraId());
 
-                        getImagensFirebase();
+                        try {
+                            getImagensFirebase(imageView, img);
+                        }catch (Exception e){
+                            Log.e("Exception", e.toString());
+                        }
 
                         TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                         textoImagem.setText(img.getTexto());
@@ -176,24 +187,28 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
         return root;
     }
 
-    public void getImagensFirebase(){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference pathReference = storageRef.child(img.getUrl());
+    public void getImagensFirebase(ImageView imageView, Imagem img){
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
 
-        pathReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                Log.e("URI", uri.toString());
-                Glide.with(requireContext())
-                        .load(uri)
-                        .into(imageView);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                Log.e("FALHA", exception.toString());
-            }
-        });
+        if (user != null){
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference gsReference = storage.getReferenceFromUrl(img.getUrl());
+            gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Log.e("URI", uri.toString());
+                    Glide.with(requireContext())
+                            .load(uri)
+                            .into(imageView);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception exception) {
+                    Log.e("FALHA", exception.toString());
+                }
+            });
+        }
+
     }
 }

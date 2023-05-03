@@ -60,22 +60,29 @@
         android:id="@+id/nav_visualizar_usuario_leitor_fragment"
         android:name="com.example.projetofinalpw3.fragment.VisualizarUsuarioLeitorFragment"
         android:label="Visualizar usuário Leitor"
-        tools:layout="@layout/fragment_visualizar_usuario_leitor" />
+        tools:layout="@layout/fragment_visualizar_usuario_leitor" >
+        <action
+            android:id="@+id/action_nav_visualizar_usuario_leitor_fragment_to_nav_home"
+            app:destination="@id/nav_home" />
+        <action
+            android:id="@+id/action_nav_visualizar_usuario_leitor_fragment_to_nav_lista_banco_historias_associar_fragment"
+            app:destination="@id/nav_lista_banco_historias_associar_fragment" />
+    </fragment>
     <fragment
-        android:id="@+id/nav_banco_historias_fragment"
+        android:id="@+id/nav_lista_banco_historias_fragment"
         android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialFragment"
         android:label="Lista Banco de histórias"
-        tools:layout="@layout/fragment_lista_historias_associar" />
+        tools:layout="@layout/fragment_banco_historia_social_lista_associar" />
     <fragment
-        android:id="@+id/listaHistoriaAssociarFragment"
-        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaAssociarFragment"
+        android:id="@+id/nav_lista_banco_historias_associar_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialAssociarFragment"
         android:label="fragment_lista_historias_associar"
-        tools:layout="@layout/fragment_lista_historias_associar" />
+        tools:layout="@layout/fragment_banco_historia_social_lista_associar" />
     <fragment
-        android:id="@+id/visualizarBancoDeHistoriaSocialFragment"
+        android:id="@+id/nav_visualizarBancoDeHistoriaSocialFragment"
         android:name="com.example.projetofinalpw3.fragment.VisualizarBancoDeHistoriaSocialFragment"
         android:label="fragment_visualizar_banco_de_historia_social"
-        tools:layout="@layout/fragment_visualizar_banco_de_historia_social" />
+        tools:layout="@layout/fragment_historia_social_visualizar" />
     <fragment
         android:id="@+id/galleryFragment"
         android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
@@ -91,6 +98,10 @@
         android:name="com.example.projetofinalpw3.MainActivity"
         android:label="app_bar_main"
         tools:layout="@layout/app_bar_main" />
+    <fragment
+        android:id="@+id/nav_editarBancoDeHistoriaSocialFragment"
+        android:name="com.example.projetofinalpw3.fragment.EditarBancoDeHistoriaSocialFragment"
+        android:label="EditarBancoDeHistoriaSocialFragment" />
 
 
 </navigation>

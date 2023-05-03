@@ -58,6 +58,8 @@
     <string name="categoriasHs">Habilidades Sociais</string>
     <string name="vincular">Vincular Histórias</string>
     <string name="btnAssociar">Associar História</string>
+    <string name="vincularBancoHistSoc">Banco de Histórias</string>
+    <string name="vincularHistSoc">Histórias</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
         <item>Nenhum</item>

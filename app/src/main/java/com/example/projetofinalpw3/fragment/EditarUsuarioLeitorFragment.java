@@ -66,7 +66,7 @@ public class EditarUsuarioLeitorFragment extends Fragment {
 
         textConfSenha = root.findViewById(R.id.edtConfSenhaUsuarioLeitorVinculado);
         //textConfSenha.setText(bundle.getString("senha"));
-        email = bundle.getString("email");
+        email = bundle.getString("emailUsuarioLeitor");
 
         Intent intent = getActivity().getIntent();
         token = intent.getStringExtra("token");
@@ -114,7 +114,7 @@ public class EditarUsuarioLeitorFragment extends Fragment {
                                     public void onResponse(Call<UsuarioEditarDTO> call, Response<UsuarioEditarDTO> response) {
                                         Log.e("onResponse ", "editarUsuarioLeitor " + response.body());
                                         Snackbar.make(getView(), "Usuario editado com sucesso!", Snackbar.LENGTH_LONG)
-                                                .setTextColor(Color.GREEN).show();
+                                                .setTextColor(Color.BLUE).show();
                                         Navigation.findNavController(getView()).navigate(R.id.nav_lista_usuario_leitor_fragment);
                                     }
 
