@@ -41,7 +41,7 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
         textEmail = root.findViewById(R.id.visualEmailUsuarioLeitor);
         textEmail.setText(bundle.getString("emailUsuarioLeitor"));
 
-        btnOk = root.findViewById(R.id.btnOkUsuarioLeitor);
+        btnOk = root.findViewById(R.id.btnOkUsuarioLeitorU);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,23 +50,23 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
             }
         });
 
-        btnAssociar = root.findViewById(R.id.btnVincularHistorias);
+        btnAssociar = root.findViewById(R.id.btnVincularHistoriasU);
         btnAssociar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment, bundle);
+                Navigation.findNavController(v).navigate(R.id.nav_lista_historias_associar_fragment, bundle);
             }
         });
 
-        btnDesassociar = root.findViewById(R.id.btndesvincularHistorias);
+        btnDesassociar = root.findViewById(R.id.btnDesvincularHistoriasU);
         btnDesassociar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
+                Navigation.findNavController(v).navigate(R.id.nav_lista_historias_desassociar_fragment, bundle);
             }
         });
 
-        btnAssociarBanco = root.findViewById(R.id.btnVincularBancoHistorias);
+        btnAssociarBanco = root.findViewById(R.id.btnVincularBancoHistoriasU);
         btnAssociarBanco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,11 +74,11 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
             }
         });
 
-        btnDesassociarBanco = root.findViewById(R.id.btnDesvincularBancoHistorias);
+        btnDesassociarBanco = root.findViewById(R.id.btnDesvincularBancoHistoriasU);
         btnDesassociarBanco.setOnClickListener(new View.OnClickListener(){
             @Override
             public  void onClick(View v){
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment,  bundle);
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
             }
         });
         return root;

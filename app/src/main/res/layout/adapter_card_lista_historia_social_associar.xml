@@ -14,19 +14,17 @@
         android:padding="8dp">
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewTituloVincularB"
+            android:id="@+id/textViewTituloVincular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="História Social - Banco de história"
-            android:textSize="18dp"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewVincularB"
+            android:id="@+id/textViewVincular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Texto"
-            android:textSize="18dp"
             android:textAlignment="center"
             android:textStyle="italic" />
 
@@ -36,7 +34,7 @@
             android:orientation="horizontal"
             android:gravity="right">
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnVincularHistoriaB"
+                android:id="@+id/btnVincularHistória"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/vincularBancoHistSoc"

@@ -102,6 +102,18 @@
         android:id="@+id/nav_editarBancoDeHistoriaSocialFragment"
         android:name="com.example.projetofinalpw3.fragment.EditarBancoDeHistoriaSocialFragment"
         android:label="EditarBancoDeHistoriaSocialFragment" />
+    <fragment
+        android:id="@+id/nav_lista_banco_historias_desassociar_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialDesassociarFragment"
+        android:label="fragment_lista_banco_de_historia_social_desassociar"
+        tools:layout="@layout/fragment_lista_banco_de_historia_social_desassociar" />
+    <fragment
+        android:id="@+id/nav_lista_historias_associar_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialAssociarFragment"
+        android:label="ListaHistoriaSocialAssociarFragment" />
 
-
+    <fragment
+        android:id="@+id/nav_lista_historias_desassociar_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialDesassociarFragment"
+        android:label="ListaHistoriaSocialDesassociarFragment" />
 </navigation>

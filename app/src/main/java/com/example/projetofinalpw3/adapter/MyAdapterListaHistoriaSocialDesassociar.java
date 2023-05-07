@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,14 +15,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetofinalpw3.R;
 import com.example.projetofinalpw3.model.BancoDeHistoriaSocial;
+import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.util.APIUtil;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyAdapterListaBancoHistoriaSocialAssociar extends RecyclerView.Adapter<MyAdapterListaBancoHistoriaSocialAssociar.MyViewHolderListHistSocial> {
-    private List<BancoDeHistoriaSocial> listaHistoriaB = new ArrayList<BancoDeHistoriaSocial>();
+public class MyAdapterListaHistoriaSocialDesassociar extends RecyclerView.Adapter<MyAdapterListaHistoriaSocialDesassociar.MyViewHolderListHistSocial> {
+    private List<HistoriaSocial> listaHistoria = new ArrayList<HistoriaSocial>();
     private Context context;
     private String idUsuarioLeitor;
     private String token;
@@ -32,9 +33,9 @@ public class MyAdapterListaBancoHistoriaSocialAssociar extends RecyclerView.Adap
 
     private String emailUsuarioResponsavel;
 
-    public MyAdapterListaBancoHistoriaSocialAssociar(Context context, List<BancoDeHistoriaSocial> bHistorias, String token, String idUsuarioLeitor, String emailUsuarioLeitor, String emailUsuarioResponsavel, String nomeUsuario) {
+    public MyAdapterListaHistoriaSocialDesassociar(Context context, List<HistoriaSocial> historias, String token, String idUsuarioLeitor, String emailUsuarioLeitor, String emailUsuarioResponsavel, String nomeUsuario) {
         this.context = context;
-        this.listaHistoriaB = bHistorias;
+        this.listaHistoria = historias;
         this.token = token;
         this.idUsuarioLeitor = idUsuarioLeitor;
         this.emailUsuarioLeitor = emailUsuarioLeitor;
@@ -46,45 +47,44 @@ public class MyAdapterListaBancoHistoriaSocialAssociar extends RecyclerView.Adap
     @NonNull
     @Override
     public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_lista_banco_historia_social_associar, viewGroup, false);
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_historia_social_desassociar, viewGroup, false);
         return new MyViewHolderListHistSocial(itemList);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolderListHistSocial myViewHolderListHistSocial, @SuppressLint("RecyclerView") int position) {
-        myViewHolderListHistSocial.titulo.setText(listaHistoriaB.get(position).getTexto());
+        myViewHolderListHistSocial.titulo.setText(listaHistoria.get(position).getTexto());
         Bundle bundle = new Bundle();
-        bundle.putString("id", listaHistoriaB.get(position).getId().toString());
+        bundle.putString("id", listaHistoria.get(position).getId().toString());
         bundle.putString("token", token);
         bundle.putString("idUsuarioLeitor", idUsuarioLeitor);
 
-        myViewHolderListHistSocial.titulo.setText(listaHistoriaB.get(position).getTitulo().toString());
-        myViewHolderListHistSocial.texto.setText(listaHistoriaB.get(position).getTexto().toString());
-        myViewHolderListHistSocial.btnAssociarHist.setOnClickListener(new View.OnClickListener() {
+        myViewHolderListHistSocial.titulo.setText(listaHistoria.get(position).getTitulo().toString());
+        myViewHolderListHistSocial.texto.setText(listaHistoria.get(position).getTexto().toString());
+        myViewHolderListHistSocial.btnDesassociarHist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiUtil.vincularBancoHistoria(token, bundle);
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment, bundle);
+                apiUtil.desvincularHistoria(token, bundle);
+                Navigation.findNavController(v).navigate(R.id.nav_lista_historias_desassociar_fragment, bundle);
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
-        return listaHistoriaB.size();
+        return listaHistoria.size();
     }
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
         TextView texto;
-        Button btnAssociarHist;
+        ImageButton btnDesassociarHist;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
-            titulo = itemView.findViewById(R.id.textViewTituloVincularB);
-            texto = itemView.findViewById(R.id.textViewVincularB);
-            btnAssociarHist = itemView.findViewById(R.id.btnVincularHistoriaB);
+            titulo = itemView.findViewById(R.id.textViewTituloDesvincular);
+            texto = itemView.findViewById(R.id.textViewDesvincular);
+            btnDesassociarHist = itemView.findViewById(R.id.btnDesvincularHistorias);
         }
     }
 }

@@ -68,8 +68,23 @@ public interface APIInterface {
     @GET("/bancodehistoriasocial/pesquisa/associado/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
+    @GET("/historiasocial/pesquisa/associado/{emailleitor}")
+    Call<List<HistoriaSocial>> pesquisaHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+
     @GET("/bancodehistoriasocial/pesquisa/desassociado/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
-    @POST("/bancodehistoriasocial/associar/{idbancodehistoria}/{idusuario}")
+    @GET("/historiasocial/pesquisa/desassociado/{emailleitor}")
+    Call<List<HistoriaSocial>> pesquisaHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+
+    @POST("/bancodehistoriasocial/associa/{idbancodehistoria}/{idusuario}")
     Call<String> vincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+
+    @POST("/historiasocial/associa/{idhistoria}/{idusuario}")
+    Call<String> vincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+
+    @POST("/bancodehistoriasocial/desassocia/{idbancodehistoria}/{idusuario}")
+    Call<String> desvincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+
+    @POST("/historiasocial/desassocia/{idhistoria}/{idusuario}")
+    Call<String> desvincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 }

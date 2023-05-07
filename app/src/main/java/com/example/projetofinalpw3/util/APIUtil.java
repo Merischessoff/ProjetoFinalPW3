@@ -39,7 +39,7 @@ public class APIUtil {
 
     }
 
-    public static View.OnClickListener vincularBancoHistoria(String token, Bundle bundle){
+    public static void vincularBancoHistoria(String token, Bundle bundle){
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
         Call<String> call = apiInterface.vincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
@@ -47,6 +47,7 @@ public class APIUtil {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 Log.e("onResponse", "Response vincularBancoHistoria" + response.body());
+
             }
             @Override
             public void onFailure(Call<String> call, Throwable t) {
@@ -54,6 +55,56 @@ public class APIUtil {
                 Log.e("post api", "entrou no onFailure" + t.getMessage());
             }
         });
-        return Navigation.createNavigateOnClickListener(R.id.nav_lista_banco_historias_associar_fragment, bundle);
+    }
+
+    public static void desvincularBancoHistoria(String token, Bundle bundle){
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        Call<String> call = apiInterface.desvincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e("onResponse", "Response desvincularBancoHistoria");
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                call.cancel();
+                Log.e("post api", "entrou no onFailure" + t.getMessage());
+            }
+        });
+    }
+
+    public static void vincularHistoria(String token, Bundle bundle){
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        Call<String> call = apiInterface.vincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e("onResponse", "Response vincularHistoria" + response.body());
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                call.cancel();
+                Log.e("post api", "entrou no onFailure" + t.getMessage());
+            }
+        });
+    }
+
+    public void desvincularHistoria(String token, Bundle bundle) {
+        apiInterface = APIClient.getClient().create(APIInterface.class);
+
+        Call<String> call = apiInterface.desvincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Log.e("onResponse", "Response desvincularHistoria" + response.body());
+            }
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                call.cancel();
+                Log.e("post api", "entrou no onFailure" + t.getMessage());
+            }
+        });
     }
 }

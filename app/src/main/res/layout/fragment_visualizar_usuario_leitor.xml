@@ -51,31 +51,31 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnOkUsuarioLeitor"
+        android:id="@+id/btnOkUsuarioLeitorU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/ok" />
     <Button
-        android:id="@+id/btnVincularBancoHistorias"
+        android:id="@+id/btnVincularBancoHistoriasU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/vincularBancoHistSoc" />
     <Button
-        android:id="@+id/btnDesvincularBancoHistorias"
+        android:id="@+id/btnDesvincularBancoHistoriasU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/desvincularBancoHistSoc" />
     <Button
-        android:id="@+id/btnVincularHistorias"
+        android:id="@+id/btnVincularHistoriasU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/vincularHistSoc" />
     <Button
-        android:id="@+id/btndesvincularHistorias"
+        android:id="@+id/btnDesvincularHistoriasU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"

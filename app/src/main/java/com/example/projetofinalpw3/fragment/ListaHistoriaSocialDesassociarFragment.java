@@ -2,19 +2,19 @@ package com.example.projetofinalpw3.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.adapter.MyAdapterListaBancoHistoriaSocialAssociar;
+import com.example.projetofinalpw3.adapter.MyAdapterListaBancoHistoriaSocialDesassociar;
+import com.example.projetofinalpw3.adapter.MyAdapterListaHistoriaSocialDesassociar;
 import com.example.projetofinalpw3.model.BancoDeHistoriaSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
@@ -30,7 +30,7 @@ import retrofit2.Response;
 /**
  * A fragment representing a list of Items.
  */
-public class ListaBancoDeHistoriaSocialAssociarFragment extends Fragment {
+public class ListaHistoriaSocialDesassociarFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private View root;
@@ -41,12 +41,11 @@ public class ListaBancoDeHistoriaSocialAssociarFragment extends Fragment {
     private String emailUsuarioResponsavel;
     private List<HistoriaSocial> historias = new ArrayList<HistoriaSocial>();
     private String nomeUsuario;
-    private List<BancoDeHistoriaSocial> bancoDeHistorias = new ArrayList<BancoDeHistoriaSocial>();
     private APIInterface apiInterface;
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        root = inflater.inflate(R.layout.fragment_banco_historia_social_lista_associar, container, false);
-        recyclerView = root.findViewById(R.id.recyclerViewAssociarHistoriaB);
+        root = inflater.inflate(R.layout.fragment_lista_banco_de_historia_social_desassociar, container, false);
+        recyclerView = root.findViewById(R.id.recyclerViewDesassociarHistoriaB);
         Bundle bundle = getArguments();
         Intent intent = getActivity().getIntent();
         emailUsuarioLeitor = bundle.getString("emailUsuarioLeitor");
@@ -59,15 +58,15 @@ public class ListaBancoDeHistoriaSocialAssociarFragment extends Fragment {
     }
     private void carregaHistoriasSociais(){
         apiInterface = APIClient.getClient().create(APIInterface.class);
-        Call<List<BancoDeHistoriaSocial>> call2 = apiInterface.pesquisaBancoDeHistoriaUsuarioAssociado(token, emailUsuarioLeitor);
+        Call<List<HistoriaSocial>> call2 = apiInterface.pesquisaHistoriaUsuarioDesassociado(token, emailUsuarioLeitor);
 
-        call2.enqueue(new Callback<List<BancoDeHistoriaSocial>>() {
+        call2.enqueue(new Callback<List<HistoriaSocial>>() {
             @Override
-            public void onResponse(Call<List<BancoDeHistoriaSocial>> call, Response<List<BancoDeHistoriaSocial>> response) {
-                bancoDeHistorias = response.body();
-                MyAdapterListaBancoHistoriaSocialAssociar myAdapterListHistAssociar =
-                        new MyAdapterListaBancoHistoriaSocialAssociar(getActivity().getBaseContext(), bancoDeHistorias, token, idUsuarioLeitor, emailUsuarioLeitor, emailUsuarioResponsavel, nomeUsuario);
-                recyclerView.setAdapter(myAdapterListHistAssociar);
+            public void onResponse(Call<List<HistoriaSocial>> call, Response<List<HistoriaSocial>> response) {
+                historias = response.body();
+                MyAdapterListaHistoriaSocialDesassociar myAdapterListHistDesassociar =
+                        new MyAdapterListaHistoriaSocialDesassociar(getActivity().getBaseContext(), historias, token, idUsuarioLeitor, emailUsuarioLeitor, emailUsuarioResponsavel, nomeUsuario);
+                recyclerView.setAdapter(myAdapterListHistDesassociar);
                 recyclerView.setHasFixedSize(true);
 
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
@@ -76,7 +75,7 @@ public class ListaBancoDeHistoriaSocialAssociarFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<BancoDeHistoriaSocial>> call, Throwable t) {
+            public void onFailure(Call<List<HistoriaSocial>> call, Throwable t) {
                 call.cancel();
                 Log.e("onFailure", "ListaHistoriaSocialFragment " + t.getMessage());
             }
