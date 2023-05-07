@@ -26,7 +26,7 @@
             android:id="@+id/textViewTituloVincular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="História Social"
+            android:text="História Social - Banco de história"
             android:textSize="18dp"
             android:textStyle="bold" />
 

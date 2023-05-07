@@ -30,7 +30,7 @@ import retrofit2.Response;
 /**
  * A fragment representing a list of Items.
  */
-public class ListaBancoDeHistoriaSocialAssociarFragment extends Fragment {
+public class ListaBancoDeHistoriaSocialDesassociarFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private View root;

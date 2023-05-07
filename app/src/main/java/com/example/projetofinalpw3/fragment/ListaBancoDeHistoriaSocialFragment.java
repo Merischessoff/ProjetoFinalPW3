@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.adapter.MyAdapterListBancoHistSocial;
+import com.example.projetofinalpw3.adapter.MyAdapterListaBancoHistoriaSocial;
 import com.example.projetofinalpw3.model.BancoDeHistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
@@ -57,7 +57,7 @@ public class ListaBancoDeHistoriaSocialFragment extends Fragment {
             @Override
             public void onResponse(Call<List<BancoDeHistoriaSocial>> call, Response<List<BancoDeHistoriaSocial>> response) {
                 historias = response.body();
-                MyAdapterListBancoHistSocial myAdapterListaBancoHistorias = new MyAdapterListBancoHistSocial(getActivity().getBaseContext(),historias, token, emailUsuarioVinculado);
+                MyAdapterListaBancoHistoriaSocial myAdapterListaBancoHistorias = new MyAdapterListaBancoHistoriaSocial(getActivity().getBaseContext(),historias, token, emailUsuarioVinculado);
                 recyclerView.setAdapter(myAdapterListaBancoHistorias);
                 recyclerView.setHasFixedSize(true);
 

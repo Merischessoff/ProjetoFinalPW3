@@ -25,6 +25,10 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
     private Button btnAssociar;
     private Button btnAssociarBanco;
 
+    private Button btnDesassociar;
+
+    private Button btnDesassociarBanco;
+
     private Button btnok;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -54,10 +58,26 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
             }
         });
 
+        btnDesassociar = root.findViewById(R.id.btndesvincularHistorias);
+        btnDesassociar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
+            }
+        });
+
         btnAssociarBanco = root.findViewById(R.id.btnVincularBancoHistorias);
         btnAssociarBanco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment,  bundle);
+            }
+        });
+
+        btnDesassociarBanco = root.findViewById(R.id.btnDesvincularBancoHistorias);
+        btnDesassociarBanco.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
                 Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment,  bundle);
             }
         });

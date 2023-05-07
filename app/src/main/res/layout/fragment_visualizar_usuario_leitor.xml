@@ -63,11 +63,23 @@ tools:context=".fragment.VisualizarUsuarioLeitorFragment">
         android:layout_margin="@dimen/margin4"
         android:text="@string/vincularBancoHistSoc" />
     <Button
+        android:id="@+id/btnDesvincularBancoHistorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin4"
+        android:text="@string/desvincularBancoHistSoc" />
+    <Button
         android:id="@+id/btnVincularHistorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin4"
         android:text="@string/vincularHistSoc" />
+    <Button
+        android:id="@+id/btndesvincularHistorias"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin4"
+        android:text="@string/desvincularHistSoc" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>
 

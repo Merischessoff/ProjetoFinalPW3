@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapterListBancoHistSocial.MyViewHolderListHistSocial> {
+public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAdapterListaBancoHistoriaSocial.MyViewHolderListHistSocial> {
     private List<BancoDeHistoriaSocial> listaHistoria = new ArrayList<BancoDeHistoriaSocial>();
     private Context context;
     private String email;
@@ -30,7 +30,7 @@ public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapter
     private APIUtil apiUtil;
 
     private HistoriaSocial historiaSocial;
-    public MyAdapterListBancoHistSocial(Context context, List<BancoDeHistoriaSocial> historias, String token, String email) {
+    public MyAdapterListaBancoHistoriaSocial(Context context, List<BancoDeHistoriaSocial> historias, String token, String email) {
         this.context = context;
         this.listaHistoria = historias;
         this.token = token;
@@ -40,7 +40,7 @@ public class MyAdapterListBancoHistSocial extends RecyclerView.Adapter<MyAdapter
     @NonNull
     @Override
     public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_banco_hist_soc, viewGroup, false);
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_banco_historia_social, viewGroup, false);
         return new MyViewHolderListHistSocial(itemList);
     }
 

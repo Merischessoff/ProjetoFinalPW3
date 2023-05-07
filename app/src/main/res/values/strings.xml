@@ -56,10 +56,10 @@
     <string name="btnSelecionarImg">Selecionar Imagens</string>
     <string name="categoriasAvd">Atividades de vida Diária</string>
     <string name="categoriasHs">Habilidades Sociais</string>
-    <string name="vincular">Vincular Histórias</string>
-    <string name="btnAssociar">Associar História</string>
-    <string name="vincularBancoHistSoc">Banco de Histórias</string>
-    <string name="vincularHistSoc">Histórias</string>
+    <string name="vincularBancoHistSoc">Associar HS-Banco</string>
+    <string name="desvincularBancoHistSoc">Desassociar HS-Banco</string>
+    <string name="vincularHistSoc">Associar HS</string>
+    <string name="desvincularHistSoc">Desassociar HS</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
         <item>Nenhum</item>

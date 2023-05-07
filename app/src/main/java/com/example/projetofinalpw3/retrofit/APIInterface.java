@@ -62,12 +62,14 @@ public interface APIInterface {
     @GET("/historiasocial/pesquisa/historiasproprias/{emailresponsavel}/{emailleitor}")
     Call<List<HistoriaSocial>> pesquisaHistoriasPropriasPorEmailUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailresponsavel") String emailresponsavel, @Path("emailleitor") String emailleitor);
 
-    @GET("/bancodehistoriasocial")
+    @GET("/bancodehistoriasocial/pesquisa")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistorias(@Header("Authorization") String authorization);
 
-    @GET("/bancodehistoriasocial/pesquisa/{emailleitor}")
+    @GET("/bancodehistoriasocial/pesquisa/associado/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
-    @POST("/bancodehistoriasocial/{idbancodehistoria}/{idusuario}")
+    @GET("/bancodehistoriasocial/pesquisa/desassociado/{emailleitor}")
+    Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+    @POST("/bancodehistoriasocial/associar/{idbancodehistoria}/{idusuario}")
     Call<String> vincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 }

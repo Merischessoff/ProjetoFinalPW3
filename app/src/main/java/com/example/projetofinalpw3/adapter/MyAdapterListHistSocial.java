@@ -2,10 +2,7 @@ package com.example.projetofinalpw3.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.projetofinalpw3.dto.HistoriaSocialDTO;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 //import com.google.firebase.database.DatabaseReference;
 //import com.google.firebase.database.FirebaseDatabase;
@@ -27,7 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.model.Usuario;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
 
@@ -50,7 +44,7 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
     @NonNull
     @Override
     public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_historia_social, viewGroup, false);
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_historia_social, viewGroup, false);
         return new MyViewHolderListHistSocial(itemList);
     }
 
