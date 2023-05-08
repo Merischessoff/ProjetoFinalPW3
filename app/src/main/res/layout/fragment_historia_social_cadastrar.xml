@@ -33,7 +33,7 @@
             android:id="@+id/image_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="4"
+            android:columnCount="3"
             android:rowCount="8"
             android:orientation="horizontal"
             android:alignmentMode="alignMargins"
