@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="4608"
+   height="4608"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg259"
+   sodipodi:docname="Visualizar a história.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview261"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.054144965"
+     inkscape:cx="498.66132"
+     inkscape:cy="2539.479"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg259" />
+  <defs
+     id="defs256">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4613">
+      <stop
+         style="stop-color:#c21aca;stop-opacity:1;"
+         offset="0"
+         id="stop4609" />
+      <stop
+         style="stop-color:#134bb0;stop-opacity:1"
+         offset="1"
+         id="stop4611" />
+    </linearGradient>
+    <style
+       id="style247">
+      .cls-1 {
+        fill: #fed1c0;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter
+       id="filter"
+       x="-0.125"
+       y="12.5"
+       width="511.937"
+       height="485.5"
+       filterUnits="userSpaceOnUse">
+      <feImage
+         preserveAspectRatio="none"
+         x="-0.125"
+         y="12.5"
+         width="511.937"
+         height="485.5"
+         result="image"
+         xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNTExLjkzNyIgaGVpZ2h0PSI0ODUuNSIgdmlld0JveD0iMCAwIDUxMS45MzcgNDg1LjUiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAuY2xzLTEgewogICAgICAgIGZpbGw6IHVybCgjbGluZWFyLWdyYWRpZW50KTsKICAgICAgfQogICAgPC9zdHlsZT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ibGluZWFyLWdyYWRpZW50IiB4MT0iMjU1Ljk2OCIgeTE9IjQ4NS41IiB4Mj0iMjU1Ljk2OSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhZTA0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDg0YmE4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSI1MTEuOTM3IiBoZWlnaHQ9IjQ4NS41Ii8+Cjwvc3ZnPgo="
+         id="feImage249" />
+      <feComposite
+         result="composite"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite251" />
+      <feBlend
+         result="blend"
+         in2="SourceGraphic"
+         id="feBlend253" />
+      <feGaussianBlur
+         stdDeviation="5.4935964e-05"
+         id="feGaussianBlur3913" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4613"
+       id="linearGradient4617"
+       x1="146.95566"
+       y1="304.84564"
+       x2="124.48186"
+       y2="-175.93361"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     id="Forma_9"
+     data-name="Forma 9"
+     class="cls-1"
+     d="m 343,129 c 10,-0.144 18.822,2.429 26,5 l 10,2 v 1 h 2 v 1 h 3 v 1 l 6,2 v 1 h 2 v 1 l 6,2 v 1 l 3,1 1,2 4,1 1,2 3,1 2,3 h 2 l 3,4 3,1 7,8 q -0.5,5 -1,10 l -3,2 v 1 c -2.122,1.325 -5.636,1.009 -9,1 -1.1,-1.325 -2.743,-1.841 -4,-3 l -1,-2 h -2 l -5,-6 h -2 l -2,-3 -3,-1 -1,-2 -4,-1 -1,-2 -6,-2 v -1 h -2 v -1 l -6,-2 v -1 l -6,-1 v -1 h -2 v -1 l -8,-1 c -19.324,-6.425 -45.151,-3.694 -62,3 l -6,1 v 1 l -6,2 v 1 h -2 v 1 l -4,1 -1,2 -4,1 -1,2 h -2 l -1,2 -3,1 -2,3 h -2 l -9,10 -6,5 v 2 l -3,2 v 2 l -3,2 q -0.5,2 -1,4 l -2,1 q -0.5,2 -1,4 l -2,1 v 2 h -1 q -0.5,2.5 -1,5 h -1 q -0.5,2 -1,4 h -1 v 3 h -1 v 3 h -1 v 3 h -1 v 3 h -1 v 4 c -2.714,8.366 -5.089,27.555 -2,38 v 6 h 1 v 5 h 1 v 4 h 1 v 4 h 1 v 3 h 1 v 2 h 1 q 0.5,3 1,6 h 1 l 2,6 h 1 q 0.5,2 1,4 l 2,1 q 0.5,2 1,4 h 1 l 1,3 2,1 v 2 l 3,2 v 2 l 6,5 v 2 l 2,1 3,4 h 2 l 5,6 h 2 l 2,3 h 2 l 1,2 h 2 l 1,2 4,1 1,2 4,1 v 1 l 4,1 v 1 h 3 v 1 h 2 v 1 h 3 v 1 h 3 v 1 h 3 v 1 h 4 v 1 h 4 v 1 h 5 v 1 h 7 c 8.022,2.256 22.035,1.074 29,-1 h 6 v -1 h 4 v -1 h 4 v -1 h 3 v -1 h 2 v -1 l 6,-1 v -1 l 6,-2 v -1 h 2 v -1 l 4,-1 1,-2 4,-1 2,-3 h 2 l 1,-2 h 2 l 4,-5 h 2 l 7,-8 3,-2 v -2 l 4,-3 v -2 l 3,-2 v -2 l 2,-1 1,-3 h 1 l 1,-4 2,-1 1,-5 h 1 v -2 h 1 l 1,-4 h 1 v -3 h 1 v -3 h 1 v -3 h 1 v -3 h 1 v -4 h 1 v -4 h 1 v -7 h 1 v -14 h 1 v -1 h -1 v -5 c -0.027,-3.53 -0.682,-9.069 1,-11 0.786,-3.076 1.935,-3.367 4,-5 v -1 h 3 v -1 c 4.361,0.649 8.115,1.777 10,5 2.561,2.5 1.969,7.948 2,13 v 5 h 1 v 1 h -1 v 15 h -1 v 8 h -1 v 4 h -1 v 5 h -1 q -0.5,3.5 -1,7 l -9,21 h -1 v 2 h -1 v 2 h -1 v 2 l -2,1 v 2 l -2,1 v 2 l -2,1 v 2 l -2,1 -1,3 c -2.091,2.941 -3.154,0.453 -4,6 l 78,77 c 3.675,5.532 1.371,13.965 -4,16 h -8 l -20,-19 -38,-39 -15,-15 c -2.381,-2.381 -5.234,-3.972 -7,-7 l -5,3 -1,2 h -2 l -2,3 h -2 l -1,2 -3,1 v 1 l -6,2 -1,2 -4,1 v 1 l -4,1 v 1 h -3 v 1 h -2 v 1 h -3 v 1 h -2 v 1 l -10,2 v 1 h -3 v 1 l -21,3 v 66 l -6,18 h -1 l -1,3 -2,1 v 2 l -4,3 v 2 l -2,1 v 1 h -2 l -4,5 h -2 l -1,2 h -2 v 1 l -6,2 v 1 h -3 v 1 l -8,1 v 1 H 44 l -17,-6 -1,-2 h -2 l -1,-2 h -2 c -2.579,-1.823 -1.662,-3.8 -6,-5 -1.194,-4.336 -3.181,-3.424 -5,-6 v -2 l -2,-1 v -2 L 6,471 5,466 H 4 v -2 H 3 L 1,452 H 0 V 293 h 1 c 1.566,-3.455 1.029,-4.881 5,-6 2.3,-2.2 7.426,-0.547 10,0 0.987,1.846 3.323,4.136 4,6 v 125 c 0,17.9 -1.362,36.589 6,47 l 6,5 1,2 h 2 l 1,2 4,1 v 1 l 6,1 v 1 h 198 c 20.2,0 52.8,3.218 65,-5 l 2,-3 7,-6 v -2 h 1 l 1,-4 h 1 v -3 h 1 v -4 h 1 v -64 l -24,-4 v -1 h -3 v -1 h -3 v -1 h -3 v -1 l -6,-1 v -1 l -6,-2 v -1 h -2 v -1 h -2 v -1 l -6,-2 -1,-2 -4,-1 v -1 l -3,-1 -1,-2 h -2 l -3,-4 h -2 l -3,-4 h -2 l -3,-4 -7,-6 -1,-3 h -1 l -4,-5 H 62 v -1 l -5,-1 c -1.157,-2.053 -4.575,-5.684 -4,-9 h 1 v -4 l 2,-1 v -2 c 15.749,-3.315 39.02,-2 58,-2 h 104 v -1 c -2.246,-2.06 -0.733,-2.219 -2,-5 h -1 v -2 h -1 v -2 h -1 v -2 h -1 v -3 a 108.208,108.208 0 0 1 -8,-36 H 91 c -11.43,0 -33.58,2.685 -36,-6 -1.556,-1.5 -2.388,-6.054 -1,-9 l 2,-1 v -2 c 13.979,-3.4 35.761,-2 53,-2 h 95 q 2.5,-13.5 5,-27 h 1 v -2 h 1 v -3 h 1 q 0.5,-3 1,-6 h 1 v -2 h 1 v -2 h 1 v -2 h 1 c 1.184,-2.206 1.991,-4.84 3,-7 H 63 v -1 h -4 l -1,-2 c -2.607,-1.816 -1.841,1.081 -3,-3 -1.335,-1.369 -2.165,-6.5 -1,-9 l 2,-1 v -2 c 16.314,-3.961 42.256,-2 62,-2 h 116 l 5,-6 2,-1 v -2 h 1 q 0.5,-1 1,-2 l 3,-1 5,-6 h 2 l 2,-3 3,-1 1,-2 h 2 l 1,-2 4,-1 1,-2 4,-1 1,-2 h 2 v -1 h 2 v -1 h 3 v -1 h 2 v -1 l 4,-1 v -1 l 6,-1 c 9.114,-3.6 19.43,-6.81 32,-7 V 60 h -1 v -4 h -1 v -3 h -1 v -2 l -2,-1 q -0.5,-2 -1,-4 l -5,-4 -2,-3 C 296.192,29.643 265.594,33 243,33 H 96 C 72.518,33 45.92,30.144 32,40 l -1,2 -4,3 v 2 l -2,1 c -6.311,9.969 -5,26.74 -5,43 V 218 A 10.472,10.472 0 0 1 0,218 V 85 C 0,71.857 -1.064,56.308 3,47 h 1 l 2,-6 h 1 l 1,-4 3,-2 v -2 l 3,-2 5,-6 h 2 l 3,-4 h 2 v -1 h 2 v -1 h 2 v -1 h 2 v -1 h 2 v -1 h 3 v -1 c 11.308,-4.02 32.376,-2 47,-2 h 177 c 14.108,0 34.136,-1.892 45,2 v 1 h 3 v 1 l 6,2 v 1 l 4,1 2,3 h 2 l 3,4 6,5 v 2 l 3,2 7,16 q 0.5,12.5 1,25 z M 56,121 v -2 l -2,-1 v -4 h -1 v -1 h 1 v -4 l 2,-1 v -2 c 2.937,-0.735 2.266,-1.663 3,-2 h 4 v -1 h 217 v 1 c 4.96,1.614 6.479,-0.42 8,5 3.36,3.186 0.9,7 0,11 l -3,1 -1,2 H 59 c -1.127,-1.719 -0.632,-1.355 -3,-2 z m 377,92 v -2 l -2,-1 q 0.5,-5 1,-10 c 4.51,-2.51 4.323,-4 12,-4 2.777,3.239 5.682,2.913 6,9 1.379,1.8 -0.354,4.14 -1,7 -3.191,1.721 -5.222,3.524 -10,4 v -1 h -3 v -1 z M 6,246 h 8 c 1.973,3 2.825,0.941 4,5 4.605,3.71 0.956,9.538 -2,12 v 1 l -5,1 v 1 c -1.817,0.364 -1.561,-0.864 -2,-1 -6.565,-2.029 -9.232,-3.308 -9,-12 1.962,-1.666 0.9,-2.548 2,-4 1.046,-1.38 2.489,-0.636 4,-3 z m 281,144 1,3 h 1 v 3 h 1 c 0.733,2.929 -1.485,5.469 -2,8 -2.079,1.122 -4.636,3.242 -7,4 H 117 c -19.711,0 -43.478,1.244 -60,-2 -1.046,-1.9 -3.56,-4.753 -4,-7 l 1,-6 6,-5 h 148 c 24.693,0 58,-2.451 79,2 z"
+     style="opacity:1;mix-blend-mode:overlay;fill:url(#linearGradient4617);fill-opacity:1;fill-rule:evenodd;filter:url(#filter)" />
+</svg>

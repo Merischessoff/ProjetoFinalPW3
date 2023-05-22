@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="4608"
+   height="4608"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="Minhahistoriabotao.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.0808692"
+     inkscape:cx="1718.825"
+     inkscape:cy="2479.3123"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs11">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1264">
+      <stop
+         style="stop-color:#154ba9;stop-opacity:1"
+         offset="0"
+         id="stop1260" />
+      <stop
+         style="stop-color:#ab14c6;stop-opacity:1"
+         offset="1"
+         id="stop1262" />
+    </linearGradient>
+    <style
+       id="style2">
+      .cls-1 {
+        fill: #fed1c0;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter
+       id="filter"
+       x="16.531"
+       y="3"
+       width="473.469"
+       height="505.188"
+       filterUnits="userSpaceOnUse">
+      <feImage
+         preserveAspectRatio="none"
+         x="16.5312"
+         y="3"
+         width="473.469"
+         height="505.188"
+         result="image"
+         xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDczLjQ2OSIgaGVpZ2h0PSI1MDUuMTg4IiB2aWV3Qm94PSIwIDAgNDczLjQ2OSA1MDUuMTg4Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIzNi43MzQiIHkxPSI1MDUuMTg4IiB4Mj0iMjM2LjczNCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhZTA0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDg0YmE4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSI0NzMuNDY5IiBoZWlnaHQ9IjUwNS4xODgiLz4KPC9zdmc+Cg=="
+         id="feImage4" />
+      <feComposite
+         result="composite"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite6" />
+      <feBlend
+         result="blend"
+         in2="SourceGraphic"
+         id="feBlend8" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1264"
+       id="linearGradient1266"
+       x1="192.47107"
+       y1="-9.6246347"
+       x2="215.79767"
+       y2="355.61087"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     id="Forma_12"
+     data-name="Forma 12"
+     class="cls-1"
+     d="M401,62c26.621-.069,56.058-1.322,81,1,1.449,2.186,2.5,1.465,4,3,3.306,3.371,4.031,8.183,4,15h-1v3l-2,1v2l-20,19c0.844,1.135-.127.145,1,1l21,22q0.5,5.5,1,11h-1q-0.5,2.5-1,5l-6,5c-5.807,2.62-17.42,1-25,1H401V413c-1.532,5.093-4.213,12.985-7,17l-3,2v2l-4,3v1h-2l-2,3a40.979,40.979,0,0,1-11,5v33c0,5.652.5,12.923-1,17v3h-1v2l-2,1c-1.851,2.592,1.077,1.825-3,3-3.768,4.3-14.033,3-22,3H68l-18-1v-1l-6-1v-1l-4-1v-1H38l-1-2H35l-2-3H31l-3-4H27v-2l-3-2c-7.379-11.179-7-24.472-7-43V64c0-9.261-1.6-21.348,1-29h1V32h1V30h1V28h1V26h1l1-4,3-2V18l4-3V14h2l2-3h2l1-2h2V8l4-1V6l6-1V4h5V3H390V4l5,1,3,4h1q0.5,2,1,4h1V62ZM46,421c4.44-.1,6.922-1.112,10-2H361v-1l5-1c1.7-2.971,4.862-5.524,6-9V33H77c-8.117,0-19.945-1.421-25,2l-1,2C45,43,46,51.18,46,63V421ZM206,62c26.05-.232,41.086,15.1,47,35,1.318,4.437.142,19.822-1,23h-1v3h-1q-1,3-2,6h1v1l5,1v1h2v1h2v1h2l1,2,4,1,1,2h2l2,3h2l3,4c17.148,12.339,27.628,30.927,35,53v5c4.224,13.8,3.369,33.045-1,46v4h-1v3h-1v3h-1v3h-1v2h-1v3h-1l-1,4h-1v2l-2,1-1,4-2,1v2h-1l-1,3-2,1v2l-5,4v2l-8,7-2,3h-2l-3,4h-2l-1,2-3,1v1h-2l-1,2-6,2-1,2-5,1v1l-4,1v1l-6,1v1h-4v1h-3v1h-5c-10.019,3.02-29.984,3.06-40,0h-5v-1h-3v-1l-7-1c-30.64-13.156-49.907-32.3-63-63q-0.5-3.5-1-7h-1v-4h-1v-4h-1v-6h-1c-1.336-4.719.013-24.6,1-28v-6h1v-5h1v-3h1q0.5-3.5,1-7h1v-2h1v-3h1q1-3,2-6h1v-2h1q1-3,2-6h1q0.5-1.5,1-3l2-1v-2l2-1q0.5-1.5,1-3l4-3v-2l3-2,6-7h2l3-4h2l2-3h2q0.5-1,1-2l3-1v-1l4-1q0.5-1,1-2h2v-1h2v-1h3v-1l4-1v-1h3v-1h3v-1h3v-1h4v-1h4v-1h6v-1h9v-1h11v-1c4.092-1.852,6.725-2.284,8-7,2.1-2.036,2.078-5.744,2-10h-1v-3l-2-1c-1.882-2.8-1.189-4-5-5-3.1-2.967-5.594-.543-10-2V91h-3V90h-2l-6-7c-0.336-4.423-1.9-9,1-12,1.068-4.1,3.645-5.154,7-7V63h3V62ZM401,92v29h38v-1c-5.158-2.809-10.871-11.57-7-20l7-8H401ZM200,151v1h-6v1h-4v1h-3v1h-3v1h-3v1l-6,2v1h-2v1l-4,1q-0.5,1-1,2h-2l-2,3h-2l-6,7-4,3v2l-3,2v2l-2,1v2l-2,1q-1,3-2,6h-1q-0.5,2-1,4h-1v3h-1v3h-1v3h-1v5h-1v6h-1c-2,7.108,1.534,21.656,3,26q1,5,2,10h1q1,3,2,6h1q0.5,2,1,4l2,1v2l2,1v2l4,3v2l6,5,1,2h2l3,4h2l1,2h2l1,2h2v1h2v1h2v1h2v1h2v1l6,1v1h3v1h5c4.01,1.2,15.689,3.815,22,2v-1h6v-1h5v-1h3v-1h3v-1h3v-1h2v-1h2v-1h2v-1h2v-1h2l1-2h2l1-2h2l2-3h2l3-4,7-6v-2l3-2v-2l2-1,1-4h1v-2h1l2-6h1v-3h1v-2h1v-4h1v-4h1v-6h1c1.562-5.527-.717-24.185-2-28h-1q-0.5-3.5-1-7h-1l-1-4h-1v-3h-1v-2l-2-1-1-4-2-1v-2l-3-2v-2l-4-3-7-8h-2l-2-3h-2q-0.5-1-1-2l-6-2q-0.5-1-1-2h-3v-1l-4-1v-1h-3v-1h-4C220,151.327,211.326,150.939,200,151Zm-24,59c5.568-.07,7.945,1.149,12,2l3,4h1q0.5,2,1,4h1v7h1v4h1v2l7,6c5.31,0.236,9.665,1.835,14-1l2-3,3-2c2.315-3.535.61-7.833,2-12h1v-3l2-1v-2l2-1v-1h2q0.5-1,1-2l10-1v1l5,1,3,4h1c1.158,1.678-.02,2.292,2,4,0.35,21.855-5.418,31.115-18,40l-2,3h-2v1l-4,1v1h-3v1h-3v1h-4v1c-5.933,1.748-16.616-.726-20-2l-6-1v-1h-2v-1h-2l-1-2h-2l-1-2h-2l-2-3-5-4v-2l-2-1v-2l-2-1q-0.5-2-1-4h-1q-0.5-3-1-6h-1v-4h-1c-1.758-5.967,1.2-13.4,2-17l3-2v-1h2q0.5-1,1-2h3v-1ZM117,358H238c22.176,0,49.086-1.71,68,2l4,5h1c2.8,4.309,1.293,8.7,1,14-4.543,3.04-3.853,7.536-12,8-2.185,1.91-9.112,1-13,1H118c-2.22-.714-4.209-2.393-7-3l-2-3h-1c-2.215-3.389-2.032-8.345-2-14,2-1.717.844-2.331,2-4l4-3v-1l5-1v-1ZM50,453c-0.835,3.084-3.167,5.2-4,8v5h1v3h1v2h1v2l7,5H342V449H57C54.731,449.823,53.164,452.188,50,453Z"
+     style="fill-opacity:1;fill:url(#linearGradient1266)" />
+</svg>

@@ -63,8 +63,27 @@ public class MainActivity extends AppCompatActivity {
         view = this.view;
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        Menu menu = navigationView.getMenu();
+        MenuItem administrarUsuariosMenuItem1 = menu.findItem(R.id.nav_lista_usuario_leitor_fragment);
+        administrarUsuariosMenuItem1.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+
+        MenuItem administrarUsuariosMenuItem2 = menu.findItem(R.id.nav_fragment_cadastro_usuario_leitor);
+        administrarUsuariosMenuItem2.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+
+        MenuItem administrarUsuariosMenuItem3 = menu.findItem(R.id.nav_lista_banco_historias_fragment);
+        administrarUsuariosMenuItem3.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+
+        MenuItem administrarUsuariosMenuItem4 = menu.findItem(R.id.nav_fragment_historia_social_cad);
+        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+
+        MenuItem administrarUsuariosMenuItem5 = menu.findItem(R.id.nav_lista_historias_associar_fragment);
+        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("LEITOR"));
+
+        MenuItem administrarUsuariosMenuItem6 = menu.findItem(R.id.nav_lista_banco_historias_associar_fragment);
+        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("LEITOR"));
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,
                 R.id.nav_fragment_cadastro_usuario_leitor,
                 R.id.nav_fragment_historia_social_List,
@@ -104,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                 ImageView image = new ImageView(this);
                 image.setImageResource(R.mipmap.logotipo_fundo_foreground);
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("Meridiane Schessoff Nunes - Programação para web 3.");
+                builder.setTitle("Meridiane Schessoff Nunes - Trabalho de conclusão de curso.");
                 //define a mensagem
                 builder.setMessage(R.string.sobre)
                         .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -113,35 +132,14 @@ public class MainActivity extends AppCompatActivity {
                             }
                         }).setView(image);
 
-                // Create the AlertDialog object and return it
                 builder.create().show();
+                return true;
+            case R.id.action_sair:
+                Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-  /*  @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.nav_home:
-            case R.id.nav_fragment_historia_social_List:
-                // permitir que o usuário acesse esses itens de menu
-                // adicione aqui o código para abrir a Activity/Fragment correspondente
-                break;
-            case R.id.nav_lista_usuario_leitor_fragment:
-            case R.id.nav_fragment_cadastro_usuario_leitor:
-            case R.id.nav_banco_historias_fragment:
-            case R.id.nav_fragment_historia_social_cad:
-                // não permitir que o usuário acesse esses itens de menu
-                // adicione aqui o código para exibir uma mensagem de erro ou ocultar o item de menu
-                break;
-        }
-
-        // fechar o drawer
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
-
 }

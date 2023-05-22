@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="4608"
+   height="4608"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="Adicionar historia@3x.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.05718316"
+     inkscape:cx="2325.8596"
+     inkscape:cy="2387.0664"
+     inkscape:window-width="1366"
+     inkscape:window-height="708"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <defs
+     id="defs11">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient879">
+      <stop
+         style="stop-color:#174ba9;stop-opacity:1"
+         offset="0"
+         id="stop875" />
+      <stop
+         style="stop-color:#ab13c6;stop-opacity:1"
+         offset="1"
+         id="stop877" />
+    </linearGradient>
+    <style
+       id="style2">
+      .cls-1 {
+        fill: #fed1c0;
+        fill-rule: evenodd;
+        filter: url(#filter);
+      }
+    </style>
+    <filter
+       id="filter"
+       x="23.938"
+       y="7.344"
+       width="477.063"
+       height="500.187"
+       filterUnits="userSpaceOnUse">
+      <feImage
+         preserveAspectRatio="none"
+         x="23.9375"
+         y="7.34375"
+         width="477.063"
+         height="500.187"
+         result="image"
+         xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNDc3LjA2MyIgaGVpZ2h0PSI1MDAuMTg3IiB2aWV3Qm94PSIwIDAgNDc3LjA2MyA1MDAuMTg3Ij4KICA8ZGVmcz4KICAgIDxzdHlsZT4KICAgICAgLmNscy0xIHsKICAgICAgICBmaWxsOiB1cmwoI2xpbmVhci1ncmFkaWVudCk7CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIzOC41MzEiIHkxPSI1MDAuMTg3IiB4Mj0iMjM4LjUzMSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNhZTA0YzciLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDg0YmE4Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCBjbGFzcz0iY2xzLTEiIHdpZHRoPSI0NzcuMDYzIiBoZWlnaHQ9IjUwMC4xODciLz4KPC9zdmc+Cg=="
+         id="feImage4" />
+      <feComposite
+         result="composite"
+         operator="in"
+         in2="SourceGraphic"
+         id="feComposite6" />
+      <feBlend
+         result="blend"
+         in2="SourceGraphic"
+         id="feBlend8" />
+    </filter>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient879"
+       id="linearGradient881"
+       x1="228.70633"
+       y1="5.2725334"
+       x2="299"
+       y2="244"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <path
+     id="Forma_1"
+     data-name="Forma 1"
+     class="cls-1"
+     d="M409,157H364V54H93c-3.04,8.35-1,27.373-1,38V459h1l-1,2h1c2.484,2.173,18.937,1,24,1h66v45H91c-9.764,0-25.48,1.475-32-2l-1-2H56l-2-3-3-2c-4.532-6.47-4-16.847-4-28V417c-5.527-2.051-15.778-1.051-23-1V372c5.527-2.051,15.778-1.051,23-1V281H25c-1.413-3.844-1-10.624-1-16V236c5.03-1.869,14.317-1.05,21-1v1h1v-1c2.173-2.484,1-18.937,1-24V145H25c-1.413-3.844-1-10.624-1-16V100H47V46c0-11.361-.556-21.244,4-28l3-2,2-3c12.431-8.362,53.681-5,75-5H389V9h2v1h3v1l5,1c12.364,7.969,10,23.3,10,43V157ZM138,122H319v45c-4.34,1.581-12.083,1-18,1H138V122Zm193,68c17.57-.222,34.074.645,47,5l8,1v1h3v1h3v1h3v1h3v1h2v1h3v1l4,1v1h3v1l4,1v1l4,1,1,2,4,1v1l3,1,1,2h2v1l3,1,1,2h2l1,2,3,1,3,4h2l10,11,9,8v2l4,3,1,3,2,1v2l2,1,1,3h1v2l2,1v2l2,1v2h1v2h1v2h1v2h1v2h1v2h1v2h1v2h1l2,6h1q1,4.5,2,9h1v2h1v4h1v3h1v5h1v4h1v5h1v7h1v9h1q0.5,9,1,18h-1v5h-1q-0.5,8-1,16l-7,27h-1l-1,5h-1l-1,4h-1v3h-1l-2,6h-1l-1,4-2,1-1,4-2,1-1,4-2,1v2l-3,2v2l-2,1v2l-3,2-1,3-8,7v2l-2,1-3,4h-2l-6,7h-2l-3,4-3,1-1,2h-2l-1,2-3,1v1h-2l-1,2-4,1-1,2-6,2v1h-2v1h-2v1l-6,2v1h-3v1h-2v1l-6,1v1h-3v1h-3v1h-4v1h-4v1h-4v1h-6v1h-6v1h-9v1c-4.564,1.273-21.765-.088-25-1l-16-1-29-8v-1h-2v-1h-3v-1l-6-2v-1h-2v-1h-2v-1l-6-2-1-2-4-1-1-2-4-1-2-3h-2l-1-2h-2l-3-4h-2l-5-6h-2l-7-8-3-2v-2l-6-5v-2l-3-2-1-3-2-1v-2l-2-1v-2l-2-1v-2l-2-1q-0.5-2-1-4l-2-1-2-6h-1v-2h-1l-2-6h-1v-3h-1v-2h-1v-3h-1v-2h-1v-3h-1v-3h-1v-3h-1v-4h-1v-3h-1q-0.5-5-1-10c-2.6-8.642-4.91-30.665-2-41v-9h1v-7h1v-5h1v-4h1v-4h1v-4h1v-3h1v-3h1v-3h1q0.5-2.5,1-5h1q0.5-2,1-4h1v-2h1v-3h1q0.5-2,1-4h1q0.5-2,1-4l2-1q0.5-2,1-4h1l1-3,2-1q0.5-2,1-4l3-2v-2l3-2v-2l3-2v-2l10-9q0.5-1.5,1-3h2l8-9,3-1,2-3h2q0.5-1,1-2h2l2-3,4-1,1-2h2l1-2,4-1,1-2,4-1v-1l4-1v-1h3v-1l4-1v-1l29-9h5v-1h6v-1C323.742,189.929,328.572,192.119,331,190Zm-70,78c-0.939,3.45-3.819,5.692-6,8l-2,1v2l-3,2v2l-3,2q-0.5,2-1,4l-2,1q-0.5,2-1,4l-2,1-3,9h-1v2h-1v3h-1v3h-1v2h-1l-3,18h-1q-0.5,11.5-1,23h1q0.5,8,1,16h1v4h1v4h1v4h1v3h1v3h1v2h1v3h1l2,6h1q0.5,2,1,4l2,1q0.5,2,1,4l2,1v2l2,1v2l3,2v2l6,5v2l6,5,1,2h2l4,5h2l2,3h2l1,2,3,1v1l4,1,1,2,4,1v1l4,1v1h3v1h2v1h3v1h2v1l6,1v1h4c15.279,5.1,39.723,5.147,55,0l10-2v-1h2v-1h3v-1h2v-1h3v-1l4-1v-1l4-1,1-2,4-1v-1l3-1,1-2h2l1-2,3-1,5-6h2l4-5,2-1v-2l5-4v-2l3-2v-2l3-2v-2h1v-2l2-1,1-4,2-1v-2h1v-2h1c10.027-22.4,15.224-56.98,5-83q-0.5-3-1-6c-15.179-35.07-38.777-56.929-76-70h-4v-1h-5v-1h-7v-1H342v-1l-4,1H326v1h-6v1h-4v1h-4v1h-4v1h-3v1h-3v1h-3v1l-4,1v1h-3l-1,2h-2v1h-2v1h-2v1h-2v1l-3,1-1,2h-2l-1,2h-2l-2,3h-2l-1,2C266.678,264.193,264.456,267.032,261,268Zm58,13h45v45h45v45H365c-1.413,3.844-1,10.624-1,16v29c-1.135.844-.145-0.127-1,1-7.895-2.831-22.246-1-32-1-4.064,0-8.334-.012-11,1v-1c-1.813-2.047-1-8.3-1-12V372c-3.844-1.413-10.623-1-16-1H273V327c3.844-1.413,10.623-1,16-1h30V281Z"
+     style="fill-opacity:1;fill:url(#linearGradient881)" />
+</svg>

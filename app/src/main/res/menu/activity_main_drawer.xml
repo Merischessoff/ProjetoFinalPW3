@@ -8,7 +8,6 @@
             android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
             android:title="@string/menu_home" />
-
         <item
             android:id="@+id/nav_lista_usuario_leitor_fragment"
             android:icon="@drawable/ic_baseline_list_24"
@@ -29,6 +28,14 @@
             android:id="@+id/nav_fragment_historia_social_List"
             android:icon="@drawable/ic_baseline_list_24"
             android:title="@string/suasHistorias" />
+        <item
+            android:id="@+id/nav_lista_historias_associar_fragment"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/suasHistorias" />
+        <item
+            android:id="@+id/nav_lista_banco_historias_associar_fragment"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/suasHistoriasBanco" />
 
     </group>
 </menu>

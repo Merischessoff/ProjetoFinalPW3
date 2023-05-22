@@ -60,6 +60,8 @@
     <string name="desvincularBancoHistSoc">Desassociar HS-Banco</string>
     <string name="vincularHistSoc">Associar HS</string>
     <string name="desvincularHistSoc">Desassociar HS</string>
+    <string name="suasHistoriasBanco">Minhas Histórias Banco</string>
+    <string name="action_sair">Sair</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
         <item>Nenhum</item>
