@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAdapterListaBancoHistoriaSocial.MyViewHolderListHistSocial> {
+public class MyAdapterListaBancoHistoriaSocialUsuarioLeitor extends RecyclerView.Adapter<MyAdapterListaBancoHistoriaSocialUsuarioLeitor.MyViewHolderListHistSocial> {
     private List<BancoDeHistoriaSocial> listaHistoria = new ArrayList<BancoDeHistoriaSocial>();
     private Context context;
     private String email;
@@ -30,7 +30,7 @@ public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAd
     private APIUtil apiUtil;
 
     private HistoriaSocial historiaSocial;
-    public MyAdapterListaBancoHistoriaSocial(Context context, List<BancoDeHistoriaSocial> historias, String token, String email) {
+    public MyAdapterListaBancoHistoriaSocialUsuarioLeitor(Context context, List<BancoDeHistoriaSocial> historias, String token, String email) {
         this.context = context;
         this.listaHistoria = historias;
         this.token = token;
@@ -40,7 +40,7 @@ public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAd
     @NonNull
     @Override
     public MyViewHolderListHistSocial onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_banco_historia_social, viewGroup, false);
+        View itemList = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_card_icones_lista_banco_historia_social_usuario_leitor, viewGroup, false);
         return new MyViewHolderListHistSocial(itemList);
     }
 
@@ -62,10 +62,6 @@ public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAd
                 Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle)
         );
 
-        myViewHolderListHistSocial.btnEdit.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.nav_editar_usuario_leitor_fragment,  bundle)
-        );
-
     }
 
     @Override
@@ -75,14 +71,11 @@ public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAd
 
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
-        TextView titulo;
-        Button btnEdit;
-        Button btnVisual;
+        TextView titulo;Button btnVisual;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
             titulo = itemView.findViewById(R.id.textViewTituloBancoHistSoc);
-            btnEdit= itemView.findViewById(R.id.btnEditarBancoHistSoc);
             btnVisual = itemView.findViewById(R.id.btnVisualizarBancoHistSoc);
         }
     }

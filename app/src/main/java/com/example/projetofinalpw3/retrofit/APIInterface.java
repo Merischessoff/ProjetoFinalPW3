@@ -65,15 +65,16 @@ public interface APIInterface {
     @GET("/bancodehistoriasocial/pesquisa")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistorias(@Header("Authorization") String authorization);
 
-    @GET("/bancodehistoriasocial/pesquisa/associado/{emailleitor}")
+    @GET("/bancodehistoriasocial/pesquisa/associa/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
-    @GET("/historiasocial/pesquisa/associado/{emailleitor}")
+    @GET("/historiasocial/pesquisa/associa/{emailleitor}")
     Call<List<HistoriaSocial>> pesquisaHistoriaUsuarioAssociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
-    @GET("/bancodehistoriasocial/pesquisa/desassociado/{emailleitor}")
+    @GET("/bancodehistoriasocial/pesquisa/desassocia/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
-    @GET("/historiasocial/pesquisa/desassociado/{emailleitor}")
+
+    @GET("/historiasocial/pesquisa/desassocia/{emailleitor}")
     Call<List<HistoriaSocial>> pesquisaHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
     @POST("/bancodehistoriasocial/associa/{idbancodehistoria}/{idusuario}")
@@ -87,4 +88,10 @@ public interface APIInterface {
 
     @POST("/historiasocial/desassocia/{idhistoria}/{idusuario}")
     Call<String> desvincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+    @GET("/bancodehistoriasocial/pesquisa/leitor/lista/{emailleitor}")
+    Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuario(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+
+    @GET("/historiasocial/pesquisa/leitor/lista/{emailleitor}")
+    Call<List<HistoriaSocial>> pesquisaHistoriaUsuario(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
+
 }

@@ -50,6 +50,22 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
             }
         });
 
+        btnAssociarBanco = root.findViewById(R.id.btnVincularBancoHistoriasU);
+        btnAssociarBanco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment,  bundle);
+            }
+        });
+
+        btnDesassociarBanco = root.findViewById(R.id.btnDesvincularBancoHistoriasU);
+        btnDesassociarBanco.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public  void onClick(View v){
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
+            }
+        });
+
         btnAssociar = root.findViewById(R.id.btnVincularHistoriasU);
         btnAssociar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,21 +82,7 @@ public class VisualizarUsuarioLeitorFragment extends Fragment {
             }
         });
 
-        btnAssociarBanco = root.findViewById(R.id.btnVincularBancoHistoriasU);
-        btnAssociarBanco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment,  bundle);
-            }
-        });
 
-        btnDesassociarBanco = root.findViewById(R.id.btnDesvincularBancoHistoriasU);
-        btnDesassociarBanco.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public  void onClick(View v){
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
-            }
-        });
         return root;
     }
 }

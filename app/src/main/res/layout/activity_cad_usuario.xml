@@ -40,15 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            app:boxBackgroundColor="@null">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtCpf"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/login_cpf"
-                android:inputType="textEmailAddress" />
-        </com.google.android.material.textfield.TextInputLayout>
+            app:boxBackgroundColor="@null"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"

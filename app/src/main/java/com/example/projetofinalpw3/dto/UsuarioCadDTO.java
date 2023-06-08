@@ -11,8 +11,7 @@ public class UsuarioCadDTO {
 
     private String emailUsuarioVinculado;
 
-    public UsuarioCadDTO(String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
-        this.cpf = cpf;
+    public UsuarioCadDTO(String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -74,7 +73,6 @@ public class UsuarioCadDTO {
     @Override
     public String toString() {
         return "UsuarioCadDTO{" +
-                "cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +

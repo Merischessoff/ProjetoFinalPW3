@@ -48,7 +48,6 @@ public class CadUsuarioActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         edtSenha = findViewById(R.id.edtSenha);
         edtNome = findViewById(R.id.edtNome);
-        edtCpf = findViewById(R.id.edtCpf);
         edtConfSenha = findViewById(R.id.edtConfSenha);
         btnCadastrar = findViewById(R.id.btnCadastrar);
         btnCancelar = findViewById(R.id.btnCancelar);
@@ -58,11 +57,10 @@ public class CadUsuarioActivity extends AppCompatActivity {
                 if (!edtEmail.getText().toString().equals("")
                         && !edtSenha.getText().toString().equals("")
                         && !edtConfSenha.getText().toString().equals("")
-                        && !edtNome.getText().toString().equals("")
-                        && !edtCpf.getText().toString().equals("")) {
+                        && !edtNome.getText().toString().equals("")) {
                     if (edtSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
                         TipoUsuario tipo = TipoUsuario.RESPONSAVEL;
-                        UsuarioCadDTO usu = new UsuarioCadDTO(edtCpf.getText().toString(), edtNome.getText().toString(),
+                        UsuarioCadDTO usu = new UsuarioCadDTO(edtNome.getText().toString(),
                                 edtEmail.getText().toString(),
                                 SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo, "");
 

@@ -38,7 +38,6 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
         private TextInputEditText edtEmail;
         private TextInputEditText edtSenha;
         private TextInputEditText edtNome;
-        private TextInputEditText edtCpf;
         private TextInputEditText edtConfSenha;
         private Button btnCancelar;
         private Button btnCadastrar;
@@ -61,7 +60,6 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
             edtEmail = root.findViewById(R.id.edtEmailUsuarioLeitorVinculado);
             edtSenha = root.findViewById(R.id.edtSenhaUsuarioLeitorVinculado);
             edtNome = root.findViewById(R.id.edtNomeUsuarioLeitorVinculado);
-            edtCpf = root.findViewById(R.id.edtCpfUsuarioLeitorVinculado);
             edtConfSenha = root.findViewById(R.id.edtConfSenhaUsuarioLeitorVinculado);
             btnCancelar = root.findViewById(R.id.btnCancelarUsuarioLeitorVinculado);
 
@@ -72,12 +70,11 @@ public class CadastroUsuarioLeitorFragment extends Fragment {
                     if (!edtEmail.getText().toString().equals("")
                             && !edtSenha.getText().toString().equals("")
                             && !edtConfSenha.getText().toString().equals("")
-                            && !edtNome.getText().toString().equals("")
-                            && !edtCpf.getText().toString().equals("")) {
+                            && !edtNome.getText().toString().equals("")) {
                         if (edtSenha.getText().toString().equals(edtConfSenha.getText().toString())) {
 
                             TipoUsuario tipo = TipoUsuario.LEITOR;
-                            UsuarioCadDTO usu = new UsuarioCadDTO(edtCpf.getText().toString(), edtNome.getText().toString(),
+                            UsuarioCadDTO usu = new UsuarioCadDTO(edtNome.getText().toString(),
                                     edtEmail.getText().toString(),
                                     SenhaUtil.criptografarSenha(edtSenha.getText().toString()), tipo, email);
 

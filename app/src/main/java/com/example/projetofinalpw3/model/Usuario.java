@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Usuario implements Parcelable {
     private Long id;
-    private String cpf;
+    //private String cpf;
     private String nome;
     private String email;
     private String senha;
@@ -20,9 +20,9 @@ public class Usuario implements Parcelable {
 
     private List<HistoriaSocial> historiasSociais;
 
-    public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
+    public Usuario(Long id, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado) {
         this.id = id;
-        this.cpf = cpf;
+        //this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -30,9 +30,9 @@ public class Usuario implements Parcelable {
         this.emailUsuarioVinculado = emailUsuarioVinculado;
     }
 
-    public Usuario(Long id, String cpf, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado, List<HistoriaSocial> historiasSociais) {
+    public Usuario(Long id, String nome, String email, String senha, TipoUsuario tipo, String emailUsuarioVinculado, List<HistoriaSocial> historiasSociais) {
         this.id = id;
-        this.cpf = cpf;
+        //this.cpf = cpf;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -47,14 +47,6 @@ public class Usuario implements Parcelable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
     }
 
     public String getNome() {
@@ -109,7 +101,6 @@ public class Usuario implements Parcelable {
     public String toString() {
         return "Usuario{" +
                 "id=" + id +
-                ", cpf='" + cpf + '\'' +
                 ", nome='" + nome + '\'' +
                 ", email='" + email + '\'' +
                 ", senha='" + senha + '\'' +
@@ -127,7 +118,6 @@ public class Usuario implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeLong(id);
-        dest.writeString(cpf);
         dest.writeString(nome);
         dest.writeString(email);
         dest.writeString(senha);
@@ -150,7 +140,6 @@ public class Usuario implements Parcelable {
 
     protected Usuario(Parcel in) {
         id = in.readLong();
-        cpf = in.readString();
         nome = in.readString();
         email = in.readString();
         senha = in.readString();

@@ -10,6 +10,26 @@
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" />
+    <fragment
+        android:id="@+id/slideshowFragment"
+        android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
+        android:label="fragment_slideshow"
+        tools:layout="@layout/fragment_slideshow" />
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.projetofinalpw3.MainActivity"
+        android:label="app_bar_main"
+        tools:layout="@layout/app_bar_main" />
+    <activity
+        android:id="@+id/nav_login_activity"
+        android:name="com.example.projetofinalpw3.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_login" />
+    <fragment
         android:id="@+id/nav_fragment_historia_social_cad"
         android:name="com.example.projetofinalpw3.fragment.CadastroHistoriaSocialFragment"
         android:label="@string/cadHistSoc"
@@ -31,11 +51,7 @@
         android:name="com.example.projetofinalpw3.fragment.EditarHistoriaSocialFragment"
         android:label="@string/editHistSoc"
         tools:layout="@layout/fragment_historia_social_editar"/>
-    <activity
-        android:id="@+id/nav_login_activity"
-        android:name="com.example.projetofinalpw3.LoginActivity"
-        android:label="activity_login"
-        tools:layout="@layout/activity_login" />
+
     <activity
         android:id="@+id/nav_cad_usuario_activity"
         android:name="com.example.projetofinalpw3.CadUsuarioActivity"
@@ -68,52 +84,50 @@
             android:id="@+id/action_nav_visualizar_usuario_leitor_fragment_to_nav_lista_banco_historias_associar_fragment"
             app:destination="@id/nav_lista_banco_historias_associar_fragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/nav_lista_banco_historias_fragment"
-        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialFragment"
-        android:label="Lista Banco de histórias"
-        tools:layout="@layout/fragment_banco_historia_social_lista_associar" />
+        android:id="@+id/nav_visualizar_banco_historia_social_fragment"
+        android:name="com.example.projetofinalpw3.fragment.VisualizarBancoDeHistoriaSocialFragment"
+        android:label="Visualizar História"
+        tools:layout="@layout/fragment_historia_social_visualizar" />
     <fragment
         android:id="@+id/nav_lista_banco_historias_associar_fragment"
         android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialAssociarFragment"
-        android:label="fragment_lista_historias_associar"
+        android:label="Associar História"
         tools:layout="@layout/fragment_banco_historia_social_lista_associar" />
-    <fragment
-        android:id="@+id/nav_visualizarBancoDeHistoriaSocialFragment"
-        android:name="com.example.projetofinalpw3.fragment.VisualizarBancoDeHistoriaSocialFragment"
-        android:label="fragment_visualizar_banco_de_historia_social"
-        tools:layout="@layout/fragment_historia_social_visualizar" />
-    <fragment
-        android:id="@+id/galleryFragment"
-        android:name="com.example.projetofinalpw3.ui.gallery.GalleryFragment"
-        android:label="fragment_gallery"
-        tools:layout="@layout/fragment_gallery" />
-    <fragment
-        android:id="@+id/slideshowFragment"
-        android:name="com.example.projetofinalpw3.ui.slideshow.SlideshowFragment"
-        android:label="fragment_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.example.projetofinalpw3.MainActivity"
-        android:label="app_bar_main"
-        tools:layout="@layout/app_bar_main" />
-    <fragment
-        android:id="@+id/nav_editarBancoDeHistoriaSocialFragment"
-        android:name="com.example.projetofinalpw3.fragment.EditarBancoDeHistoriaSocialFragment"
-        android:label="EditarBancoDeHistoriaSocialFragment" />
-    <fragment
-        android:id="@+id/nav_lista_banco_historias_desassociar_fragment"
-        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialDesassociarFragment"
-        android:label="fragment_lista_banco_de_historia_social_desassociar"
-        tools:layout="@layout/fragment_lista_banco_de_historia_social_desassociar" />
     <fragment
         android:id="@+id/nav_lista_historias_associar_fragment"
         android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialAssociarFragment"
-        android:label="ListaHistoriaSocialAssociarFragment" />
-
+        android:label="Associar História"
+        tools:layout="@layout/fragment_historia_social_lista_associar" />
+    <fragment
+        android:id="@+id/nav_lista_banco_historias_desassociar_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialDesassociarFragment"
+        android:label="Desassociar História"
+        tools:layout="@layout/fragment_lista_banco_de_historia_social_desassociar" />
     <fragment
         android:id="@+id/nav_lista_historias_desassociar_fragment"
         android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialDesassociarFragment"
-        android:label="ListaHistoriaSocialDesassociarFragment" />
+        android:label="Desassociar História"
+        tools:layout="@layout/fragment_lista_de_historia_social_desassociar" />
+    <fragment
+        android:id="@+id/nav_lista_banco_historia_social_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialFragment"
+        android:label="Lista Banco de Histórias Sociais"
+        tools:layout="@layout/fragment_banco_de_historias_lista" />
+    <fragment
+        android:id="@+id/nav_lista_historia_social_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialFragment"
+        android:label="Lista de Histórias Sociais"
+        tools:layout="@layout/fragment_historia_social_lista" />
+    <fragment
+        android:id="@+id/nav_lista_banco_de_historia_social_usuario_leitor_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaBancoDeHistoriaSocialUsuarioLeitorFragment"
+        android:label="Lista Banco de Histórias Sociais Leitor"
+        tools:layout="@layout/fragment_banco_de_historias_lista_usuario_leitor" />
+    <fragment
+        android:id="@+id/nav_lista_historia_social_usuario_leitor_fragment"
+        android:name="com.example.projetofinalpw3.fragment.ListaHistoriaSocialUsuarioLeitorFragment"
+        android:label="Lista de Histórias Sociais Leitor"
+        tools:layout="@layout/fragment_historia_social_lista_usuario_leitor" />
 </navigation>

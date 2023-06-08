@@ -21,7 +21,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cadHistSoc">Nova História</string>
     <string name="listHistSoc">Listar Histórias Sociais</string>
-    <string name="visualHistSoc">História Social</string>
+    <string name="visualHistSoc">Visualizar História Social</string>
     <string name="btnCadastrar">Cadastrar</string>
     <string name="textoHistoria">Texto da história social</string>
     <string name="S">Imagem</string>

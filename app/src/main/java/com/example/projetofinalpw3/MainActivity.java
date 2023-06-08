@@ -66,30 +66,34 @@ public class MainActivity extends AppCompatActivity {
 
         Menu menu = navigationView.getMenu();
         MenuItem administrarUsuariosMenuItem1 = menu.findItem(R.id.nav_lista_usuario_leitor_fragment);
-        administrarUsuariosMenuItem1.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+        administrarUsuariosMenuItem1.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL"));
 
         MenuItem administrarUsuariosMenuItem2 = menu.findItem(R.id.nav_fragment_cadastro_usuario_leitor);
-        administrarUsuariosMenuItem2.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+        administrarUsuariosMenuItem2.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL"));
 
-        MenuItem administrarUsuariosMenuItem3 = menu.findItem(R.id.nav_lista_banco_historias_fragment);
-        administrarUsuariosMenuItem3.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+        MenuItem administrarUsuariosMenuItem3 = menu.findItem(R.id.nav_fragment_historia_social_cad);
+        administrarUsuariosMenuItem3.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL"));
 
-        MenuItem administrarUsuariosMenuItem4 = menu.findItem(R.id.nav_fragment_historia_social_cad);
-        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("RESPONSAVEL"));
+        MenuItem administrarUsuariosMenuItem4 = menu.findItem(R.id.nav_lista_banco_historia_social_fragment);
+        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL"));
 
-        MenuItem administrarUsuariosMenuItem5 = menu.findItem(R.id.nav_lista_historias_associar_fragment);
-        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("LEITOR"));
+        MenuItem administrarUsuariosMenuItem5 = menu.findItem(R.id.nav_lista_historia_social_fragment);
+        administrarUsuariosMenuItem5.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("RESPONSAVEL"));
 
-        MenuItem administrarUsuariosMenuItem6 = menu.findItem(R.id.nav_lista_banco_historias_associar_fragment);
-        administrarUsuariosMenuItem4.setVisible(tipoUsuario.getTipo().equals("LEITOR"));
+        MenuItem administrarUsuariosMenuItem6 = menu.findItem(R.id.nav_lista_historia_social_usuario_leitor_fragment);
+        administrarUsuariosMenuItem6.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("LEITOR"));
 
+        MenuItem administrarUsuariosMenuItem7 = menu.findItem(R.id.nav_lista_banco_de_historia_social_usuario_leitor_fragment);
+        administrarUsuariosMenuItem7.setVisible(tipoUsuario.getTipo().equalsIgnoreCase("LEITOR"));
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home,
+                R.id.nav_lista_usuario_leitor_fragment,
                 R.id.nav_fragment_cadastro_usuario_leitor,
-                R.id.nav_fragment_historia_social_List,
-                R.id.nav_lista_banco_historias_fragment,
                 R.id.nav_fragment_historia_social_cad,
-                R.id.nav_lista_usuario_leitor_fragment)
+                R.id.nav_lista_banco_historia_social_fragment,
+                R.id.nav_lista_historia_social_fragment,
+                R.id.nav_lista_historia_social_usuario_leitor_fragment,
+                R.id.nav_lista_banco_de_historia_social_usuario_leitor_fragment)
                 .setOpenableLayout(drawer).build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);

@@ -17,25 +17,25 @@
             android:icon="@drawable/ic_baseline_add_circle_outline_24"
             android:title="@string/cadUsuarioLeitor" />
         <item
-            android:id="@+id/nav_lista_banco_historias_fragment"
-            android:icon="@drawable/ic_baseline_list_24"
-            android:title="@string/bancoHistorias" />
-        <item
             android:id="@+id/nav_fragment_historia_social_cad"
             android:icon="@drawable/ic_baseline_add_circle_outline_24"
             android:title="@string/cadHistSoc" />
         <item
-            android:id="@+id/nav_fragment_historia_social_List"
+            android:id="@+id/nav_lista_banco_historia_social_fragment"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/bancoHistorias" />
+        <item
+            android:id="@+id/nav_lista_historia_social_fragment"
             android:icon="@drawable/ic_baseline_list_24"
             android:title="@string/suasHistorias" />
         <item
-            android:id="@+id/nav_lista_historias_associar_fragment"
+            android:id="@+id/nav_lista_banco_de_historia_social_usuario_leitor_fragment"
+            android:icon="@drawable/ic_baseline_list_24"
+            android:title="@string/bancoHistorias" />
+        <item
+            android:id="@+id/nav_lista_historia_social_usuario_leitor_fragment"
             android:icon="@drawable/ic_baseline_list_24"
             android:title="@string/suasHistorias" />
-        <item
-            android:id="@+id/nav_lista_banco_historias_associar_fragment"
-            android:icon="@drawable/ic_baseline_list_24"
-            android:title="@string/suasHistoriasBanco" />
 
     </group>
 </menu>
