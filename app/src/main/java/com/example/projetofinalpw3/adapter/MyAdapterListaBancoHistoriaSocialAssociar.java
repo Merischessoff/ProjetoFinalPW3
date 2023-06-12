@@ -57,14 +57,14 @@ public class MyAdapterListaBancoHistoriaSocialAssociar extends RecyclerView.Adap
         bundle.putString("id", listaHistoriaB.get(position).getId().toString());
         bundle.putString("token", token);
         bundle.putString("idUsuarioLeitor", idUsuarioLeitor);
+        bundle.putString("emailUsuarioLeitor", emailUsuarioLeitor);
 
         myViewHolderListHistSocial.titulo.setText(listaHistoriaB.get(position).getTitulo().toString());
-        myViewHolderListHistSocial.texto.setText(listaHistoriaB.get(position).getTexto().toString());
         myViewHolderListHistSocial.btnAssociarHist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiUtil.vincularBancoHistoria(token, bundle);
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment, bundle);
+                apiUtil.vincularBancoHistoria(token, bundle, v);
+
             }
         });
 
@@ -77,13 +77,12 @@ public class MyAdapterListaBancoHistoriaSocialAssociar extends RecyclerView.Adap
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
-        TextView texto;
         Button btnAssociarHist;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
             titulo = itemView.findViewById(R.id.textViewTituloVincularB);
-            texto = itemView.findViewById(R.id.textViewVincularB);
+
             btnAssociarHist = itemView.findViewById(R.id.btnVincularHistoriaB);
         }
     }

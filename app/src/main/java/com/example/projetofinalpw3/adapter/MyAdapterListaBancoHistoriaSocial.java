@@ -59,11 +59,11 @@ public class MyAdapterListaBancoHistoriaSocial extends RecyclerView.Adapter<MyAd
         bundle.putParcelableArrayList("listaImagens", new ArrayList<>(listaHistoria.get(position).getImagens()));
 
         myViewHolderListHistSocial.btnVisual.setOnClickListener(
-                Navigation.createNavigateOnClickListener(R.id.nav_fragment_historia_social_Visualizar, bundle)
+                Navigation.createNavigateOnClickListener(R.id.nav_fragment_banco_historia_social_Visualizar, bundle)
         );
 
         myViewHolderListHistSocial.btnEdit.setOnClickListener(
-            Navigation.createNavigateOnClickListener(R.id.nav_editar_usuario_leitor_fragment,  bundle)
+            Navigation.createNavigateOnClickListener(R.id.nav_fragment_banco_historia_social_Edit,  bundle)
         );
 
     }

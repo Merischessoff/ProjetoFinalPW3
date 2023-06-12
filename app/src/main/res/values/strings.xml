@@ -62,6 +62,7 @@
     <string name="desvincularHistSoc">Desassociar HS</string>
     <string name="suasHistoriasBanco">Minhas Histórias Banco</string>
     <string name="action_sair">Sair</string>
+    <string name="editHistSocBanco">Editar História Banco de Histórias</string>
 
     <string-array name="itensAtividadeVidaDiariaNome">
         <item>Nenhum</item>

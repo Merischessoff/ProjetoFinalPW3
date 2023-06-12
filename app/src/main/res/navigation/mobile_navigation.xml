@@ -47,11 +47,21 @@
         tools:layout="@layout/fragment_historia_social_visualizar">
     </fragment>
     <fragment
+        android:id="@+id/nav_fragment_banco_historia_social_Visualizar"
+        android:name="com.example.projetofinalpw3.fragment.VisualizarBancoDeHistoriaSocialFragment"
+        android:label="@string/visualHistSoc"
+        tools:layout="@layout/fragment_banco_de_historia_social_visualizar">
+    </fragment>
+    <fragment
         android:id="@+id/nav_fragment_historia_social_Edit"
         android:name="com.example.projetofinalpw3.fragment.EditarHistoriaSocialFragment"
         android:label="@string/editHistSoc"
         tools:layout="@layout/fragment_historia_social_editar"/>
-
+    <fragment
+        android:id="@+id/nav_fragment_banco_historia_social_Edit"
+        android:name="com.example.projetofinalpw3.fragment.EditarBancoDeHistoriaSocialFragment"
+        android:label="@string/editHistSocBanco"
+        tools:layout="@layout/fragment_banco_de_historia_social_editar"/>
     <activity
         android:id="@+id/nav_cad_usuario_activity"
         android:name="com.example.projetofinalpw3.CadUsuarioActivity"

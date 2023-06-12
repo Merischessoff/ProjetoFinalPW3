@@ -27,12 +27,6 @@
                 android:textStyle="bold"
                 />
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textViewDesvincularB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Texto"/>
-
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

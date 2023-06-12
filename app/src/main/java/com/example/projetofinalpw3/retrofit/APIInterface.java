@@ -1,5 +1,6 @@
 package com.example.projetofinalpw3.retrofit;
 
+import com.example.projetofinalpw3.dto.DadosMensagem;
 import com.example.projetofinalpw3.dto.HistoriaSocialDTO;
 import com.example.projetofinalpw3.dto.TipoUsuarioDTO;
 import com.example.projetofinalpw3.dto.TokenDTO;
@@ -78,16 +79,16 @@ public interface APIInterface {
     Call<List<HistoriaSocial>> pesquisaHistoriaUsuarioDesassociado(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 
     @POST("/bancodehistoriasocial/associa/{idbancodehistoria}/{idusuario}")
-    Call<String> vincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+    Call<DadosMensagem> vincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 
     @POST("/historiasocial/associa/{idhistoria}/{idusuario}")
-    Call<String> vincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+    Call<DadosMensagem> vincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 
     @POST("/bancodehistoriasocial/desassocia/{idbancodehistoria}/{idusuario}")
-    Call<String> desvincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+    Call<DadosMensagem> desvincularUsuarioBancoDeHistorias(@Header("Authorization") String authorization, @Path("idbancodehistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
 
     @POST("/historiasocial/desassocia/{idhistoria}/{idusuario}")
-    Call<String> desvincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
+    Call<DadosMensagem> desvincularUsuarioHistorias(@Header("Authorization") String authorization, @Path("idhistoria") String idbancodehistoria, @Path("idusuario") String idusuario);
     @GET("/bancodehistoriasocial/pesquisa/leitor/lista/{emailleitor}")
     Call<List<BancoDeHistoriaSocial>> pesquisaBancoDeHistoriaUsuario(@Header("Authorization") String authorization, @Path("emailleitor") String emailleitor);
 

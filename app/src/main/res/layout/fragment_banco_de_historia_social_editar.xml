@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.EditarHistoriaSocialFragment">
+    tools:context=".fragment.EditarBancoDeHistoriaSocialFragment">
 
     <androidx.appcompat.widget.LinearLayoutCompat
-        android:id="@+id/layoutHistoriaSocialEdit"
+        android:id="@+id/layoutHistoriaSocialBancoEdit"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin8"
@@ -15,14 +15,14 @@
         >
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutTituloHistoriaSocial"
+            android:id="@+id/layoutTituloHistoriaSocialBanco"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTituloHistoriaSocial"
+                android:id="@+id/txtTituloHistoriaSocialBanco"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/tituloHistoria"
@@ -42,7 +42,7 @@
             />
 
         <Button
-            android:id="@+id/btnSelecionaImagens"
+            android:id="@+id/btnSelecionaImagensBanco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin8"
@@ -51,7 +51,7 @@
             android:text="@string/btnSelecionarImg" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutTextoHistoriaSocial"
+            android:id="@+id/layoutTextoHistoriaSocialBanco"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:maxLength="100"
@@ -60,7 +60,7 @@
             app:boxBackgroundColor="@null">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/txtTextoHistoriaSocial"
+                android:id="@+id/txtTextoHistoriaSocialBanco"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/textoHistoria"
@@ -68,7 +68,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutSpinnerAtividadeVidaDiaria"
+            android:id="@+id/layoutSpinnerAtividadeVidaDiariaBanco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="100"
@@ -77,7 +77,7 @@
             app:boxBackgroundColor="@null">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textLegSpinnerAvd"
+                android:id="@+id/textLegSpinnerAvdBanco"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="@string/categoriasAvd"
@@ -87,7 +87,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinnerAtividadeVidaDiaria"
+                android:id="@+id/spinnerAtividadeVidaDiariaBanco"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:entries="@array/itensAtividadeVidaDiariaNome"
@@ -98,7 +98,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutSpinnerHabilidadeSocial"
+            android:id="@+id/layoutSpinnerHabilidadeSocialBanco"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLength="100"
@@ -107,7 +107,7 @@
             app:boxBackgroundColor="@null">
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/textLegSpinnerHs"
+                android:id="@+id/textLegSpinnerHsBanco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/categoriasHs"
@@ -117,7 +117,7 @@
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spinnerHabilidadeSocial"
+                android:id="@+id/spinnerHabilidadeSocialBanco"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/border_spinner"
@@ -125,7 +125,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnEditar"
+            android:id="@+id/btnEditarBanco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin8"

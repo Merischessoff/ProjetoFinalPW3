@@ -59,14 +59,16 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
     private Util util;
     private FirebaseStorage storage;
 
-    private String uriAuxiliar = "";
+    private StorageReference gsReference;
+
+    FirebaseAuth auth;
+    FirebaseUser user;
 
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         root = inflater.inflate(R.layout.fragment_banco_de_historia_social_visualizar, container, false);
         Bundle bundle = getArguments();
 
-        storage = FirebaseStorage.getInstance();
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(requireActivity(),
@@ -83,11 +85,7 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
                     ImageView imageView = new ImageView(requireContext());
                     imageView.setId(util.geraId());
 
-                    try {
-                        getImagensFirebase(imageView, img);
-                    }catch (Exception e){
-                        Log.e("Exception", e.toString());
-                    }
+                    getImagensFirebase(imageView, img);
 
                     TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                     textoImagem.setText(img.getTexto());
@@ -127,11 +125,7 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
                         ImageView imageView = new ImageView(requireContext());
                         imageView.setId(util.geraId());
 
-                        try {
-                            getImagensFirebase(imageView, img);
-                        }catch (Exception e){
-                            Log.e("Exception", e.toString());
-                        }
+                        getImagensFirebase(imageView, img);
 
                         TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                         textoImagem.setText(img.getTexto());
@@ -161,11 +155,7 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
                         ImageView imageView = new ImageView(requireContext());
                         imageView.setId(util.geraId());
 
-                        try {
-                            getImagensFirebase(imageView, img);
-                        }catch (Exception e){
-                            Log.e("Exception", e.toString());
-                        }
+                        getImagensFirebase(imageView, img);
 
                         TextView textoImagem = root.findViewById(R.id.textoImgHistoriaSocial);
                         textoImagem.setText(img.getTexto());
@@ -188,27 +178,40 @@ public class VisualizarBancoDeHistoriaSocialFragment extends Fragment {
     }
 
     public void getImagensFirebase(ImageView imageView, Imagem img){
-        FirebaseAuth auth = FirebaseAuth.getInstance();
-        FirebaseUser user = auth.getCurrentUser();
+        auth = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
 
-        if (user != null){
-            FirebaseStorage storage = FirebaseStorage.getInstance();
-            StorageReference gsReference = storage.getReferenceFromUrl(img.getUrl());
-            gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                @Override
-                public void onSuccess(Uri uri) {
-                    Log.e("URI", uri.toString());
-                    Glide.with(requireContext())
-                            .load(uri)
-                            .into(imageView);
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    Log.e("FALHA", exception.toString());
-                }
-            });
-        }
+        Log.e("getImagensFirebase", "Chegou no método");
+        Log.e("getImagensFirebase", "Chegou no método " + user.getEmail());
 
+
+        //if (user != null){
+            storage = FirebaseStorage.getInstance();
+            gsReference = storage.getReferenceFromUrl(img.getUrl());
+
+            try {
+                gsReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        Glide.with(requireContext())
+                                .load(uri)
+                                .into(imageView);
+                        Log.e("getImagensFirebase", uri.toString());
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception exception) {
+                        Log.e("getImagensFirebase", exception.toString());
+                    }
+                });
+                //} else {
+                //Log.e("USER", "User is not logged in");
+                //}
+            }catch (Exception e){
+                Log.e("getImagensFirebase", e.toString());
+            }
     }
+
+
+
 }

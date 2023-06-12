@@ -20,14 +20,6 @@
             android:text="História Social - Banco de história"
             android:textStyle="bold" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/textViewVincular"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Texto"
-            android:textAlignment="center"
-            android:textStyle="italic" />
-
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -37,7 +29,7 @@
                 android:id="@+id/btnVincularHistória"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/vincularBancoHistSoc"
+                android:text="@string/vincularHistSoc"
                 android:layout_marginLeft="@dimen/margin8"
                 android:layout_marginRight="@dimen/margin8"
                 />

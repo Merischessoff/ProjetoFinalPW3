@@ -49,7 +49,7 @@ public class ListaHistoriaSocialDesassociarFragment extends Fragment {
         Bundle bundle = getArguments();
         Intent intent = getActivity().getIntent();
         emailUsuarioLeitor = bundle.getString("emailUsuarioLeitor");
-        idUsuarioLeitor = bundle.getString("ID");
+        idUsuarioLeitor = bundle.getString("idUsuarioLeitor");
         token = intent.getStringExtra("token");
         emailUsuarioResponsavel = intent.getStringExtra("email");
         nomeUsuario = bundle.getString("nome");

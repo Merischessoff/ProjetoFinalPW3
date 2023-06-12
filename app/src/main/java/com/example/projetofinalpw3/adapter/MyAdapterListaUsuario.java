@@ -60,7 +60,7 @@ public class MyAdapterListaUsuario extends RecyclerView.Adapter<MyAdapterListaUs
         myViewHolderListaUsuario.nome.setText(h.getNome());
 
         Bundle bundle = new Bundle();
-        bundle.putString("ID", listaUsuarios.get(position).getId().toString());
+        bundle.putString("idUsuarioLeitor", listaUsuarios.get(position).getId().toString());
         //bundle.putString("cpf", listaUsuarios.get(position).getCpf());
         bundle.putString("emailUsuarioLeitor", listaUsuarios.get(position).getEmail());
         bundle.putString("nome", listaUsuarios.get(position).getNome());

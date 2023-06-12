@@ -243,7 +243,7 @@ public class EditarHistoriaSocialFragment extends Fragment {
                             .withImagens(imagens)
                             .build();
 
-                    Log.e("objeto historia social ", "id: " + idHistoria + " historia " + historiaSocial.toString());
+                    //Log.e("objeto historia social ", "id: " + idHistoria + " historia " + historiaSocial.toString());
 
                     Call<HistoriaSocial> call = apiInterface.editaHistoriaPropriaId(token, idHistoria, historiaSocial);
                     call.enqueue(new Callback<HistoriaSocial>() {

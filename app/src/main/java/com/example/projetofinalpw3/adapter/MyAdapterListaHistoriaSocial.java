@@ -30,12 +30,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListHistSocial.MyViewHolderListHistSocial> {
+public class MyAdapterListaHistoriaSocial extends RecyclerView.Adapter<MyAdapterListaHistoriaSocial.MyViewHolderListHistSocial> {
     List<HistoriaSocial> listaHistoria = new ArrayList<HistoriaSocial>();
     Context context;
 
     String token;
-    public MyAdapterListHistSocial(Context context, List<HistoriaSocial> historias, String token) {
+    public MyAdapterListaHistoriaSocial(Context context, List<HistoriaSocial> historias, String token) {
         this.context = context;
         this.listaHistoria = historias;
         this.token = token;
@@ -89,11 +89,11 @@ public class MyAdapterListHistSocial extends RecyclerView.Adapter<MyAdapterListH
                         call.enqueue(new Callback<HistoriaSocial>() {
                             @Override
                             public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
-                                Log.e("onResponse ", "MyAdapterListHistSocial " + response.body());
+                                Log.e("onResponse ", "MyAdapterListaHistoriaSocial " + response.body());
                             }
                             @Override
                             public void onFailure(Call<HistoriaSocial> call, Throwable t) {
-                                Log.e("onFailure ", "MyAdapterListHistSocial " + t.getMessage());
+                                Log.e("onFailure ", "MyAdapterListaHistoriaSocial " + t.getMessage());
                                 call.cancel();
                             }
                         });

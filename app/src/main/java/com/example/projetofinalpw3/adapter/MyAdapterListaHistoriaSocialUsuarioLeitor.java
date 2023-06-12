@@ -67,47 +67,14 @@ public class MyAdapterListaHistoriaSocialUsuarioLeitor extends RecyclerView.Adap
         return listaHistoria.size();
     }
 
-    public void removerItem(Bundle bundle, final int position) {
-        //new AlertDialog.Builder(context)
-         //       .setTitle("Deletando história")
-         //       .setMessage("Tem certeza que deseja deletar essa história?")
-         //       .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-           //         @Override
-          //          public void onClick(DialogInterface dialogInterface, int i) {
-                        APIInterface apiInterface = APIClient.getClient().create(APIInterface.class);
-                        Call<HistoriaSocial> call = apiInterface.deletaHistoriaPropria(token, Long.parseLong(bundle.getString("id")));
-                        call.enqueue(new Callback<HistoriaSocial>() {
-                            @Override
-                            public void onResponse(Call<HistoriaSocial> call, Response<HistoriaSocial> response) {
-                                Log.e("onResponse ", "MyAdapterListHistSocial " + response.body());
-                            }
-                            @Override
-                            public void onFailure(Call<HistoriaSocial> call, Throwable t) {
-                                Log.e("onFailure ", "MyAdapterListHistSocial " + t.getMessage());
-                                call.cancel();
-                            }
-                        });
-
-                        listaHistoria.remove(position);
-                        notifyItemRemoved(position);
-
-               //     }}).setNegativeButton("Não", null).show();
-    }
-
-
-
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
-        ImageButton btnDelete;
-        ImageButton btnEdit;
         ImageButton btnVisual;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
             titulo = itemView.findViewById(R.id.textViewTitulo);
-            btnDelete = itemView.findViewById(R.id.btnExcluir);
-            btnEdit= itemView.findViewById(R.id.btnEditar);
             btnVisual = itemView.findViewById(R.id.btnVisualizar);
         }
     }

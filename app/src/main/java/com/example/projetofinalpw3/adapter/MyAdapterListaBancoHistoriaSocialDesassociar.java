@@ -58,15 +58,13 @@ public class MyAdapterListaBancoHistoriaSocialDesassociar extends RecyclerView.A
         bundle.putString("id", listaHistoriaB.get(position).getId().toString());
         bundle.putString("token", token);
         bundle.putString("idUsuarioLeitor", idUsuarioLeitor);
-
+        bundle.putString("emailUsuarioLeitor", emailUsuarioLeitor);
         myViewHolderListHistSocial.titulo.setText(listaHistoriaB.get(position).getTitulo().toString());
-        myViewHolderListHistSocial.texto.setText(listaHistoriaB.get(position).getTexto().toString());
 
         myViewHolderListHistSocial.btnDesassociarHist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                apiUtil.desvincularBancoHistoria(token, bundle);
-                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
+                apiUtil.desvincularBancoHistoria(token, bundle, v);
             }
         });
 
@@ -79,13 +77,11 @@ public class MyAdapterListaBancoHistoriaSocialDesassociar extends RecyclerView.A
 
     public class MyViewHolderListHistSocial extends RecyclerView.ViewHolder{
         TextView titulo;
-        TextView texto;
         ImageButton btnDesassociarHist;
 
         public MyViewHolderListHistSocial(View itemView){
             super(itemView);
             titulo = itemView.findViewById(R.id.textViewTituloDesvincularB);
-            texto = itemView.findViewById(R.id.textViewDesvincularB);
             btnDesassociarHist = itemView.findViewById(R.id.btnDesvincularBancoHistorias);
         }
     }

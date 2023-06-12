@@ -210,8 +210,6 @@ public class VisualizarHistoriaSocialFragment extends Fragment {
                         params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
                         imageContainer.addView(imageView, params);
                         atualView = imageView;
-                    }else{
-
                     }
                 }
             });
@@ -239,6 +237,8 @@ public class VisualizarHistoriaSocialFragment extends Fragment {
                     Log.e("FALHA", exception.toString());
                 }
             });
+        }else {
+            Log.e("USER", "User is not logged in");
         }
 
     }

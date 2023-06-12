@@ -14,9 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
-import com.example.projetofinalpw3.adapter.MyAdapterListaUsuario;
-import com.example.projetofinalpw3.dto.HistoriaSocialDTO;
+import com.example.projetofinalpw3.adapter.MyAdapterListaHistoriaSocial;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
@@ -63,7 +61,7 @@ public class ListaHistoriaSocialFragment extends Fragment {
             @Override
             public void onResponse(Call<List<HistoriaSocial>> call, Response<List<HistoriaSocial>> response) {
                 historias = response.body();
-                MyAdapterListHistSocial myAdapterListaHistorias = new MyAdapterListHistSocial(getActivity().getBaseContext(),historias, token);
+                MyAdapterListaHistoriaSocial myAdapterListaHistorias = new MyAdapterListaHistoriaSocial(getActivity().getBaseContext(),historias, token);
                 recyclerView.setAdapter(myAdapterListaHistorias);
                 recyclerView.setHasFixedSize(true);
 

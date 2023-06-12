@@ -3,6 +3,7 @@ package com.example.projetofinalpw3.fragment;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.bumptech.glide.Glide;
 import com.example.projetofinalpw3.R;
@@ -42,6 +44,7 @@ import com.example.projetofinalpw3.util.FirebaseUtil;
 import com.example.projetofinalpw3.util.Util;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,6 +55,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class EditarBancoDeHistoriaSocialFragment extends Fragment {
     private static final int REQUEST_CODE_READ_EXTERNAL_STORAGE = 123;
@@ -149,12 +156,12 @@ public class EditarBancoDeHistoriaSocialFragment extends Fragment {
                 j++;
             }
 
-            tituloHistoria = root.findViewById(R.id.txtTituloHistoriaSocial);
-            textoHistoria = root.findViewById(R.id.txtTextoHistoriaSocial);
+            tituloHistoria = root.findViewById(R.id.txtTituloHistoriaSocialBanco);
+            textoHistoria = root.findViewById(R.id.txtTextoHistoriaSocialBanco);
             tituloHistoria.setText(bundle.getString("titulo"));
             textoHistoria.setText(bundle.getString("texto"));
 
-            spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiaria);
+            spinnerAvd = root.findViewById(R.id.spinnerAtividadeVidaDiariaBanco);
             String[] itens = getResources().getStringArray(R.array.itensAtividadeVidaDiariaNome);
             int pos = -1;
             if(listaAtividades.size()>0){
@@ -168,7 +175,7 @@ public class EditarBancoDeHistoriaSocialFragment extends Fragment {
                     spinnerAvd.setSelection(pos);
                 }
             }
-            spinnerHabSoc = root.findViewById(R.id.spinnerHabilidadeSocial);
+            spinnerHabSoc = root.findViewById(R.id.spinnerHabilidadeSocialBanco);
             String[] itens2 = getResources().getStringArray(R.array.itensHabilidadeSocialNome);
             int pos2 = -1;
             if(listaHabilidadesSociais.size()>0) {
@@ -182,7 +189,7 @@ public class EditarBancoDeHistoriaSocialFragment extends Fragment {
                     spinnerHabSoc.setSelection(pos2);
                 }
             }
-            btnSelecionaImg = root.findViewById(R.id.btnSelecionaImagens);
+            btnSelecionaImg = root.findViewById(R.id.btnSelecionaImagensBanco);
             btnSelecionaImg.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -190,7 +197,7 @@ public class EditarBancoDeHistoriaSocialFragment extends Fragment {
                 }
             });
 
-            btnEditar = root.findViewById(R.id.btnEditar);
+            btnEditar = root.findViewById(R.id.btnEditarBanco);
             btnEditar.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v){
@@ -212,8 +219,8 @@ public class EditarBancoDeHistoriaSocialFragment extends Fragment {
                     }
                     List<Imagem> imagens = new ArrayList<Imagem>();
 
-                    String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocial)).getText().toString();
-                    String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocial)).getText().toString();
+                    String titulo = ((EditText)root.findViewById(R.id.txtTituloHistoriaSocialBanco)).getText().toString();
+                    String texto = ((EditText)root.findViewById(R.id.txtTextoHistoriaSocialBanco)).getText().toString();
                     int i=1;
                     for (Map.Entry<Integer, Img> entry : imagensId.entrySet()) {
                         Imagem img = new Imagem();

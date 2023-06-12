@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.projetofinalpw3.R;
-import com.example.projetofinalpw3.adapter.MyAdapterListHistSocial;
 import com.example.projetofinalpw3.adapter.MyAdapterListaHistoriaSocialUsuarioLeitor;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;

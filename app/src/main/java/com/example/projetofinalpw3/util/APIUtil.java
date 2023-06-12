@@ -8,6 +8,7 @@ import android.view.View;
 import androidx.navigation.Navigation;
 
 import com.example.projetofinalpw3.R;
+import com.example.projetofinalpw3.dto.DadosMensagem;
 import com.example.projetofinalpw3.model.HistoriaSocial;
 import com.example.projetofinalpw3.retrofit.APIClient;
 import com.example.projetofinalpw3.retrofit.APIInterface;
@@ -39,69 +40,74 @@ public class APIUtil {
 
     }
 
-    public static void vincularBancoHistoria(String token, Bundle bundle){
+    public static void vincularBancoHistoria(String token, Bundle bundle, View v){
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<String> call = apiInterface.vincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
-        call.enqueue(new Callback<String>() {
+        Call<DadosMensagem> call = apiInterface.vincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<DadosMensagem>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<DadosMensagem> call, Response<DadosMensagem> response) {
                 Log.e("onResponse", "Response vincularBancoHistoria" + response.body());
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_associar_fragment, bundle);
 
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<DadosMensagem> call, Throwable t) {
                 call.cancel();
                 Log.e("post api", "entrou no onFailure" + t.getMessage());
             }
         });
     }
 
-    public static void desvincularBancoHistoria(String token, Bundle bundle){
+    public static void desvincularBancoHistoria(String token, Bundle bundle, View v){
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<String> call = apiInterface.desvincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
-        call.enqueue(new Callback<String>() {
+        Call<DadosMensagem> call = apiInterface.desvincularUsuarioBancoDeHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<DadosMensagem>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.e("onResponse", "Response desvincularBancoHistoria");
+            public void onResponse(Call<DadosMensagem> call, Response<DadosMensagem> response) {
+                Navigation.findNavController(v).navigate(R.id.nav_lista_banco_historias_desassociar_fragment, bundle);
+                Log.e("onResponse", "sucesso " + response.body());
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<DadosMensagem> call, Throwable t) {
                 call.cancel();
                 Log.e("post api", "entrou no onFailure" + t.getMessage());
             }
         });
     }
 
-    public static void vincularHistoria(String token, Bundle bundle){
+    public static void vincularHistoria(String token, Bundle bundle, View v){
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<String> call = apiInterface.vincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
-        call.enqueue(new Callback<String>() {
+        Call<DadosMensagem> call = apiInterface.vincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<DadosMensagem>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
-                Log.e("onResponse", "Response vincularHistoria" + response.body());
+            public void onResponse(Call<DadosMensagem> call, Response<DadosMensagem> response) {
+                Log.e("vincularHistoria", "sucesso " + response.body());
+                Navigation.findNavController(v).navigate(R.id.nav_lista_historias_associar_fragment, bundle);
+
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<DadosMensagem> call, Throwable t) {
                 call.cancel();
                 Log.e("post api", "entrou no onFailure" + t.getMessage());
             }
         });
     }
 
-    public void desvincularHistoria(String token, Bundle bundle) {
+    public void desvincularHistoria(String token, Bundle bundle, View v) {
         apiInterface = APIClient.getClient().create(APIInterface.class);
 
-        Call<String> call = apiInterface.desvincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
-        call.enqueue(new Callback<String>() {
+        Call<DadosMensagem> call = apiInterface.desvincularUsuarioHistorias(token, bundle.getString("id"), bundle.getString("idUsuarioLeitor"));
+        call.enqueue(new Callback<DadosMensagem>() {
             @Override
-            public void onResponse(Call<String> call, Response<String> response) {
+            public void onResponse(Call<DadosMensagem> call, Response<DadosMensagem> response) {
+                Navigation.findNavController(v).navigate(R.id.nav_lista_historias_desassociar_fragment, bundle);
                 Log.e("onResponse", "Response desvincularHistoria" + response.body());
             }
             @Override
-            public void onFailure(Call<String> call, Throwable t) {
+            public void onFailure(Call<DadosMensagem> call, Throwable t) {
                 call.cancel();
                 Log.e("post api", "entrou no onFailure" + t.getMessage());
             }
