@@ -23,8 +23,8 @@ public class APIClient {
 
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.3.18:8080")
-                //.baseUrl("https://api-social-tea.onrender.com")
+                //.baseUrl("http://192.168.3.18:8080")
+                .baseUrl("https://api-social-tea.onrender.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();
